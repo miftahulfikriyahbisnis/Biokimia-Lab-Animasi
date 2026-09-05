@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Newsreader', Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --color-chem-navy: #4A4E3F;
+  --color-chem-teal: #6B705C;
+  --color-chem-blue: #706B5C;
+  --color-chem-gold: #CB997E;
+  --color-chem-red: #A53F2B;
+  --color-chem-paleteal: #F5F2EA;
+  --color-chem-offwhite: #FDFCF9;
+  --color-chem-text: #3E3E3E;
+
+  --color-nat-cream: #FDFCF9;
+  --color-nat-sand: #F5F2EA;
+  --color-nat-border: #E5E2D9;
+  --color-nat-olive: #6B705C;
+  --color-nat-darkolive: #4A4E3F;
+  --color-nat-sage: #B7B7A4;
+  --color-nat-muted: #A5A58D;
+  --color-nat-earth: #706B5C;
+  --color-nat-charcoal: #3E3E3E;
+  --color-nat-terracotta: #CB997E;
+  --color-nat-peach: #FFE8D6;
+  --color-nat-clay: #DDBEA9;
+  --color-nat-rust: #A53F2B;
+}
+
+:root {
+  color: #3E3E3E;
+  background-color: #FDFCF9;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #FDFCF9;
+  color: #3E3E3E;
+}

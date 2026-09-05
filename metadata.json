@@ -1,0 +1,6 @@
+{
+  "name": "Perjalanan Kimia Insulin",
+  "description": "Animasi interaktif pembelajaran kimia hormon insulin untuk mahasiswa Pendidikan Kimia: diklasifikasikan, dibentuk, dilepaskan, bekerja, dan dihentikan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
