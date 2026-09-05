@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header 
       id="app-main-header" 
-      className="bg-white text-[#3E3E3E] border-b border-[#E5E2D9] px-4 sm:px-8 py-3 flex items-center justify-between gap-3 shadow-xs sticky top-0 z-40"
+      className="bg-white/90 backdrop-blur-md text-[#3E3E3E] border-b border-[#E5E2D9] px-4 sm:px-8 py-3 flex items-center justify-between gap-3 shadow-xs sticky top-0 z-40"
     >
       {/* Brand & Context Breadcrumb */}
       <div className="flex items-center gap-3.5 min-w-0">

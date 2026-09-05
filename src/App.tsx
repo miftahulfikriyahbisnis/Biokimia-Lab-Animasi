@@ -36,6 +36,7 @@ import { Stage6View } from './views/Stage6View';
 import { Stage7View } from './views/Stage7View';
 import { Stage8View } from './views/Stage8View';
 import { SummaryView } from './views/SummaryView';
+import { BACKGROUND_PARTICLES } from './data/backgroundParticles';
 
 export function App() {
   // State Profil Mahasiswa Aktif
@@ -170,32 +171,120 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Deteksi modul Hormon (termasuk materi umum, animasi insulin & post-test) vs Halaman Utama Biokimia
+  const isHormoneView = 
+    appView === 'HORMONE_MAP' ||
+    appView === 'STAGE_1_GENERAL_HORMONE' ||
+    appView === 'STAGE_2_INSULIN_ANIMATION' ||
+    appView === 'STAGE_3_POST_TEST';
+
+  // Gambar 1: Background halaman utama yang menampilkan seluruh materi Biokimia (Portal & Auth)
+  // Gambar 2: Background khusus ketika pengguna membuka materi Hormon, termasuk bagian hormon insulin
+  const activeBgImage = isHormoneView
+    ? "url('/ChatGPT%20Image%20Sep%206,%202026,%2003_48_41%20AM.png'), url('/bg-hormone.png')"
+    : "url('/ChatGPT%20Image%20Sep%206,%202026,%2003_47_23%20AM.png'), url('/bg-biochemistry.png')";
+
   return (
-    <div className={`min-h-screen bg-[#FDFCF9] text-[#3E3E3E] flex flex-col font-sans selection:bg-[#CB997E]/30 selection:text-[#3E3E3E] ${
+    <div className={`min-h-screen text-[#3E3E3E] flex flex-col font-sans selection:bg-[#CB997E]/30 selection:text-[#3E3E3E] relative ${
       reduceMotion ? 'motion-reduce' : ''
     }`}>
-      
-      {/* Header Utama Navigasi Portal & Mahasiswa */}
-      {activeProfile && appView !== 'STUDENT_AUTH' && (
-        <Header
-          appView={appView}
-          onNavigateAppView={handleNavigateAppView}
-          activeProfile={activeProfile}
-          onOpenProgressModal={() => setIsProgressModalOpen(true)}
-          onSwitchProfile={handleSwitchProfile}
-          currentScreen={currentScreen}
-          onNavigateScreen={handleNavigateScreen}
-          soundEnabled={soundEnabled}
-          setSoundEnabled={setSoundEnabled}
-          reduceMotion={reduceMotion}
-          setReduceMotion={setReduceMotion}
-          onOpenGlossary={() => setIsGlossaryOpen(true)}
-          onOpenSources={() => {
-            setSelectedSourceId(undefined);
-            setIsSourcesOpen(true);
+      {/* Pembungkus Background Utama dengan overflow: hidden (mencegah scrollbar & layout shift) */}
+      <div 
+        id="app-page-background"
+        className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
+        aria-hidden="true"
+      >
+        {/* Layer 1: Background Image dengan Cinematic Slow Movement (scale 1.00 -> 1.06, slow pan, 30s ease-in-out alternate) */}
+        {/* Inset negatif (-inset-[4%]) memastikan gambar tidak pernah memperlihatkan ruang kosong saat bergeser & zoom */}
+        <div 
+          id="app-animated-bg-layer"
+          className={`absolute -top-[4%] -bottom-[4%] -left-[4%] -right-[4%] transition-[background-image] duration-700 ease-in-out will-change-transform ${
+            reduceMotion ? 'motion-reduce-bg' : 'animate-cinematic-bg'
+          }`}
+          style={{
+            backgroundImage: activeBgImage,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
           }}
         />
-      )}
+
+        {/* Layer 2: Efek Cahaya Lembut Ambient (radial gradient, max opacity <= 0.12, tenang tanpa kedip/neon) */}
+        <div 
+          id="app-ambient-light-layer"
+          className={`absolute inset-0 pointer-events-none will-change-[opacity,transform] ${
+            reduceMotion ? 'opacity-[0.04]' : 'animate-ambient-glow'
+          }`}
+          style={{
+            background: isHormoneView
+              ? 'radial-gradient(circle at 48% 40%, rgba(245, 158, 11, 0.12) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 75%)'
+              : 'radial-gradient(circle at 50% 45%, rgba(56, 189, 248, 0.11) 0%, rgba(245, 158, 11, 0.08) 45%, transparent 75%)',
+          }}
+        />
+
+        {/* Layer 3: Partikel Cahaya Mikro (12 partikel, opacity rendah, gerak lambat, tidak interaktif, di bawah panel) */}
+        <div 
+          id="app-particles-container"
+          className={`absolute inset-0 pointer-events-none overflow-hidden ${
+            reduceMotion ? 'hidden' : ''
+          }`}
+        >
+          {BACKGROUND_PARTICLES.map((particle) => (
+            <div
+              key={particle.id}
+              className="absolute rounded-full animate-particle-drift pointer-events-none"
+              style={{
+                left: particle.left,
+                top: particle.top,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                backgroundColor: isHormoneView ? '#FDE047' : '#BAE6FD',
+                boxShadow: isHormoneView
+                  ? '0 0 6px 1px rgba(253, 224, 71, 0.45)'
+                  : '0 0 6px 1px rgba(186, 230, 253, 0.45)',
+                animationDelay: particle.delay,
+                // Variabel CSS untuk durasi, arah geser, dan opacity dasar
+                ['--p-dur' as any]: particle.duration,
+                ['--p-dx' as any]: particle.dx,
+                ['--p-dy' as any]: particle.dy,
+                ['--p-base-op' as any]: particle.opacity,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Panel Putih Semi-Transparan untuk Seluruh Konten Aplikasi */}
+      <div 
+        id="app-content-panel"
+        className="min-h-screen flex flex-col flex-1 w-full relative z-10"
+        style={{
+          background: 'rgba(255, 255, 255, 0.82)',
+          backdropFilter: 'blur(5px)',
+          WebkitBackdropFilter: 'blur(5px)',
+        }}
+      >
+        {/* Header Utama Navigasi Portal & Mahasiswa */}
+        {activeProfile && appView !== 'STUDENT_AUTH' && (
+          <Header
+            appView={appView}
+            onNavigateAppView={handleNavigateAppView}
+            activeProfile={activeProfile}
+            onOpenProgressModal={() => setIsProgressModalOpen(true)}
+            onSwitchProfile={handleSwitchProfile}
+            currentScreen={currentScreen}
+            onNavigateScreen={handleNavigateScreen}
+            soundEnabled={soundEnabled}
+            setSoundEnabled={setSoundEnabled}
+            reduceMotion={reduceMotion}
+            setReduceMotion={setReduceMotion}
+            onOpenGlossary={() => setIsGlossaryOpen(true)}
+            onOpenSources={() => {
+              setSelectedSourceId(undefined);
+              setIsSourcesOpen(true);
+            }}
+          />
+        )}
 
       {/* Konten Utama Aplikasi */}
       <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-28">
@@ -390,6 +479,7 @@ export function App() {
           onToggleCaptions={() => setCaptionsEnabled(prev => !prev)}
         />
       )}
+      </div>
 
       {/* Modal Dialog Global */}
       <GlossaryModal

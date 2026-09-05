@@ -1,0 +1,115 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#152e4d" />
+      <stop offset="50%" stop-color="#0c1b30" />
+      <stop offset="100%" stop-color="#050c17" />
+    </radialGradient>
+    <filter id="glow2" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="softglow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient id="bloodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#b91c1c" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#7f1d1d" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="pancreasGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Cyan / Navy Blue Atmosphere -->
+  <rect width="1920" height="1080" fill="url(#bg2)" />
+
+  <!-- Ethereal Glows -->
+  <circle cx="240" cy="220" r="300" fill="#f59e0b" opacity="0.2" filter="url(#softglow2)" />
+  <circle cx="400" cy="700" r="350" fill="#ef4444" opacity="0.15" filter="url(#softglow2)" />
+  <circle cx="1450" cy="600" r="400" fill="#3b82f6" opacity="0.18" filter="url(#softglow2)" />
+
+  <!-- Glowing Pancreas (Top Left) -->
+  <g transform="translate(180, 160)" filter="url(#glow2)">
+    <!-- Body Silhouette outline -->
+    <path d="M -80 -100 C -20 -120 80 -120 140 -100 C 120 -30 110 40 130 120 C 60 140 -20 140 -90 120 Z" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6 8" opacity="0.35" />
+    <!-- Pancreas Organ -->
+    <path d="M -30 20 C 20 -10 90 -20 160 10 C 210 30 230 70 200 90 C 140 100 80 80 20 60 C -10 50 -40 40 -30 20 Z" fill="url(#pancreasGrad)" opacity="0.9" />
+    <ellipse cx="120" cy="35" rx="25" ry="18" fill="#ffffff" opacity="0.6" filter="url(#glow2)" />
+    <circle cx="60" cy="45" r="10" fill="#fef08a" />
+    <circle cx="170" cy="55" r="12" fill="#fef08a" />
+  </g>
+
+  <!-- Curving Blood Vessel (Upper Left to Lower Left / Center) -->
+  <g filter="url(#glow2)">
+    <path d="M 120 280 C 180 420 220 580 320 720 C 400 840 540 950 720 1020 L 580 1080 C 400 990 260 880 180 750 C 90 600 40 440 0 300 Z" fill="url(#bloodGrad)" opacity="0.9" />
+    <!-- Blood Cells (Erythrocytes) -->
+    <ellipse cx="160" cy="450" rx="28" ry="16" fill="#dc2626" stroke="#f87171" stroke-width="4" transform="rotate(25 160 450)" />
+    <ellipse cx="210" cy="560" rx="32" ry="18" fill="#ef4444" stroke="#fca5a5" stroke-width="4" transform="rotate(-15 210 560)" />
+    <ellipse cx="260" cy="670" rx="30" ry="16" fill="#b91c1c" stroke="#f87171" stroke-width="4" transform="rotate(35 260 670)" />
+    <ellipse cx="360" cy="780" rx="35" ry="20" fill="#ef4444" stroke="#fca5a5" stroke-width="4" transform="rotate(-20 360 780)" />
+    <ellipse cx="480" cy="890" rx="32" ry="18" fill="#dc2626" stroke="#f87171" stroke-width="4" transform="rotate(10 480 890)" />
+    <!-- Floating Insulin Clusters (Golden) -->
+    <g transform="translate(210, 480)" filter="url(#glow2)">
+      <circle cx="0" cy="0" r="8" fill="#fbbf24" />
+      <circle cx="10" cy="6" r="6" fill="#f59e0b" />
+      <circle cx="-6" cy="8" r="6" fill="#fde047" />
+    </g>
+    <g transform="translate(310, 690)" filter="url(#glow2)">
+      <circle cx="0" cy="0" r="9" fill="#fbbf24" />
+      <circle cx="12" cy="7" r="7" fill="#f59e0b" />
+      <circle cx="-8" cy="9" r="7" fill="#fde047" />
+    </g>
+  </g>
+
+  <!-- Target Cell Membrane (Bottom-Right) -->
+  <g transform="translate(800, 500)">
+    <!-- Bilayer arc -->
+    <path d="M 100 280 C 400 180 800 120 1120 100 L 1120 580 L 100 580 Z" fill="#0e2a4a" opacity="0.9" />
+    <path d="M 100 280 C 400 180 800 120 1120 100" fill="none" stroke="#38bdf8" stroke-width="16" stroke-dasharray="18 10" opacity="0.8" />
+    <!-- Insulin Receptors (Y-shaped / Tetrameric) -->
+    <!-- Receptor 1 -->
+    <g transform="translate(480, 180) rotate(-12)" filter="url(#glow2)">
+      <!-- Alpha & Beta Subunits -->
+      <path d="M -20 -40 C -15 -10 -8 20 -5 50" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round" />
+      <path d="M 20 -40 C 15 -10 8 20 5 50" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round" />
+      <!-- Bound Insulin (Golden) -->
+      <circle cx="0" cy="-35" r="14" fill="#fbbf24" stroke="#ffffff" stroke-width="3" />
+      <!-- Intracellular Tyrosine Kinase domains -->
+      <circle cx="-10" cy="80" r="12" fill="#60a5fa" />
+      <circle cx="10" cy="80" r="12" fill="#60a5fa" />
+      <!-- Phosphorylation Glow -->
+      <circle cx="0" cy="110" r="18" fill="#f59e0b" opacity="0.8" />
+    </g>
+    <!-- Receptor 2 -->
+    <g transform="translate(780, 130) rotate(-6)" filter="url(#glow2)">
+      <path d="M -20 -40 C -15 -10 -8 20 -5 50" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round" />
+      <path d="M 20 -40 C 15 -10 8 20 5 50" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round" />
+      <circle cx="0" cy="-35" r="14" fill="#fbbf24" stroke="#ffffff" stroke-width="3" />
+      <circle cx="-10" cy="80" r="12" fill="#60a5fa" />
+      <circle cx="10" cy="80" r="12" fill="#60a5fa" />
+    </g>
+    <!-- Intracellular Vesicle with GLUT4 -->
+    <g transform="translate(600, 360)" filter="url(#glow2)">
+      <circle cx="0" cy="0" r="65" fill="#1e3a8a" stroke="#60a5fa" stroke-width="6" opacity="0.85" />
+      <!-- GLUT4 Channels in vesicle membrane -->
+      <rect x="-10" y="-65" width="20" height="18" rx="6" fill="#a855f7" />
+      <rect x="-10" y="47" width="20" height="18" rx="6" fill="#a855f7" />
+      <rect x="-65" y="-10" width="18" height="20" rx="6" fill="#a855f7" />
+      <rect x="47" y="-10" width="18" height="20" rx="6" fill="#a855f7" />
+      <!-- Translocation Arrow -->
+      <path d="M 40 -40 Q 60 -100 0 -130" fill="none" stroke="#fbbf24" stroke-width="5" stroke-dasharray="8 6" />
+      <polygon points="0,-130 -10,-115 10,-115" fill="#fbbf24" />
+    </g>
+  </g>
+</svg>

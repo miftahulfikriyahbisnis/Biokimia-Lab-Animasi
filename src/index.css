@@ -38,4 +38,89 @@ body {
   margin: 0;
   background-color: #FDFCF9;
   color: #3E3E3E;
+  overflow-x: hidden;
 }
+
+/* ==========================================================================
+   ANIMASI BACKGROUND BIOKIMIA ELEGAN & TENANG (CSS TRANSFORM & OPACITY)
+   ========================================================================== */
+
+/* 1. Cinematic slow movement: scale 1.00 ke 1.06, subtle pan, 30s ease-in-out infinite alternate */
+@keyframes cinematicBgPan {
+  0% {
+    transform: scale(1.00) translate3d(0%, 0%, 0);
+  }
+  50% {
+    transform: scale(1.03) translate3d(0.8%, -0.6%, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1.0%, 0.8%, 0);
+  }
+}
+
+/* 2. Ambient soft breathing light (radial gradient, max opacity <= 0.12, no flicker) */
+@keyframes ambientSoftPulse {
+  0% {
+    opacity: 0.04;
+    transform: scale(1.00) translate3d(0%, 0%, 0);
+  }
+  50% {
+    opacity: 0.11;
+    transform: scale(1.04) translate3d(0.6%, -0.4%, 0);
+  }
+  100% {
+    opacity: 0.05;
+    transform: scale(1.01) translate3d(-0.5%, 0.5%, 0);
+  }
+}
+
+/* 3. Partikel cahaya mikro bergerak sangat lambat (opacity rendah, drift halus) */
+@keyframes bgParticleDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: var(--p-base-op, 0.15);
+  }
+  50% {
+    opacity: calc(var(--p-base-op, 0.15) * 1.4);
+  }
+  100% {
+    transform: translate3d(var(--p-dx, 15px), var(--p-dy, -55px), 0);
+    opacity: calc(var(--p-base-op, 0.15) * 0.7);
+  }
+}
+
+.animate-cinematic-bg {
+  animation: cinematicBgPan 30s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-ambient-glow {
+  animation: ambientSoftPulse 22s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+}
+
+.animate-particle-drift {
+  animation: bgParticleDrift var(--p-dur, 24s) ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* Dukungan prefers-reduced-motion dari OS / Browser & Toggle Aplikasi */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cinematic-bg,
+  .animate-ambient-glow,
+  .animate-particle-drift,
+  #app-animated-bg-layer,
+  #app-ambient-light-layer {
+    animation: none !important;
+    transform: none !important;
+  }
+  #app-particles-container {
+    display: none !important;
+  }
+}
+
+.motion-reduce-bg {
+  animation: none !important;
+  transform: none !important;
+}
+
