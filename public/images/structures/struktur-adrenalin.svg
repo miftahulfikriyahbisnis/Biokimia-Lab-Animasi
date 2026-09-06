@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%" style="background-color:#FFFFFF; font-family: Plus Jakarta Sans, Arial, sans-serif;">
+  <g id="adrenalin-molecule" stroke="#111827" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    
+    <!-- 4-OH -->
+    <text x="20" y="206" font-size="24" font-weight="bold" fill="#111827" stroke="none">HO</text>
+    <line x1="65" y1="198" x2="100" y2="198"/>
+
+    <!-- 3-OH -->
+    <text x="20" y="116" font-size="24" font-weight="bold" fill="#111827" stroke="none">HO</text>
+    <line x1="65" y1="110" x2="100" y2="130"/>
+
+    <!-- Catechol Benzene Ring -->
+    <!-- C4 (100, 198) to C3 (100, 130) -->
+    <line x1="100" y1="198" x2="100" y2="130"/>
+    <line x1="111" y1="189" x2="111" y2="139" stroke-width="2.4"/>
+
+    <!-- C3 to C2 (158, 96) -->
+    <line x1="100" y1="130" x2="158" y2="96"/>
+
+    <!-- C2 to C1 (216, 130) -->
+    <line x1="158" y1="96" x2="216" y2="130"/>
+    <line x1="158" y1="111" x2="205" y2="138" stroke-width="2.4"/>
+
+    <!-- C1 to C6 (216, 198) -->
+    <line x1="216" y1="130" x2="216" y2="198"/>
+
+    <!-- C6 to C5 (158, 232) -->
+    <line x1="216" y1="198" x2="158" y2="232"/>
+    <line x1="205" y1="190" x2="158" y2="217" stroke-width="2.4"/>
+
+    <!-- C5 to C4 (100, 198) -->
+    <line x1="158" y1="232" x2="100" y2="198"/>
+
+    <!-- Side Chain from C1 -->
+    <!-- C1 (216, 130) to C-alpha (274, 96) -->
+    <line x1="216" y1="130" x2="274" y2="96" stroke-width="2.8"/>
+
+    <!-- C-alpha OH (Wedged bond straight up) -->
+    <polygon points="270,96 278,96 276,46 272,46" fill="#111827" stroke="#111827"/>
+    <text x="258" y="36" font-size="24" font-weight="bold" fill="#111827" stroke="none">OH</text>
+
+    <!-- C-alpha (274, 96) to C-beta (332, 130) -->
+    <line x1="274" y1="96" x2="332" y2="130" stroke-width="2.8"/>
+
+    <!-- C-beta (332, 130) to Nitrogen (386, 96) -->
+    <line x1="332" y1="130" x2="382" y2="100" stroke-width="2.8"/>
+
+    <!-- Nitrogen with H above: H / N -->
+    <text x="388" y="80" font-size="24" font-weight="bold" fill="#111827" stroke="none">H</text>
+    <text x="388" y="110" font-size="24" font-weight="bold" fill="#111827" stroke="none">N</text>
+
+    <!-- Nitrogen to Methyl: (412, 102) to (452, 126) -->
+    <line x1="416" y1="104" x2="458" y2="128" stroke-width="2.8"/>
+
+  </g>
+</svg>

@@ -19,7 +19,11 @@ import {
   Heart,
   ChevronRight,
   ShieldCheck,
-  RefreshCw
+  RefreshCw,
+  Eye,
+  Maximize2,
+  X,
+  ZoomIn
 } from 'lucide-react';
 
 interface GeneralHormoneViewProps {
@@ -50,9 +54,83 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
   // State Interaktif Bagian 1: Kuis Mengapa tidak semua sel merespons
   const [b1Answer, setB1Answer] = useState<string | null>(null);
 
-  // State Interaktif Bagian 2: Klasifikasi Kimia
+  // State Interaktif Bagian 2: Klasifikasi Kimia & Modal Struktur
   const [b2Matches, setB2Matches] = useState<{ [hormone: string]: string }>({});
   const [b2Checked, setB2Checked] = useState<boolean>(false);
+  const [structureModal, setStructureModal] = useState<{
+    num: number;
+    imageLabel: string;
+    name: string;
+    target: string;
+    imageSrc: string;
+    badge: string;
+    hint: string;
+    structureDesc: string;
+    solubility: string;
+    receptorLocation: string;
+    molecularReason: string;
+    classificationDisplay: string;
+  } | null>(null);
+
+  // Data 4 Gambar Struktur Referensi untuk Kuis Bagian 2
+  const b2StructureItems = [
+    {
+      num: 1,
+      imageLabel: 'Gambar 1: Struktur Insulin',
+      name: 'Insulin',
+      target: 'peptida/protein',
+      imageSrc: '/images/structures/struktur-insulin.svg',
+      badge: 'Rantai Polipeptida & Jembatan Disulfida (-S-S-)',
+      hint: 'Amati 2 untaian asam amino (rantai A & B) yang dihubungkan ikatan disulfida kovalen.',
+      structureDesc: 'Tersusun atas rantai A (21 asam amino) dan rantai B (30 asam amino) yang dihubungkan secara kovalen oleh 2 jembatan disulfida interchain dan 1 jembatan disulfida intrachain pada rantai A.',
+      solubility: 'Hidrofilik (Larut air)',
+      receptorLocation: 'Permukaan membran sel target (Reseptor Tirosin Kinase)',
+      molecularReason: 'Rantai polipeptida memiliki banyak gugus peptida polar (-CO-NH-) dan residu asam amino hidrofilik bermuatan sehingga tidak dapat menembus bilayer lipid hidrofobik membran secara langsung.',
+      classificationDisplay: 'Peptida / Protein (Hidrofilik)'
+    },
+    {
+      num: 2,
+      imageLabel: 'Gambar 2: Struktur Kortisol',
+      name: 'Kortisol',
+      target: 'steroid',
+      imageSrc: '/images/structures/struktur-kortisol.svg',
+      badge: 'Inti Steroid 4-Cincin Karbon',
+      hint: 'Amati kerangka 4 cincin karbon menyatu (siklopentanoperhidrofenantren) khas turunan kolesterol.',
+      structureDesc: 'Merupakan hormon glukokortikoid turunan kolesterol dengan kerangka dasar 4 cincin hidrokarbon (tiga cincin 6-karbon dan satu cincin 5-karbon) dengan gugus fungsi keto (=O) dan hidroksil (-OH).',
+      solubility: 'Lipofilik (Larut lemak / lipid)',
+      receptorLocation: 'Intraseluler (Sitoplasma lalu bertranslokasi ke inti sel)',
+      molecularReason: 'Kerangka hidrokarbon nonpolar yang dominan memungkinkan molekul kortisol berdifusi bebas menembus inti hidrofobik membran sel target tanpa memerlukan transporter membran.',
+      classificationDisplay: 'Steroid (Lipofilik)'
+    },
+    {
+      num: 3,
+      imageLabel: 'Gambar 3: Struktur Adrenalin',
+      name: 'Adrenalin',
+      target: 'turunan asam amino hidrofilik',
+      imageSrc: '/images/structures/struktur-adrenalin.svg',
+      badge: 'Cincin Katekol + Rantai Samping Amina',
+      hint: 'Amati cincin benzenadiol (katekol) dengan rantai samping amina polar (-CH(OH)CH2NHCH3).',
+      structureDesc: 'Hormon katekolamin berukuran kecil yang disintesis dari asam amino tirosin melalui jalur L-DOPA dan dopamin, mempertahankan cincin benzenadiol serta gugus etanolamina polar.',
+      solubility: 'Hidrofilik (Larut air)',
+      receptorLocation: 'Permukaan membran sel (Reseptor Adrenergik terkopel protein G / GPCR)',
+      molecularReason: 'Dua gugus hidroksil bebas (-OH) pada cincin benzena serta rantai samping amina sekunder polar membuat molekul mudah terhidrasi dalam air, sehingga tidak dapat menembus bilayer lipid dan harus berikatan dengan reseptor membran sel.',
+      classificationDisplay: 'Turunan Asam Amino Hidrofilik'
+    },
+    {
+      num: 4,
+      imageLabel: 'Gambar 4: Struktur Tirosin (Tiroksin / T4)',
+      name: 'Tiroksin (T4)',
+      target: 'turunan asam amino lipofilik',
+      imageSrc: '/images/structures/struktur-tirosin.svg',
+      badge: 'Dua Cincin Aromatik + 4 Atom Iodium (I)',
+      hint: 'Amati molekul turunan asam amino tirosin dengan 2 cincin aromatik dan 4 atom Iodium (I) nonpolar.',
+      structureDesc: 'Hormon tiroid (3,5,3\',5\'-tetraiodotironin) yang disintesis dari asam amino tirosin pada folikel kelenjar tiroid dengan penyatuan dua cincin teriodinasi.',
+      solubility: 'Lipofilik (Larut lipid / lemak)',
+      receptorLocation: 'Intraseluler / Inti sel (Thyroid Hormone Receptor / TR)',
+      molecularReason: 'Meskipun berasal dari asam amino tirosin, keberadaan 4 atom iodium (I) yang berukuran besar dan elektronegativitas rendah, bersama dua cincin fenil aromatik nonpolar, mendominasi sifat molekul sehingga menjadikannya sangat lipofilik dan mampu melintasi membran sel menuju inti sel.',
+      classificationDisplay: 'Turunan Asam Amino Lipofilik'
+    }
+  ];
 
   // State Interaktif Bagian 3: Organ Endokrin Terpilih
   const [selectedOrgan, setSelectedOrgan] = useState<string>('pankreas');
@@ -355,61 +433,126 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
               </table>
             </div>
 
-            {/* Interaktif Klasifikasi (Pencocokan Cepat) */}
-            <div className="p-5 rounded-2xl bg-[#F5F2EA] border border-[#E5E2D9] space-y-3 text-left">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#3E3E3E]">
-                  Latihan Interaktif: Pasangkan Hormon dengan Klasifikasinya
-                </span>
+            {/* Interaktif Klasifikasi (Pencocokan Cepat) dengan Referensi Gambar Struktur */}
+            <div className="p-5 rounded-2xl bg-[#F5F2EA] border border-[#E5E2D9] space-y-4 text-left">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <span className="text-xs font-bold text-[#3E3E3E] block">
+                    Latihan Interaktif: Pasangkan Hormon dengan Klasifikasinya Berdasarkan Struktur Kimia
+                  </span>
+                  <p className="text-[11px] text-[#706B5C] mt-0.5">
+                    Gunakan referensi 4 gambar struktur di bawah ini untuk menganalisis sifat kelarutan dan mengklasifikasikan masing-masing hormon (peptida, steroid, lipofilik, atau hidrofilik). Klik gambar untuk memperbesar detail ikatan kimia.
+                  </p>
+                </div>
                 {b2Checked && (
                   <button
                     onClick={() => { setB2Matches({}); setB2Checked(false); }}
-                    className="text-xs text-[#6B705C] hover:underline flex items-center gap-1 cursor-pointer"
+                    className="text-xs text-[#6B705C] hover:underline flex items-center gap-1 cursor-pointer shrink-0 self-start sm:self-auto"
                   >
-                    <RefreshCw className="w-3 h-3" /> Reset
+                    <RefreshCw className="w-3 h-3" /> Reset Latihan
                   </button>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {[
-                  { name: 'Insulin', target: 'peptida/protein' },
-                  { name: 'Kortisol', target: 'steroid' },
-                  { name: 'Adrenalin', target: 'turunan asam amino hidrofilik' },
-                  { name: 'Tiroksin (T4)', target: 'turunan asam amino lipofilik' }
-                ].map(item => (
-                  <div key={item.name} className="p-3 bg-white rounded-xl border border-[#E5E2D9] space-y-2">
-                    <span className="font-bold text-xs text-[#3E3E3E] block">{item.name}</span>
-                    <select
-                      value={b2Matches[item.name] || ''}
-                      onChange={e => setB2Matches({ ...b2Matches, [item.name]: e.target.value })}
-                      className="w-full text-xs p-1.5 rounded-lg border border-[#E5E2D9] bg-[#FDFCF9] focus:outline-none"
-                    >
-                      <option value="">Pilih Klasifikasi...</option>
-                      <option value="peptida/protein">Peptida / Protein</option>
-                      <option value="steroid">Steroid</option>
-                      <option value="turunan asam amino hidrofilik">Turunan AA Hidrofilik</option>
-                      <option value="turunan asam amino lipofilik">Turunan AA Lipofilik</option>
-                    </select>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                {b2StructureItems.map(item => (
+                  <div key={item.name} className="p-3.5 bg-white rounded-xl border border-[#E5E2D9] space-y-2.5 shadow-xs flex flex-col justify-between">
+                    <div className="space-y-2">
+                      {/* Label Gambar & Nama Hormon */}
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#6B705C] bg-[#F4F1EA] px-2 py-0.5 rounded-md">
+                          {item.imageLabel.split(':')[0]}
+                        </span>
+                        <span className="text-[11px] text-[#3E3E3E] font-bold truncate">
+                          {item.name}
+                        </span>
+                      </div>
 
-                    {b2Checked && (
-                      <span className={`text-[11px] font-semibold block ${
-                        b2Matches[item.name] === item.target ? 'text-[#6B705C]' : 'text-[#A53F2B]'
-                      }`}>
-                        {b2Matches[item.name] === item.target ? '✓ Tepat' : `✗ Harusnya: ${item.target}`}
-                      </span>
-                    )}
+                      {/* Frame Gambar Struktur yang Langsung Dilihat Mahasiswa */}
+                      <div 
+                        onClick={() => setStructureModal(item)}
+                        className="group relative w-full h-36 bg-[#FDFCF9] rounded-lg border border-[#E5E2D9] p-2 flex items-center justify-center cursor-pointer hover:border-[#6B705C] hover:shadow-xs transition-all overflow-hidden"
+                        title="Klik untuk memperbesar struktur molekul"
+                      >
+                        <img 
+                          src={item.imageSrc} 
+                          alt={item.imageLabel} 
+                          className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-xs text-[#3E3E3E] font-medium">
+                          <Maximize2 className="w-3.5 h-3.5 text-[#6B705C]" />
+                          <span>Perbesar Detail</span>
+                        </div>
+                      </div>
+
+                      {/* Header Nama & Badge Karakteristik */}
+                      <div>
+                        <span className="text-[11px] font-semibold text-[#5A554A] block">
+                          {item.imageLabel}
+                        </span>
+                        <p className="text-[10.5px] text-[#706B5C] mt-0.5 line-clamp-2" title={item.hint}>
+                          <strong>Ciri Kunci:</strong> {item.hint}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Selector Jawaban & Feedback */}
+                    <div className="space-y-2 pt-1 border-t border-[#F0EDE6]">
+                      <div>
+                        <label className="text-[10.5px] font-semibold text-[#5A554A] block mb-1">
+                          Klasifikasi & Sifat:
+                        </label>
+                        <select
+                          value={b2Matches[item.name] || ''}
+                          onChange={e => setB2Matches({ ...b2Matches, [item.name]: e.target.value })}
+                          className="w-full text-xs p-1.5 rounded-lg border border-[#E5E2D9] bg-[#FDFCF9] text-[#3E3E3E] focus:outline-none focus:border-[#6B705C]"
+                        >
+                          <option value="">Pilih Klasifikasi...</option>
+                          <option value="peptida/protein">Peptida / Protein (Hidrofilik)</option>
+                          <option value="steroid">Steroid (Lipofilik)</option>
+                          <option value="turunan asam amino hidrofilik">Turunan AA Hidrofilik</option>
+                          <option value="turunan asam amino lipofilik">Turunan AA Lipofilik</option>
+                        </select>
+                      </div>
+
+                      {b2Checked && (
+                        <div className={`p-2 rounded-lg text-[11px] leading-snug space-y-1 ${
+                          b2Matches[item.name] === item.target 
+                            ? 'bg-[#E8EDE0] text-[#424838] border border-[#C3CDB4]' 
+                            : 'bg-[#FFE8D6] text-[#A53F2B] border border-[#F2C9B8]'
+                        }`}>
+                          <div className="flex items-center gap-1 font-semibold">
+                            {b2Matches[item.name] === item.target ? (
+                              <>
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#6B705C] shrink-0" />
+                                <span>✓ Tepat! ({item.classificationDisplay})</span>
+                              </>
+                            ) : (
+                              <span>✗ Harusnya: {item.classificationDisplay}</span>
+                            )}
+                          </div>
+                          <p className="text-[10px] text-[#555] pt-0.5 border-t border-black/10 leading-relaxed">
+                            <strong>Analisis:</strong> {item.molecularReason}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
 
               {!b2Checked && (
-                <button
-                  onClick={() => setB2Checked(true)}
-                  className="px-4 py-2 rounded-xl bg-[#6B705C] text-white text-xs font-semibold hover:bg-[#585D4B] transition-colors cursor-pointer"
-                >
-                  Periksa Pasangan Klasifikasi
-                </button>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1">
+                  <button
+                    onClick={() => setB2Checked(true)}
+                    className="px-4 py-2 rounded-xl bg-[#6B705C] text-white text-xs font-semibold hover:bg-[#585D4B] transition-colors cursor-pointer shadow-xs"
+                  >
+                    Periksa Jawaban Klasifikasi
+                  </button>
+                  <span className="text-[11px] text-[#706B5C]">
+                    Perhatikan gambar struktur untuk mengenali sifat hidrofilik vs lipofiliknya
+                  </span>
+                </div>
               )}
             </div>
           </div>
@@ -1039,6 +1182,76 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
         )}
       </div>
 
+      {/* Modal Detail Struktur Kimia Hormon untuk Pembelajaran Mahasiswa */}
+      {structureModal && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150"
+          onClick={() => setStructureModal(null)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-2xl w-full border border-[#E5E2D9] shadow-2xl overflow-hidden p-5 sm:p-6 space-y-4 max-h-[90vh] overflow-y-auto"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between border-b border-[#E5E2D9] pb-3">
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B705C] bg-[#F4F1EA] px-2.5 py-0.5 rounded-full inline-block mb-1">
+                  {structureModal.imageLabel}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#3E3E3E]">
+                  Struktur Kimia & Klasifikasi: {structureModal.name}
+                </h3>
+              </div>
+              <button
+                onClick={() => setStructureModal(null)}
+                className="p-1.5 rounded-full hover:bg-[#F5F2EA] text-[#706B5C] hover:text-[#3E3E3E] transition-colors cursor-pointer"
+                title="Tutup Modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Gambar Struktur Beresolusi Penuh */}
+            <div className="bg-[#FAF8F2] rounded-xl border border-[#E5E2D9] p-4 flex items-center justify-center">
+              <img 
+                src={structureModal.imageSrc} 
+                alt={structureModal.imageLabel} 
+                className="max-h-[280px] w-auto object-contain mx-auto transition-all"
+              />
+            </div>
+
+            {/* Analisis Molekuler Mendalam */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-3.5 bg-[#FDFCF9] rounded-xl border border-[#E5E2D9] space-y-1.5">
+                <span className="font-bold text-[#3E3E3E] block text-[11.5px]">Karakteristik Kerangka Kimia</span>
+                <p className="text-[#706B5C] leading-relaxed">{structureModal.structureDesc}</p>
+              </div>
+              <div className="p-3.5 bg-[#FDFCF9] rounded-xl border border-[#E5E2D9] space-y-1.5">
+                <span className="font-bold text-[#3E3E3E] block text-[11.5px]">Sifat Kelarutan & Reseptor</span>
+                <p className="text-[#706B5C]"><strong>Kelarutan:</strong> {structureModal.solubility}</p>
+                <p className="text-[#706B5C]"><strong>Lokasi Reseptor:</strong> {structureModal.receptorLocation}</p>
+                <p className="text-[#6B705C] font-semibold pt-1">Klasifikasi: {structureModal.classificationDisplay}</p>
+              </div>
+            </div>
+
+            <div className="p-3.5 bg-[#E8EDE0]/70 rounded-xl border border-[#C3CDB4] text-xs space-y-1">
+              <span className="font-bold text-[#424838] block text-[11.5px]">Mengapa Berpengaruh pada Sifat Lipofilik / Hidrofilik?</span>
+              <p className="text-[#585D4B] leading-relaxed">{structureModal.molecularReason}</p>
+            </div>
+
+            <div className="flex items-center justify-between pt-2 border-t border-[#E5E2D9]">
+              <span className="text-[11px] text-[#706B5C] italic">
+                Pelajari ikatan kovalen, cincin, dan atom pengganti untuk menentukan respons reseptornya.
+              </span>
+              <button
+                onClick={() => setStructureModal(null)}
+                className="px-5 py-2 rounded-xl bg-[#6B705C] hover:bg-[#585D4B] text-white text-xs font-semibold transition-colors cursor-pointer shadow-xs"
+              >
+                Tutup & Lanjutkan Kuis
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

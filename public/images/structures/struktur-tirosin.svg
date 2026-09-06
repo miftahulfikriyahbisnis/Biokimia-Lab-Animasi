@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" width="100%" height="100%" style="background-color:#FFFFFF; font-family: Plus Jakarta Sans, Arial, sans-serif;">
+  <g id="tirosin-t4-molecule" stroke="#111827" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    
+    <!-- LEFT RING (Ring 1) -->
+    <!-- 4'-OH -->
+    <text x="10" y="378" font-size="24" font-weight="bold" fill="#111827" stroke="none">HO</text>
+    <line x1="54" y1="370" x2="92" y2="370" stroke-width="2.6"/>
+
+    <!-- Ring 1 Vertices -->
+    <!-- C4' (92, 370) to C3' (118, 415) -->
+    <line x1="92" y1="370" x2="118" y2="415"/>
+    <line x1="104" y1="370" x2="124" y2="405" stroke-width="2.2"/>
+
+    <!-- 3'-Iodine (downwards) -->
+    <line x1="118" y1="415" x2="118" y2="452" stroke-width="2.6"/>
+    <text x="113" y="474" font-size="22" font-weight="bold" fill="#111827" stroke="none">I</text>
+
+    <!-- C3' to C2' (170, 415) -->
+    <line x1="118" y1="415" x2="170" y2="415"/>
+
+    <!-- C2' to C1' (196, 370) -->
+    <line x1="170" y1="415" x2="196" y2="370"/>
+    <line x1="164" y1="405" x2="184" y2="370" stroke-width="2.2"/>
+
+    <!-- C1' to C6' (170, 325) -->
+    <line x1="196" y1="370" x2="170" y2="325"/>
+
+    <!-- C6' to C5' (118, 325) -->
+    <line x1="170" y1="325" x2="118" y2="325"/>
+    <line x1="164" y1="335" x2="124" y2="335" stroke-width="2.2"/>
+
+    <!-- 5'-Iodine (upwards) -->
+    <line x1="118" y1="325" x2="118" y2="288" stroke-width="2.6"/>
+    <text x="113" y="278" font-size="22" font-weight="bold" fill="#111827" stroke="none">I</text>
+
+    <!-- C5' to C4' (92, 370) -->
+    <line x1="118" y1="325" x2="92" y2="370"/>
+
+    <!-- Ether Linkage -O- -->
+    <line x1="196" y1="370" x2="222" y2="370" stroke-width="2.6"/>
+    <text x="225" y="378" font-size="24" font-weight="bold" fill="#111827" stroke="none">O</text>
+    <line x1="248" y1="370" x2="274" y2="370" stroke-width="2.6"/>
+
+    <!-- RIGHT RING (Ring 2) -->
+    <!-- C4 (274, 370) to C3 (300, 415) -->
+    <line x1="274" y1="370" x2="300" y2="415"/>
+    <line x1="286" y1="370" x2="306" y2="405" stroke-width="2.2"/>
+
+    <!-- 3-Iodine (downwards) -->
+    <line x1="300" y1="415" x2="300" y2="452" stroke-width="2.6"/>
+    <text x="295" y="474" font-size="22" font-weight="bold" fill="#111827" stroke="none">I</text>
+
+    <!-- C3 to C2 (352, 415) -->
+    <line x1="300" y1="415" x2="352" y2="415"/>
+
+    <!-- C2 to C1 (378, 370) -->
+    <line x1="352" y1="415" x2="378" y2="370"/>
+    <line x1="346" y1="405" x2="366" y2="370" stroke-width="2.2"/>
+
+    <!-- C1 to C6 (352, 325) -->
+    <line x1="378" y1="370" x2="352" y2="325"/>
+
+    <!-- C6 to C5 (300, 325) -->
+    <line x1="352" y1="325" x2="300" y2="325"/>
+    <line x1="346" y1="335" x2="306" y2="335" stroke-width="2.2"/>
+
+    <!-- 5-Iodine (slanted upwards-left) -->
+    <line x1="300" y1="325" x2="270" y2="292" stroke-width="2.6"/>
+    <text x="256" y="284" font-size="22" font-weight="bold" fill="#111827" stroke="none">I</text>
+
+    <!-- C5 to C4 (274, 370) -->
+    <line x1="300" y1="325" x2="274" y2="370"/>
+
+    <!-- ALANINE SIDE CHAIN FROM C1 (378, 370) -->
+    <!-- C1 to CH2 (378, 370) to (420, 335) -->
+    <line x1="378" y1="370" x2="420" y2="335" stroke-width="2.6"/>
+
+    <!-- CH2 to Chiral C (420, 335) to (442, 280) -->
+    <line x1="420" y1="335" x2="442" y2="280" stroke-width="2.6"/>
+
+    <!-- Chiral C (442, 280) to H (dashed bond pointing up-left) -->
+    <line x1="436" y1="276" x2="441" y2="272" stroke-width="2.2"/>
+    <line x1="429" y1="270" x2="436" y2="265" stroke-width="2.2"/>
+    <line x1="422" y1="264" x2="431" y2="258" stroke-width="2.2"/>
+    <line x1="415" y1="258" x2="426" y2="251" stroke-width="2.2"/>
+    <text x="395" y="246" font-size="22" font-weight="bold" fill="#111827" stroke="none">H</text>
+
+    <!-- Chiral C to NH2 (down-right) -->
+    <line x1="442" y1="280" x2="458" y2="322" stroke-width="2.6"/>
+    <text x="456" y="348" font-size="22" font-weight="bold" fill="#111827" stroke="none">NH<tspan dy="5" font-size="16">2</tspan></text>
+
+    <!-- Chiral C to Carbonyl C (442, 280) to (470, 225) -->
+    <line x1="442" y1="280" x2="470" y2="225" stroke-width="2.6"/>
+
+    <!-- Carbonyl =O (up-left) -->
+    <line x1="468" y1="228" x2="448" y2="188" stroke-width="2.6"/>
+    <line x1="476" y1="224" x2="456" y2="184" stroke-width="2.6"/>
+    <text x="438" y="174" font-size="24" font-weight="bold" fill="#111827" stroke="none">O</text>
+
+    <!-- Acid -OH (up-right) -->
+    <line x1="470" y1="225" x2="504" y2="214" stroke-width="2.6"/>
+    <text x="510" y="218" font-size="24" font-weight="bold" fill="#111827" stroke="none">OH</text>
+
+  </g>
+</svg>
