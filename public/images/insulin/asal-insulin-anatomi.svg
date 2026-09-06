@@ -1,0 +1,425 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%" style="background:#FDFCF9; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCFAF7" />
+      <stop offset="100%" stop-color="#F5F1E8" />
+    </linearGradient>
+    <linearGradient id="bodySkin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE8D7" />
+      <stop offset="100%" stop-color="#EBC4A8" />
+    </linearGradient>
+    <linearGradient id="pancGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE382" />
+      <stop offset="50%" stop-color="#F4C443" />
+      <stop offset="100%" stop-color="#DF9B20" />
+    </linearGradient>
+    <linearGradient id="duodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F29E85" />
+      <stop offset="100%" stop-color="#C75D42" />
+    </linearGradient>
+    <linearGradient id="capillaryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9E2A2B" />
+      <stop offset="50%" stop-color="#C13838" />
+      <stop offset="100%" stop-color="#801818" />
+    </linearGradient>
+    <radialGradient id="rbcGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FF6B6B" />
+      <stop offset="60%" stop-color="#C92A2A" />
+      <stop offset="100%" stop-color="#7A1212" />
+    </radialGradient>
+    <linearGradient id="betaCellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFB4C2" />
+      <stop offset="100%" stop-color="#E57388" />
+    </linearGradient>
+    <linearGradient id="alphaCellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#99C2FF" />
+      <stop offset="100%" stop-color="#4D88E5" />
+    </linearGradient>
+    <linearGradient id="deltaCellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A3E699" />
+      <stop offset="100%" stop-color="#55B345" />
+    </linearGradient>
+    
+    <!-- Filter Drop Shadows -->
+    <filter id="shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.08" />
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="680" fill="url(#bgGrad)" rx="24" />
+  
+  <!-- Subtle Decorative Grid Lines -->
+  <g opacity="0.15" stroke="#A5A58D" stroke-width="0.5">
+    <line x1="285" y1="30" x2="285" y2="490" stroke-dasharray="4 4" />
+    <line x1="535" y1="30" x2="535" y2="490" stroke-dasharray="4 4" />
+    <line x1="775" y1="30" x2="775" y2="490" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- PANEL 1: LOKASI PANKREAS DALAM TUBUH MANUSIA (x: 20 -> 270) -->
+  <!-- ============================================================== -->
+  <g id="panel-1" transform="translate(15, 20)">
+    <!-- Anatomi Tubuh Manusia (Siluet & Organ Transparan) -->
+    <g id="body-torso" filter="url(#shadow)">
+      <!-- Kepala dan Leher -->
+      <path d="M 125 15 C 105 15, 95 32, 95 55 C 95 80, 105 100, 115 105 L 115 125 L 135 125 L 135 105 C 145 100, 155 80, 155 55 C 155 32, 145 15, 125 15 Z" fill="url(#bodySkin)" stroke="#D4A373" stroke-width="1.5" />
+      
+      <!-- Bahu dan Dada -->
+      <path d="M 60 145 C 80 130, 110 125, 125 125 C 140 125, 170 130, 190 145 C 210 160, 220 220, 215 280 C 210 330, 195 380, 185 430 L 65 430 C 55 380, 40 330, 35 280 C 30 220, 40 160, 60 145 Z" fill="#FDF7F2" stroke="#E3C2B0" stroke-width="1.5" />
+      
+      <!-- Tulang Rusuk & Diafragma Sederhana -->
+      <g stroke="#E8C9B8" stroke-width="1.5" fill="none" opacity="0.6">
+        <path d="M 125 140 L 125 240" />
+        <path d="M 90 165 C 110 175, 140 175, 160 165" />
+        <path d="M 80 185 C 105 200, 145 200, 170 185" />
+        <path d="M 75 210 C 105 230, 145 230, 175 210" />
+      </g>
+
+      <!-- Jantung & Pembuluh Besar Skematis -->
+      <path d="M 115 160 C 105 150, 95 165, 105 180 C 115 195, 125 185, 130 175 Z" fill="#E65C5C" opacity="0.75" />
+      
+      <!-- Hati (Liver) -->
+      <path d="M 75 235 C 90 220, 130 220, 135 230 C 140 250, 130 270, 75 265 C 65 260, 65 245, 75 235 Z" fill="#B35446" opacity="0.65" />
+
+      <!-- Lambung (Stomach) di belakang pankreas -->
+      <path d="M 120 230 C 150 225, 175 245, 165 275 C 155 295, 135 290, 120 280 Z" fill="#D97A68" opacity="0.65" />
+
+      <!-- Pankreas (Kuning Keemasan Menonjol) -->
+      <g filter="url(#softGlow)">
+        <path d="M 95 285 C 110 270, 145 272, 165 280 C 160 292, 130 295, 95 293 Z" fill="url(#pancGrad)" stroke="#B8770E" stroke-width="2" />
+      </g>
+
+      <!-- Usus Halus dan Usus Besar -->
+      <g opacity="0.55" fill="#E8A598" stroke="#D18677" stroke-width="1">
+        <rect x="75" y="325" width="100" height="50" rx="15" fill="#F0B6AA" />
+        <path d="M 80 340 Q 100 330, 125 340 T 170 340" fill="none" stroke="#C27363" stroke-width="3" />
+        <path d="M 80 355 Q 105 345, 125 355 T 170 355" fill="none" stroke="#C27363" stroke-width="3" />
+      </g>
+    </g>
+
+    <!-- Pointer Label Pankreas -->
+    <line x1="85" y1="285" x2="45" y2="255" stroke="#2B2B2B" stroke-width="1.8" />
+    <circle cx="85" cy="285" r="3.5" fill="#2B2B2B" />
+    <rect x="10" y="240" width="70" height="26" rx="6" fill="#2B2B2B" filter="url(#shadow)" />
+    <text x="45" y="257" fill="#FFFFFF" font-size="11" font-weight="bold" text-anchor="middle">Pankreas</text>
+
+    <!-- Panah Transisi ke Panel 2 -->
+    <path d="M 215 280 C 235 280, 245 275, 260 270" fill="none" stroke="#6B705C" stroke-width="2.5" marker-end="url(#arrowhead)" />
+    <polygon points="262,266 270,270 262,274" fill="#6B705C" />
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- PANEL 2: PANKREAS (TAMPAK LEBIH DEKAT) (x: 290 -> 525) -->
+  <!-- ============================================================== -->
+  <g id="panel-2" transform="translate(290, 60)">
+    <!-- C-Loop Duodenum (Usus 12 Jari) -->
+    <path d="M 60 40 C 20 50, 0 110, 10 180 C 20 230, 60 260, 120 260 C 140 260, 160 250, 160 240 C 160 230, 140 235, 120 235 C 80 235, 45 210, 38 175 C 30 120, 50 75, 80 65 Z" fill="url(#duodGrad)" stroke="#A03B22" stroke-width="2.5" filter="url(#shadow)" />
+    
+    <!-- Lipatan Mukosa Duodenum -->
+    <path d="M 32 100 C 45 105, 55 100, 60 95" stroke="#FFC5B5" stroke-width="2" fill="none" />
+    <path d="M 25 140 C 40 145, 50 140, 55 135" stroke="#FFC5B5" stroke-width="2" fill="none" />
+    <path d="M 28 180 C 45 185, 60 180, 65 175" stroke="#FFC5B5" stroke-width="2" fill="none" />
+    <path d="M 50 220 C 70 225, 95 220, 105 215" stroke="#FFC5B5" stroke-width="2" fill="none" />
+
+    <!-- Kelenjar Pankreas Utuh (Kepala, Badan, Ekor) -->
+    <g filter="url(#shadow)">
+      <!-- Kepala Pankreas (di dalam C-loop) -->
+      <path d="M 65 105 C 55 140, 60 190, 95 195 C 130 200, 150 160, 140 125 C 130 95, 90 90, 65 105 Z" fill="url(#pancGrad)" stroke="#B8770E" stroke-width="2" />
+      
+      <!-- Badan & Ekor Pankreas (Memanjang Melengkung ke Kanan Atas) -->
+      <path d="M 120 135 C 160 110, 200 95, 235 85 C 225 105, 190 135, 140 155 Z" fill="url(#pancGrad)" stroke="#B8770E" stroke-width="2" />
+      
+      <!-- Tekstur Lobulus Asini Pankreas -->
+      <g fill="#DE971B" opacity="0.6">
+        <circle cx="85" cy="130" r="4.5" />
+        <circle cx="95" cy="120" r="5" />
+        <circle cx="105" cy="135" r="4" />
+        <circle cx="80" cy="150" r="5" />
+        <circle cx="95" cy="160" r="4.5" />
+        <circle cx="110" cy="150" r="5" />
+        <circle cx="125" cy="170" r="4" />
+        <circle cx="145" cy="130" r="4.5" />
+        <circle cx="170" cy="115" r="4" />
+        <circle cx="195" cy="100" r="4" />
+        <circle cx="215" cy="90" r="3.5" />
+      </g>
+
+      <!-- Saluran Pankreas Utama (Ductus Pancreaticus) -->
+      <path d="M 80 145 Q 140 135, 220 90" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <!-- Cabang-cabang kecil saluran -->
+      <path d="M 100 142 L 105 130" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" />
+      <path d="M 130 138 L 132 150" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" />
+      <path d="M 160 128 L 165 118" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" />
+      <path d="M 185 114 L 187 125" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" />
+    </g>
+
+    <!-- Label Pointer Pankreas -->
+    <line x1="145" y1="105" x2="145" y2="55" stroke="#2B2B2B" stroke-width="1.8" />
+    <circle cx="145" cy="105" r="3.5" fill="#2B2B2B" />
+    <rect x="110" y="32" width="70" height="24" rx="6" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.5" />
+    <text x="145" y="48" fill="#2B2B2B" font-size="11" font-weight="bold" text-anchor="middle">Pankreas</text>
+
+    <!-- Panah Transisi & Cone Magnifikasi ke Panel 3 -->
+    <path d="M 235 95 C 248 105, 250 120, 255 140" fill="none" stroke="#6B705C" stroke-width="2.5" />
+    <polygon points="257,135 255,145 250,137" fill="#6B705C" />
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- PANEL 3: PULAU LANGERHANS DALAM JARINGAN PANKREAS (x: 545 -> 770) -->
+  <!-- ============================================================== -->
+  <g id="panel-3" transform="translate(545, 50)">
+    <!-- Lingkaran Histologi Jaringan Eksokrin + Pulau Langerhans -->
+    <g filter="url(#shadow)">
+      <circle cx="110" cy="140" r="105" fill="#78294B" stroke="#4F1A30" stroke-width="4" />
+      
+      <!-- Latar Jaringan Asini Eksokrin (Ungu Kemerahan Gelap) -->
+      <g fill="#8E355A" opacity="0.85">
+        <!-- Struktur Asini Lobular Mengelilingi -->
+        <circle cx="45" cy="80" r="16" />
+        <circle cx="80" cy="55" r="18" />
+        <circle cx="125" cy="50" r="17" />
+        <circle cx="165" cy="70" r="18" />
+        <circle cx="185" cy="110" r="19" />
+        <circle cx="190" cy="155" r="18" />
+        <circle cx="170" cy="195" r="17" />
+        <circle cx="130" cy="215" r="18" />
+        <circle cx="85" cy="220" r="19" />
+        <circle cx="45" cy="190" r="17" />
+        <circle cx="30" cy="145" r="18" />
+        <circle cx="35" cy="105" r="16" />
+      </g>
+
+      <!-- Inti-inti Sel Asini Eksokrin -->
+      <g fill="#420F24" opacity="0.7">
+        <circle cx="45" cy="80" r="4" /><circle cx="80" cy="55" r="4" /><circle cx="125" cy="50" r="4" />
+        <circle cx="165" cy="70" r="4" /><circle cx="185" cy="110" r="4" /><circle cx="190" cy="155" r="4" />
+        <circle cx="170" cy="195" r="4" /><circle cx="130" cy="215" r="4" /><circle cx="85" cy="220" r="4" />
+      </g>
+
+      <!-- Pembuluh Darah / Kapiler di Sekitar Pulau -->
+      <path d="M 60 215 C 95 225, 160 205, 185 165" fill="none" stroke="url(#capillaryGrad)" stroke-width="9" stroke-linecap="round" />
+      <path d="M 60 215 C 95 225, 160 205, 185 165" fill="none" stroke="#FF7B7B" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+
+      <!-- Pulau Langerhans Pusat (Warna Lebih Terang, Selular Padat) -->
+      <circle cx="110" cy="135" r="52" fill="#E8C3D3" stroke="#D197B0" stroke-width="2.5" />
+      
+      <!-- Mosaik Sel Endokrin di Dalam Pulau -->
+      <g opacity="0.85">
+        <!-- Sel Beta (Pink) -->
+        <circle cx="105" cy="130" r="8" fill="#FF8FA3" /><circle cx="120" cy="125" r="7.5" fill="#FF8FA3" />
+        <circle cx="115" cy="142" r="8" fill="#FF8FA3" /><circle cx="100" cy="145" r="7.5" fill="#FF8FA3" />
+        <circle cx="92" cy="135" r="7" fill="#FF8FA3" />
+        <!-- Sel Alfa (Biru) -->
+        <circle cx="128" cy="145" r="7" fill="#70A1FF" /><circle cx="125" cy="110" r="7.5" fill="#70A1FF" />
+        <circle cx="95" cy="118" r="6.5" fill="#70A1FF" />
+        <!-- Sel Delta (Hijau) -->
+        <circle cx="88" cy="150" r="6.5" fill="#7BED9F" /><circle cx="108" cy="160" r="7" fill="#7BED9F" />
+      </g>
+    </g>
+
+    <!-- Label Pointer Asini Eksokrin -->
+    <line x1="60" y1="50" x2="35" y2="15" stroke="#2B2B2B" stroke-width="1.5" />
+    <circle cx="60" cy="50" r="3" fill="#2B2B2B" />
+    <text x="35" y="8" fill="#2B2B2B" font-size="9.5" font-weight="bold" text-anchor="middle">Jaringan eksokrin pankreas</text>
+    <text x="35" y="20" fill="#706B5C" font-size="8.5" text-anchor="middle">(asini, enzim pencernaan)</text>
+
+    <!-- Label Badge Pulau Langerhans -->
+    <line x1="110" y1="120" x2="145" y2="90" stroke="#2B2B2B" stroke-width="1.5" />
+    <circle cx="110" cy="120" r="3" fill="#2B2B2B" />
+    <rect x="110" y="78" width="95" height="22" rx="5" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.3" />
+    <text x="157" y="93" fill="#2B2B2B" font-size="10" font-weight="bold" text-anchor="middle">Pulau Langerhans</text>
+
+    <!-- Label Pointer Kapiler Darah -->
+    <line x1="145" y1="210" x2="165" y2="245" stroke="#2B2B2B" stroke-width="1.5" />
+    <circle cx="145" cy="210" r="3" fill="#2B2B2B" />
+    <text x="165" y="258" fill="#2B2B2B" font-size="9.5" font-weight="bold" text-anchor="middle">Kapiler darah</text>
+
+    <!-- Garis Pembesaran (Dashed Cone) ke Panel 4 -->
+    <path d="M 145 105 L 225 35" stroke="#A5A58D" stroke-width="1.8" stroke-dasharray="4 4" />
+    <path d="M 155 160 L 225 245" stroke="#A5A58D" stroke-width="1.8" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- PANEL 4: TIGA JENIS SEL ENDOKRIN & SEKRESI KE KAPILER (x: 785 -> 1180) -->
+  <!-- ============================================================== -->
+  <g id="panel-4" transform="translate(785, 30)">
+    <!-- Header Badge Atas: Pulau Langerhans -->
+    <rect x="50" y="5" width="160" height="28" rx="8" fill="#F8EDEB" stroke="#CB997E" stroke-width="1.5" filter="url(#shadow)" />
+    <text x="130" y="24" fill="#6B3828" font-size="13" font-weight="bold" text-anchor="middle">Pulau Langerhans</text>
+
+    <!-- Lingkup Mikroskopik Pembesaran Tinggi -->
+    <g filter="url(#shadow)">
+      <!-- Kluster Besar Sel Endokrin -->
+      <circle cx="140" cy="180" r="145" fill="#FDF3F5" stroke="#E3C2B0" stroke-width="3" />
+
+      <!-- Pembuluh Darah Kapiler Longitudinal (Sisi Kanan) -->
+      <path d="M 245 40 C 255 120, 255 240, 240 320" fill="none" stroke="url(#capillaryGrad)" stroke-width="38" stroke-linecap="round" />
+      <path d="M 245 40 C 255 120, 255 240, 240 320" fill="none" stroke="#FF9999" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+      
+      <!-- Eritrosit (Sel Darah Merah) Mengalir di Kapiler -->
+      <g fill="url(#rbcGrad)">
+        <ellipse cx="248" cy="70" rx="10" ry="7" transform="rotate(-15, 248, 70)" />
+        <ellipse cx="253" cy="130" rx="11" ry="8" transform="rotate(20, 253, 130)" />
+        <ellipse cx="250" cy="190" rx="10" ry="7.5" transform="rotate(-10, 250, 190)" />
+        <ellipse cx="246" cy="250" rx="11" ry="8" transform="rotate(15, 246, 250)" />
+        <ellipse cx="240" cy="300" rx="9" ry="7" transform="rotate(-5, 240, 300)" />
+      </g>
+
+      <!-- Label Kapiler Darah -->
+      <line x1="250" y1="50" x2="295" y2="25" stroke="#2B2B2B" stroke-width="1.5" />
+      <circle cx="250" cy="50" r="3" fill="#2B2B2B" />
+      <rect x="255" y="10" width="85" height="22" rx="5" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.2" />
+      <text x="297" y="25" fill="#2B2B2B" font-size="10" font-weight="bold" text-anchor="middle">Kapiler darah</text>
+
+      <!-- 1. KELOMPOK SEL BETA (β) - Warna Pink/Koral (MENGHASILKAN INSULIN) -->
+      <g id="beta-cells">
+        <circle cx="95" cy="95" r="20" fill="url(#betaCellGrad)" stroke="#C84B66" stroke-width="1.5" />
+        <circle cx="95" cy="95" r="7" fill="#8E1F37" />
+        <circle cx="135" cy="85" r="22" fill="url(#betaCellGrad)" stroke="#C84B66" stroke-width="1.5" />
+        <circle cx="135" cy="85" r="8" fill="#8E1F37" />
+        <circle cx="175" cy="95" r="21" fill="url(#betaCellGrad)" stroke="#C84B66" stroke-width="1.5" />
+        <circle cx="175" cy="95" r="7.5" fill="#8E1F37" />
+        <circle cx="115" cy="125" r="20" fill="url(#betaCellGrad)" stroke="#C84B66" stroke-width="1.5" />
+        <circle cx="115" cy="125" r="7" fill="#8E1F37" />
+        <circle cx="155" cy="120" r="22" fill="url(#betaCellGrad)" stroke="#C84B66" stroke-width="1.5" />
+        <circle cx="155" cy="120" r="8" fill="#8E1F37" />
+
+        <!-- Label Badge Sel Beta -->
+        <rect x="40" y="70" width="75" height="24" rx="6" fill="#FFFFFF" stroke="#C84B66" stroke-width="1.5" />
+        <text x="77" y="86" fill="#A52A42" font-size="11" font-weight="bold" text-anchor="middle">Sel beta (β)</text>
+
+        <!-- Sekresi Insulin (Granul Merah ke Kapiler) -->
+        <path d="M 175 110 L 225 110" stroke="#E63946" stroke-width="2.5" marker-end="url(#redArrow)" />
+        <polygon points="223,106 232,110 223,114" fill="#E63946" />
+        <circle cx="190" cy="105" r="3.5" fill="#E63946" />
+        <circle cx="205" cy="112" r="3" fill="#E63946" />
+        <circle cx="220" cy="107" r="3.5" fill="#E63946" />
+        <circle cx="238" cy="110" r="3.5" fill="#E63946" />
+        <!-- Badge Insulin -->
+        <rect x="195" y="80" width="55" height="20" rx="5" fill="#E63946" />
+        <text x="222" y="94" fill="#FFFFFF" font-size="10" font-weight="bold" text-anchor="middle">Insulin</text>
+      </g>
+
+      <!-- 2. KELOMPOK SEL ALFA (α) - Warna Biru (MENGHASILKAN GLUKAGON) -->
+      <g id="alpha-cells">
+        <circle cx="85" cy="170" r="21" fill="url(#alphaCellGrad)" stroke="#2B6CB0" stroke-width="1.5" />
+        <circle cx="85" cy="170" r="7.5" fill="#1A365D" />
+        <circle cx="125" cy="175" r="22" fill="url(#alphaCellGrad)" stroke="#2B6CB0" stroke-width="1.5" />
+        <circle cx="125" cy="175" r="8" fill="#1A365D" />
+        <circle cx="165" cy="175" r="21" fill="url(#alphaCellGrad)" stroke="#2B6CB0" stroke-width="1.5" />
+        <circle cx="165" cy="175" r="7.5" fill="#1A365D" />
+
+        <!-- Label Badge Sel Alfa -->
+        <rect x="40" y="160" width="75" height="24" rx="6" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.5" />
+        <text x="77" y="176" fill="#2B6CB0" font-size="11" font-weight="bold" text-anchor="middle">Sel alfa (α)</text>
+
+        <!-- Sekresi Glukagon (Granul Biru ke Kapiler) -->
+        <path d="M 180 185 L 225 195" stroke="#3182CE" stroke-width="2.5" />
+        <polygon points="222,190 232,196 221,199" fill="#3182CE" />
+        <circle cx="195" cy="188" r="3.5" fill="#3182CE" />
+        <circle cx="210" cy="192" r="3" fill="#3182CE" />
+        <circle cx="236" cy="195" r="3.5" fill="#3182CE" />
+        <!-- Badge Glukagon -->
+        <rect x="200" y="165" width="62" height="20" rx="5" fill="#3182CE" />
+        <text x="231" y="179" fill="#FFFFFF" font-size="10" font-weight="bold" text-anchor="middle">Glukagon</text>
+      </g>
+
+      <!-- 3. KELOMPOK SEL DELTA (δ) - Warna Hijau (MENGHASILKAN SOMATOSTATIN) -->
+      <g id="delta-cells">
+        <circle cx="95" cy="235" r="20" fill="url(#deltaCellGrad)" stroke="#2F855A" stroke-width="1.5" />
+        <circle cx="95" cy="235" r="7" fill="#1C4532" />
+        <circle cx="135" cy="235" r="22" fill="url(#deltaCellGrad)" stroke="#2F855A" stroke-width="1.5" />
+        <circle cx="135" cy="235" r="8" fill="#1C4532" />
+        <circle cx="175" cy="230" r="20" fill="url(#deltaCellGrad)" stroke="#2F855A" stroke-width="1.5" />
+        <circle cx="175" cy="230" r="7" fill="#1C4532" />
+
+        <!-- Label Badge Sel Delta -->
+        <rect x="40" y="240" width="75" height="24" rx="6" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.5" />
+        <text x="77" y="256" fill="#2F855A" font-size="11" font-weight="bold" text-anchor="middle">Sel delta (δ)</text>
+
+        <!-- Sekresi Somatostatin (Granul Hijau ke Kapiler) -->
+        <path d="M 185 240 L 225 250" stroke="#38A169" stroke-width="2.5" />
+        <polygon points="222,246 231,251 220,255" fill="#38A169" />
+        <circle cx="195" cy="242" r="3.5" fill="#38A169" />
+        <circle cx="210" cy="246" r="3" fill="#38A169" />
+        <circle cx="236" cy="252" r="3.5" fill="#38A169" />
+        <!-- Badge Somatostatin -->
+        <rect x="205" y="225" width="72" height="20" rx="5" fill="#38A169" />
+        <text x="241" y="239" fill="#FFFFFF" font-size="9.5" font-weight="bold" text-anchor="middle">Somatostatin</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- BARIS BAWAH: 4 KARTU PENJELASAN ELEGAN (SESUAI GAMBAR ASLI) -->
+  <!-- ============================================================== -->
+  <g id="bottom-cards" transform="translate(20, 505)">
+    <!-- Kartu 1: Lokasi Pankreas -->
+    <g transform="translate(0, 0)">
+      <rect width="270" height="150" rx="14" fill="#FFFFFF" stroke="#E5E0D5" stroke-width="1.2" filter="url(#shadow)" />
+      <!-- Header Badge -->
+      <rect x="12" y="12" width="246" height="32" rx="8" fill="#FBF0DE" stroke="#E8D5B5" stroke-width="1" />
+      <text x="135" y="32" fill="#5E4319" font-size="11" font-weight="bold" text-anchor="middle">1. Lokasi pankreas dalam tubuh manusia</text>
+      <!-- Deskripsi -->
+      <text x="20" y="70" fill="#4A4E4D" font-size="11" line-height="1.5">
+        <tspan x="20" dy="0">Pankreas terletak di rongga perut</tspan>
+        <tspan x="20" dy="18">bagian atas, di belakang lambung</tspan>
+        <tspan x="20" dy="18">(di abdomen bagian atas).</tspan>
+      </text>
+    </g>
+
+    <!-- Kartu 2: Pankreas Tampak Lebih Dekat -->
+    <g transform="translate(295, 0)">
+      <rect width="270" height="150" rx="14" fill="#FFFFFF" stroke="#E5E0D5" stroke-width="1.2" filter="url(#shadow)" />
+      <!-- Header Badge -->
+      <rect x="12" y="12" width="246" height="32" rx="8" fill="#FBF0DE" stroke="#E8D5B5" stroke-width="1" />
+      <text x="135" y="32" fill="#5E4319" font-size="11" font-weight="bold" text-anchor="middle">2. Pankreas (tampak lebih dekat)</text>
+      <!-- Deskripsi -->
+      <text x="20" y="65" fill="#4A4E4D" font-size="10.5">
+        <tspan x="20" dy="0">Pankreas memiliki fungsi eksokrin</tspan>
+        <tspan x="20" dy="17">(menghasilkan enzim pencernaan) dan</tspan>
+        <tspan x="20" dy="17">fungsi endokrin (menghasilkan hormon,</tspan>
+        <tspan x="20" dy="17">termasuk melalui pulau Langerhans).</tspan>
+      </text>
+    </g>
+
+    <!-- Kartu 3: Pulau Langerhans -->
+    <g transform="translate(590, 0)">
+      <rect width="270" height="150" rx="14" fill="#FFFFFF" stroke="#E5E0D5" stroke-width="1.2" filter="url(#shadow)" />
+      <!-- Header Badge -->
+      <rect x="12" y="12" width="246" height="32" rx="8" fill="#FBF0DE" stroke="#E8D5B5" stroke-width="1" />
+      <text x="135" y="32" fill="#5E4319" font-size="11" font-weight="bold" text-anchor="middle">3. Pulau Langerhans dlm jaringan pankreas</text>
+      <!-- Deskripsi -->
+      <text x="20" y="65" fill="#4A4E4D" font-size="10.5">
+        <tspan x="20" dy="0">Pulau Langerhans (bagian endokrin)</tspan>
+        <tspan x="20" dy="17">tersebar di antara jaringan eksokrin</tspan>
+        <tspan x="20" dy="17">pankreas &amp; berdekatan dg kapiler darah</tspan>
+        <tspan x="20" dy="17">untuk melepaskan hormon ke sirkulasi.</tspan>
+      </text>
+    </g>
+
+    <!-- Kartu 4: Tiga Jenis Sel Endokrin -->
+    <g transform="translate(885, 0)">
+      <rect width="275" height="150" rx="14" fill="#FFFFFF" stroke="#E5E0D5" stroke-width="1.2" filter="url(#shadow)" />
+      <!-- Header Badge -->
+      <rect x="12" y="12" width="251" height="32" rx="8" fill="#FBF0DE" stroke="#E8D5B5" stroke-width="1" />
+      <text x="137" y="32" fill="#5E4319" font-size="10.5" font-weight="bold" text-anchor="middle">4. Tiga jenis sel endokrin di Langerhans</text>
+      <!-- Deskripsi Rinci Sesuai Asli -->
+      <text x="18" y="60" fill="#4A4E4D" font-size="10">
+        <tspan x="18" dy="0" font-weight="bold" fill="#C84B66">• Sel beta (β):</tspan>
+        <tspan fill="#333"> menghasilkan insulin</tspan>
+        <tspan x="18" dy="16" font-weight="bold" fill="#2B6CB0">• Sel alfa (α):</tspan>
+        <tspan fill="#333"> menghasilkan glukagon</tspan>
+        <tspan x="18" dy="16" font-weight="bold" fill="#2F855A">• Sel delta (δ):</tspan>
+        <tspan fill="#333"> menghasilkan somatostatin</tspan>
+        <tspan x="18" dy="18" fill="#706B5C" font-style="italic">Hormon dilepaskan langsung ke kapiler.</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

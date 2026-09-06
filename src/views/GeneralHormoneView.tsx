@@ -635,7 +635,7 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
                     </div>
 
                     <div className="p-3.5 rounded-xl bg-[#E8EDE0] text-[#585D4B] text-xs leading-relaxed border border-[#C3CDB4]">
-                      <strong>Penegasan Penting:</strong> “Insulin diproduksi oleh sel beta pada pulau Langerhans di pankreas.” Hormon ini merespons peningkatan glukosa darah pascamakan.
+                      <strong>Penegasan Penting:</strong> “Sel beta di dalam Pulau Langerhans pankreas membuat dan melepaskan insulin.” Hormon ini merespons peningkatan glukosa darah pascamakan.
                     </div>
                   </div>
                 )}
@@ -874,6 +874,19 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
               “Feedback negatif mengurangi respons awal ketika kondisi tubuh mulai kembali normal. Mekanisme ini membantu mempertahankan homeostasis.”
             </div>
 
+            {/* Kotak Penjelasan Singkat Sumbu Hormon & Feedback (Koreksi 1) */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#F9F7F1] border border-[#E5E2D9] text-left space-y-2 text-xs sm:text-sm text-[#3E3E3E] leading-relaxed shadow-xs">
+              <p>
+                Sumbu hormon adalah jalur beberapa organ yang saling memberi perintah untuk menghasilkan hormon.
+              </p>
+              <p>
+                Feedback adalah cara tubuh mengatur proses tersebut. Feedback negatif mengurangi proses ketika hasilnya sudah cukup, sedangkan feedback positif memperkuat proses sampai tujuan tertentu tercapai.
+              </p>
+              <p className="text-[#585D4B] font-medium">
+                Feedback positif maupun negatif dapat terjadi dengan sumbu atau tanpa sumbu.
+              </p>
+            </div>
+
             {/* Alur Feedback Negatif */}
             <div className="space-y-2 text-left">
               <span className="text-xs font-bold text-[#706B5C] uppercase tracking-wider">Alur Umum:</span>
@@ -886,32 +899,199 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
               </div>
             </div>
 
-            {/* Contoh Nyata Sumbu Tiroid */}
-            <div className="p-6 rounded-3xl bg-white border border-[#E5E2D9] space-y-4 text-left">
-              <span className="text-xs font-bold text-[#6B705C] uppercase tracking-wider block">
-                Contoh: Regulasi Sumbu Tiroid
-              </span>
+            {/* Animasi & Diagram Sumbu Tiroid (Koreksi 2 & 3) */}
+            <div className="p-6 rounded-3xl bg-white border border-[#E5E2D9] space-y-4 text-left shadow-xs">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-xs font-bold text-[#6B705C] uppercase tracking-wider block">
+                  Regulasi Sumbu Tiroid (HPT Axis)
+                </span>
+                <span className="text-[11px] font-semibold text-[#6B705C] bg-[#F4F1EA] px-2.5 py-0.5 rounded-full border border-[#E5E2D9]">
+                  Contoh feedback negatif yang memakai sumbu hormon.
+                </span>
+              </div>
               <p className="text-xs sm:text-sm text-[#706B5C] leading-relaxed">
-                Peningkatan konsentrasi T3 dan T4 di dalam sirkulasi darah memberikan umpan balik penghambatan kepada hipofisis anterior dan hipotalamus sehingga sekresi TSH dan TRH berkurang.
+                Amati alur rangsangan ke depan (panah biasa) dan alur umpan balik penghambatan (garis putus-putus berujung T-bar) dari T3 dan T4 ke organ pengendali.
               </p>
 
-              {/* Skema Simbol Stimulasi vs Inhibisi */}
-              <div className="p-4 rounded-2xl bg-[#F5F2EA] border border-[#E5E2D9] flex flex-col items-center justify-center space-y-3 font-mono text-xs sm:text-sm">
-                <div className="flex flex-wrap items-center justify-center gap-2">
-                  <span className="px-3 py-1 bg-white rounded-lg border border-[#E5E2D9] font-bold">TRH</span>
-                  <span className="text-[#6B705C] font-bold">── stimulasi (→) ──&gt;</span>
-                  <span className="px-3 py-1 bg-white rounded-lg border border-[#E5E2D9] font-bold">TSH</span>
-                  <span className="text-[#6B705C] font-bold">── stimulasi (→) ──&gt;</span>
-                  <span className="px-3 py-1 bg-[#6B705C] text-white rounded-lg font-bold">T3 / T4</span>
+              {/* Diagram Vektor Sumbu Tiroid & Feedback Negatif */}
+              <div className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#E5E2D9] overflow-x-auto">
+                <svg viewBox="0 0 540 375" className="w-full max-w-lg mx-auto select-none min-w-[340px]">
+                  <defs>
+                    {/* Marker panah biasa untuk stimulasi ke depan */}
+                    <marker
+                      id="arrow-stim-b5"
+                      viewBox="0 0 10 10"
+                      refX="8"
+                      refY="5"
+                      markerWidth="6"
+                      markerHeight="6"
+                      orient="auto-start-reverse"
+                    >
+                      <path d="M 0 1 L 10 5 L 0 9 z" fill="#6B705C" />
+                    </marker>
+                  </defs>
+
+                  {/* JALUR FEEDBACK NEGATIF (GARIS PUTUS-PUTUS DENGAN UJUNG PENGHAMBAT T-BAR) */}
+                  {/* Dari sisi kiri Box T3/T4 (x=240, y=262) ke x=80, lalu ke atas */}
+                  <path
+                    d="M 240 262 L 75 262 L 75 52 L 235 52"
+                    fill="none"
+                    stroke="#A53F2B"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                  />
+                  {/* Ujung T-bar pada Hipotalamus (x=235, y=52) */}
+                  <line x1="235" y1="42" x2="235" y2="62" stroke="#A53F2B" strokeWidth="4" strokeLinecap="round" />
+
+                  {/* Cabang feedback ke Hipofisis Anterior (y=122) */}
+                  <path
+                    d="M 75 122 L 235 122"
+                    fill="none"
+                    stroke="#A53F2B"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                  />
+                  {/* Ujung T-bar pada Hipofisis anterior (x=235, y=122) */}
+                  <line x1="235" y1="112" x2="235" y2="132" stroke="#A53F2B" strokeWidth="4" strokeLinecap="round" />
+
+                  {/* Badge Label Feedback pada Garis Putus-putus */}
+                  <rect x="12" y="165" width="126" height="48" rx="8" fill="#FFE8D6" stroke="#DDBEA9" strokeWidth="1" />
+                  <text x="75" y="184" fontSize="9.5" fontWeight="bold" fill="#A53F2B" textAnchor="middle">
+                    Feedback Negatif
+                  </text>
+                  <text x="75" y="198" fontSize="8" fontWeight="600" fill="#A53F2B" textAnchor="middle">
+                    T3/T4 (─| Penghambat)
+                  </text>
+
+                  {/* ALUR STIMULASI KE DEPAN (PANAH BIASA) */}
+
+                  {/* 1. Hipotalamus */}
+                  <g transform="translate(240, 32)">
+                    <rect x="0" y="0" width="195" height="40" rx="10" fill="#FFFFFF" stroke="#6B705C" strokeWidth="2" />
+                    <text x="97" y="25" fontSize="12" fontWeight="bold" fill="#3E3E3E" textAnchor="middle">
+                      Hipotalamus
+                    </text>
+                  </g>
+
+                  {/* Panah Biasa 1: melepaskan TRH */}
+                  <line x1="337" y1="72" x2="337" y2="102" stroke="#6B705C" strokeWidth="2" markerEnd="url(#arrow-stim-b5)" />
+                  <text x="347" y="90" fontSize="10.5" fontWeight="bold" fill="#6B705C">
+                    ↓ melepaskan TRH
+                  </text>
+
+                  {/* 2. Hipofisis anterior */}
+                  <g transform="translate(240, 102)">
+                    <rect x="0" y="0" width="195" height="40" rx="10" fill="#FFFFFF" stroke="#6B705C" strokeWidth="2" />
+                    <text x="97" y="25" fontSize="12" fontWeight="bold" fill="#3E3E3E" textAnchor="middle">
+                      Hipofisis anterior
+                    </text>
+                  </g>
+
+                  {/* Panah Biasa 2: melepaskan TSH */}
+                  <line x1="337" y1="142" x2="337" y2="172" stroke="#6B705C" strokeWidth="2" markerEnd="url(#arrow-stim-b5)" />
+                  <text x="347" y="160" fontSize="10.5" fontWeight="bold" fill="#6B705C">
+                    ↓ melepaskan TSH
+                  </text>
+
+                  {/* 3. Kelenjar tiroid */}
+                  <g transform="translate(240, 172)">
+                    <rect x="0" y="0" width="195" height="40" rx="10" fill="#FFFFFF" stroke="#6B705C" strokeWidth="2" />
+                    <text x="97" y="25" fontSize="12" fontWeight="bold" fill="#3E3E3E" textAnchor="middle">
+                      Kelenjar tiroid
+                    </text>
+                  </g>
+
+                  {/* Panah Biasa 3: menghasilkan T3 dan T4 */}
+                  <line x1="337" y1="212" x2="337" y2="242" stroke="#6B705C" strokeWidth="2" markerEnd="url(#arrow-stim-b5)" />
+                  <text x="347" y="230" fontSize="10.5" fontWeight="bold" fill="#6B705C">
+                    ↓ menghasilkan T3 dan T4
+                  </text>
+
+                  {/* 4. T3 dan T4 */}
+                  <g transform="translate(240, 242)">
+                    <rect x="0" y="0" width="195" height="40" rx="10" fill="#6B705C" stroke="#585D4B" strokeWidth="2" />
+                    <text x="97" y="25" fontSize="12" fontWeight="bold" fill="#FFFFFF" textAnchor="middle">
+                      T3 dan T4
+                    </text>
+                  </g>
+
+                  {/* Panah Biasa 4: bekerja pada sel-sel tubuh */}
+                  <line x1="337" y1="282" x2="337" y2="312" stroke="#6B705C" strokeWidth="2" markerEnd="url(#arrow-stim-b5)" />
+                  <text x="347" y="300" fontSize="10" fontWeight="600" fill="#706B5C">
+                    ↓ bekerja pada sel-sel tubuh
+                  </text>
+
+                  {/* 5. Sel-sel Tubuh */}
+                  <g transform="translate(240, 312)">
+                    <rect x="0" y="0" width="195" height="38" rx="10" fill="#F5F2EA" stroke="#E5E2D9" strokeWidth="1.5" />
+                    <text x="97" y="24" fontSize="11" fontWeight="bold" fill="#5A554A" textAnchor="middle">
+                      Sel-sel Tubuh
+                    </text>
+                  </g>
+                </svg>
+              </div>
+
+              {/* Makna Kedua Jalur Feedback & Keterangan Tambahan */}
+              <div className="p-4 bg-[#FAF8F2] rounded-2xl border border-[#E5E2D9] space-y-2 text-xs">
+                <span className="font-bold text-[#A53F2B] block text-xs sm:text-sm">
+                  Feedback negatif: T3/T4 mengurangi pelepasan TRH dan TSH.
+                </span>
+                <p className="text-[#3E3E3E] font-medium">Makna kedua jalur penghambatan:</p>
+                <ul className="text-[#706B5C] space-y-1 list-disc list-inside">
+                  <li><strong>T3/T4 menghambat hipotalamus</strong> sehingga pelepasan TRH berkurang.</li>
+                  <li><strong>T3/T4 menghambat hipofisis anterior</strong> sehingga pelepasan TSH berkurang.</li>
+                </ul>
+                <div className="pt-2 border-t border-[#E5E2D9] text-[11px] text-[#706B5C] italic">
+                  Panah kembali ke hipofisis berarti T3/T4 mengurangi TSH, bukan berarti hipofisis menghasilkan TRH.
                 </div>
-                
-                <div className="flex items-center gap-2 text-[#A53F2B] font-bold pt-1">
-                  <span>T3/T4 Tinggi</span>
-                  <span className="border-t-2 border-[#A53F2B] w-8"></span>
-                  <span className="px-2 py-0.5 bg-[#FFE8D6] rounded-md border border-[#DDBEA9]">
-                    ─| Penghambatan (Inhibisi) ke TRH & TSH
-                  </span>
+              </div>
+            </div>
+
+            {/* Bagian Insulin: Contoh Feedback Negatif Tanpa Sumbu (Koreksi 4) */}
+            <div className="p-6 rounded-3xl bg-white border border-[#E5E2D9] space-y-4 text-left shadow-xs">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-xs font-bold text-[#6B705C] uppercase tracking-wider block">
+                  Regulasi Hormon Insulin (Pankreas)
+                </span>
+                <span className="text-[11px] font-semibold text-[#6B705C] bg-[#F4F1EA] px-2.5 py-0.5 rounded-full border border-[#E5E2D9]">
+                  Contoh feedback negatif tanpa sumbu hipotalamus–hipofisis.
+                </span>
+              </div>
+
+              <div className="p-4 bg-[#FAF8F2] rounded-2xl border border-[#E5E2D9] text-xs sm:text-sm font-serif italic text-[#3E3E3E]">
+                “Sel beta di dalam Pulau Langerhans pankreas membuat dan melepaskan insulin.”
+              </div>
+
+              {/* Ilustrasi Pembesaran Sederhana */}
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-bold text-[#706B5C] uppercase tracking-wider block">
+                  Ilustrasi Pembesaran:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 text-center text-xs">
+                  <div className="p-3 bg-[#FDFCF9] rounded-xl border border-[#E5E2D9] flex flex-col items-center justify-center space-y-1">
+                    <span className="text-[10px] text-[#706B5C] uppercase">Organ</span>
+                    <span className="font-bold text-[#3E3E3E]">Pankreas</span>
+                  </div>
+                  <div className="p-3 bg-[#FDFCF9] rounded-xl border border-[#E5E2D9] flex flex-col items-center justify-center space-y-1">
+                    <span className="text-[10px] text-[#CB997E] font-semibold">→ diperbesar menjadi</span>
+                    <span className="font-bold text-[#3E3E3E]">Pulau Langerhans</span>
+                  </div>
+                  <div className="p-3 bg-[#FDFCF9] rounded-xl border border-[#E5E2D9] flex flex-col items-center justify-center space-y-1">
+                    <span className="text-[10px] text-[#CB997E] font-semibold">→ diperbesar menjadi</span>
+                    <span className="font-bold text-[#3E3E3E]">Sel Beta</span>
+                  </div>
+                  <div className="p-3 bg-[#E8EDE0] rounded-xl border border-[#C3CDB4] flex flex-col items-center justify-center space-y-1">
+                    <span className="text-[10px] text-[#585D4B] font-semibold">→ sel beta melepaskan</span>
+                    <span className="font-bold text-[#424838]">Insulin ke Darah</span>
+                  </div>
                 </div>
+              </div>
+
+              {/* Penjelasan Singkat Mekanisme Langsung */}
+              <div className="p-4 bg-[#F5F2EA] rounded-2xl border border-[#E5E2D9] text-xs text-[#3E3E3E] leading-relaxed">
+                <p>
+                  Ketika glukosa darah naik, sel beta pankreas mendeteksinya secara langsung dan melepaskan insulin. Setelah glukosa darah turun mendekati normal, pelepasan insulin dikurangi. Karena sel beta dapat mendeteksi glukosa secara langsung, insulin tidak memerlukan rangkaian hipotalamus–hipofisis.
+                </p>
               </div>
             </div>
           </div>
@@ -1033,10 +1213,10 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
                 <div className="space-y-3">
                   <h3 className="font-serif font-bold text-base text-[#3E3E3E]">Sumbu Tiroid (HPT Axis)</h3>
                   <div className="p-3.5 bg-[#FAF8F2] rounded-xl text-xs font-mono text-center">
-                    Hipotalamus —TRH→ Hipofisis —TSH→ Tiroid —T3/T4→ Sel Target
+                    Hipotalamus —TRH→ Hipofisis Anterior —TSH→ Kelenjar Tiroid —T3 dan T4→ Sel Target
                   </div>
                   <p className="text-xs text-[#706B5C] leading-relaxed">
-                    T3 dan T4 yang beredar bebas di darah akan memberikan feedback negatif balik ke hipofisis dan hipotalamus untuk menekan pelepasan TSH dan TRH lebih lanjut.
+                    Kadar T3 dan T4 yang tinggi menghambat sekresi TRH pada hipotalamus dan TSH pada hipofisis anterior melalui feedback negatif.
                   </p>
                 </div>
               )}
@@ -1064,12 +1244,6 @@ export const GeneralHormoneView: React.FC<GeneralHormoneViewProps> = ({
                   </p>
                 </div>
               )}
-            </div>
-
-            {/* PENEGASAN KRUSIAL INSULIN */}
-            <div className="p-5 rounded-2xl bg-[#FFE8D6] border border-[#DDBEA9] text-[#A53F2B] text-xs sm:text-sm text-left leading-relaxed">
-              <strong>Penegasan Penting untuk Biokimia Insulin:</strong><br />
-              Jangan menyatakan bahwa insulin harus melalui sumbu hipotalamus–hipofisis. Insulin <strong>diproduksi langsung oleh sel beta pankreas</strong> sebagai respons fisiologis terhadap perubahan konsentrasi nutrien dan glukosa dalam darah, tanpa perantara hormon tropik hipofisis!
             </div>
           </div>
         )}

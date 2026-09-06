@@ -1,0 +1,272 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%" style="background:#FFFFFF; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="vesselGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C94A4A" />
+      <stop offset="40%" stop-color="#8F1D1D" />
+      <stop offset="70%" stop-color="#731515" />
+      <stop offset="100%" stop-color="#A83838" />
+    </linearGradient>
+    <radialGradient id="glucoseGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFF385" />
+      <stop offset="100%" stop-color="#E5A910" />
+    </radialGradient>
+    <radialGradient id="insulinBallGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#8CE8FF" />
+      <stop offset="70%" stop-color="#0084D1" />
+      <stop offset="100%" stop-color="#005088" />
+    </radialGradient>
+    <filter id="vesselShadow" x="-5%" y="-10%" width="110%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#550000" flood-opacity="0.2" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="580" fill="#FCFCFA" rx="20" />
+
+  <!-- ============================================================== -->
+  <!-- 5 LANGKAH ATAS (HEADER & ILUSTRASI PER TAHAP) -->
+  <!-- ============================================================== -->
+
+  <!-- 1. Glukosa Darah Naik -->
+  <g transform="translate(30, 25)">
+    <rect x="0" y="0" width="200" height="42" rx="10" fill="#FDF2F2" stroke="#F5C2C2" stroke-width="1.2" />
+    <circle cx="24" cy="21" r="14" fill="#E63946" />
+    <text x="24" y="26" fill="#FFF" font-size="13" font-weight="bold" text-anchor="middle">1.</text>
+    <text x="46" y="17" fill="#C5221F" font-size="11" font-weight="bold">Glukosa darah naik</text>
+    <text x="46" y="32" fill="#752220" font-size="10">Setelah makan</text>
+
+    <!-- Ilustrasi Makanan / Anak Makan Sederhana -->
+    <g transform="translate(30, 50)">
+      <circle cx="65" cy="45" r="30" fill="#FCEBD9" stroke="#E3C4A8" stroke-width="1.5" />
+      <circle cx="65" cy="38" r="18" fill="#F7D4B2" />
+      <!-- Mangkuk Makanan & Sendok -->
+      <ellipse cx="65" cy="78" rx="35" ry="12" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5" />
+      <circle cx="55" cy="74" r="5" fill="#E5A910" />
+      <circle cx="68" cy="73" r="6" fill="#A0522D" />
+      <circle cx="80" cy="75" r="4.5" fill="#2E7D32" />
+    </g>
+    <!-- Panah ke kanan -->
+    <polygon points="180,85 195,85 195,80 205,90 195,100 195,95 180,95" fill="#3B82F6" opacity="0.8" />
+  </g>
+
+  <!-- 2. Sel Beta Mendeteksi Glukosa -->
+  <g transform="translate(245, 25)">
+    <rect x="0" y="0" width="220" height="42" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2" />
+    <circle cx="24" cy="21" r="14" fill="#2563EB" />
+    <text x="24" y="26" fill="#FFF" font-size="13" font-weight="bold" text-anchor="middle">2.</text>
+    <text x="46" y="17" fill="#1D4ED8" font-size="10.5" font-weight="bold">Sel beta deteksi glukosa</text>
+    <text x="46" y="32" fill="#1E40AF" font-size="10">Secara langsung</text>
+
+    <!-- Ilustrasi: Pankreas -> Pulau Langerhans -> Sel Beta -->
+    <g transform="translate(10, 50)">
+      <!-- Mini Pankreas -->
+      <path d="M 15 25 C 25 10, 55 12, 65 20 C 60 28, 40 32, 15 30 Z" fill="#F4C443" stroke="#B8770E" stroke-width="1.2" />
+      <text x="40" y="42" fill="#78350F" font-size="8.5" font-weight="bold" text-anchor="middle">Pankreas</text>
+      <!-- Mini Pulau Langerhans -->
+      <circle cx="40" cy="70" r="18" fill="#FCE7F3" stroke="#DB2777" stroke-width="1.2" />
+      <circle cx="36" cy="67" r="4" fill="#F43F5E" />
+      <circle cx="44" cy="72" r="3.5" fill="#3B82F6" />
+      <text x="40" y="96" fill="#831843" font-size="8" font-weight="bold" text-anchor="middle">Pulau Langerhans</text>
+
+      <!-- Sel Beta yang Mendeteksi -->
+      <circle cx="130" cy="55" r="32" fill="#BAE6FD" stroke="#0284C7" stroke-width="2" />
+      <circle cx="130" cy="55" r="12" fill="#0369A1" />
+      <!-- Partikel Glukosa Masuk Langsung -->
+      <polygon points="100,40 105,37 110,40 110,46 105,49 100,46" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1" />
+      <polygon points="108,70 113,67 118,70 118,76 113,79 108,76" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1" />
+      <text x="130" y="100" fill="#0C4A6E" font-size="9" font-weight="bold" text-anchor="middle">Sel beta</text>
+    </g>
+    <!-- Panah ke kanan -->
+    <polygon points="205,85 220,85 220,80 230,90 220,100 220,95 205,95" fill="#3B82F6" opacity="0.8" />
+  </g>
+
+  <!-- 3. Insulin Dilepaskan ke Darah -->
+  <g transform="translate(485, 25)">
+    <rect x="0" y="0" width="205" height="42" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2" />
+    <circle cx="24" cy="21" r="14" fill="#2563EB" />
+    <text x="24" y="26" fill="#FFF" font-size="13" font-weight="bold" text-anchor="middle">3.</text>
+    <text x="46" y="17" fill="#1D4ED8" font-size="10.5" font-weight="bold">Insulin dilepaskan</text>
+    <text x="46" y="32" fill="#1E40AF" font-size="10">ke dalam aliran darah</text>
+
+    <!-- Ilustrasi Sel Beta Melepaskan Granul Insulin -->
+    <g transform="translate(40, 48)">
+      <circle cx="65" cy="50" r="34" fill="#7DD3FC" stroke="#0284C7" stroke-width="2" />
+      <circle cx="65" cy="50" r="13" fill="#0369A1" />
+      <!-- Butiran Insulin Keluar -->
+      <circle cx="60" cy="90" r="4.5" fill="url(#insulinBallGrad)" />
+      <circle cx="72" cy="85" r="5" fill="url(#insulinBallGrad)" />
+      <circle cx="78" cy="98" r="4" fill="url(#insulinBallGrad)" />
+      <circle cx="68" cy="105" r="4.5" fill="url(#insulinBallGrad)" />
+      <text x="110" y="98" fill="#0369A1" font-size="10" font-weight="bold">— Insulin</text>
+    </g>
+    <!-- Panah ke kanan -->
+    <polygon points="185,85 200,85 200,80 210,90 200,100 200,95 185,95" fill="#3B82F6" opacity="0.8" />
+  </g>
+
+  <!-- 4. Glukosa Darah Turun (Mendekati Normal) -->
+  <g transform="translate(710, 25)">
+    <rect x="0" y="0" width="215" height="42" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2" />
+    <circle cx="24" cy="21" r="14" fill="#2563EB" />
+    <text x="24" y="26" fill="#FFF" font-size="13" font-weight="bold" text-anchor="middle">4.</text>
+    <text x="46" y="17" fill="#1D4ED8" font-size="11" font-weight="bold">Glukosa darah turun</text>
+    <text x="46" y="32" fill="#1E40AF" font-size="10">Mendekati normal</text>
+
+    <!-- Ilustrasi Sel Target (Misal Otot) Memasukkan Glukosa -->
+    <g transform="translate(30, 48)">
+      <!-- Sel Otot / Jaringan Tubuh -->
+      <rect x="40" y="20" width="70" height="60" rx="12" fill="#FECDD3" stroke="#F43F5E" stroke-width="1.5" />
+      <text x="75" y="14" fill="#9F1239" font-size="8.5" font-weight="bold" text-anchor="middle">Sel target (otot/lemak)</text>
+      <!-- Insulin memberi sinyal translokasi GLUT4 -->
+      <path d="M 25 60 Q 40 45, 55 50" stroke="#0284C7" stroke-width="2" fill="none" />
+      <!-- Glukosa Masuk Sel -->
+      <polygon points="70,45 74,42 78,45 78,50 74,53 70,50" fill="url(#glucoseGrad)" />
+      <text x="75" y="92" fill="#64748B" font-size="8" text-anchor="middle">Glukosa masuk ke sel</text>
+    </g>
+    <!-- Panah ke kanan -->
+    <polygon points="195,85 210,85 210,80 220,90 210,100 210,95 195,95" fill="#3B82F6" opacity="0.8" />
+  </g>
+
+  <!-- 5. Pelepasan Insulin Dikurangi -->
+  <g transform="translate(945, 25)">
+    <rect x="0" y="0" width="225" height="42" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2" />
+    <circle cx="24" cy="21" r="14" fill="#2563EB" />
+    <text x="24" y="26" fill="#FFF" font-size="13" font-weight="bold" text-anchor="middle">5.</text>
+    <text x="46" y="17" fill="#1D4ED8" font-size="10.5" font-weight="bold">Pelepasan dikurangi</text>
+    <text x="46" y="32" fill="#1E40AF" font-size="10">Homeostasis tercapai</text>
+
+    <!-- Ilustrasi Sel Beta Tenang -->
+    <g transform="translate(50, 48)">
+      <circle cx="65" cy="50" r="32" fill="#E0F2FE" stroke="#38BDF8" stroke-width="2" />
+      <circle cx="65" cy="50" r="11" fill="#0284C7" />
+      <!-- Hanya sedikit / tidak ada insulin keluar -->
+      <circle cx="65" cy="88" r="3.5" fill="url(#insulinBallGrad)" opacity="0.4" />
+      <text x="65" y="104" fill="#0284C7" font-size="8.5" font-weight="bold" text-anchor="middle">Sel beta tenang</text>
+    </g>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- BAGIAN TENGAH: PEMBULUH DARAH KAPILER PANJANG & KONSENTRASI -->
+  <!-- ============================================================== -->
+  <g transform="translate(25, 205)" filter="url(#vesselShadow)">
+    <!-- Saluran Pembuluh Darah -->
+    <rect x="0" y="0" width="1150" height="150" rx="35" fill="url(#vesselGrad)" />
+    <!-- Aliran Darah Highlight -->
+    <rect x="10" y="8" width="1130" height="20" rx="10" fill="#FF8A8A" opacity="0.3" />
+    <rect x="10" y="122" width="1130" height="20" rx="10" fill="#500909" opacity="0.4" />
+
+    <!-- SISI KIRI: BANYAK GLUKOSA (TINGGI) -->
+    <g id="glucose-high">
+      <!-- Partikel-partikel Glukosa Heksagonal Padat -->
+      <g>
+        <polygon points="50,45 56,41 62,45 62,53 56,57 50,53" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="80,75 86,71 92,75 92,83 86,87 80,83" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="120,40 126,36 132,40 132,48 126,52 120,48" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="65,105 71,101 77,105 77,113 71,117 65,113" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="150,85 156,81 162,85 162,93 156,97 150,93" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="180,45 186,41 192,45 192,53 186,57 180,53" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="110,110 116,106 122,110 122,118 116,122 110,118" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="210,95 216,91 222,95 222,103 216,107 210,103" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="245,55 251,51 257,55 257,63 251,67 245,63" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+        <polygon points="280,100 286,96 292,100 292,108 286,112 280,108" fill="url(#glucoseGrad)" stroke="#B45309" stroke-width="1.2" />
+      </g>
+      <!-- Label Glukosa -->
+      <line x1="156" y1="97" x2="156" y2="125" stroke="#FFFFFF" stroke-width="1.5" />
+      <circle cx="156" cy="97" r="3" fill="#FFFFFF" />
+      <text x="156" y="138" fill="#FFF" font-size="11" font-weight="bold" text-anchor="middle">Glukosa</text>
+      
+      <!-- Speedometer Gauge Glukosa Tinggi -->
+      <g transform="translate(15, 60)">
+        <circle cx="45" cy="45" r="28" fill="#FFF" stroke="#E2E8F0" stroke-width="2" />
+        <!-- Arc Merah -->
+        <path d="M 25 50 A 20 20 0 0 1 65 50" fill="none" stroke="#E2E8F0" stroke-width="7" />
+        <path d="M 25 50 A 20 20 0 0 1 45 30" fill="none" stroke="#EF4444" stroke-width="7" />
+        <line x1="45" y1="45" x2="35" y2="35" stroke="#B91C1C" stroke-width="2.5" stroke-linecap="round" />
+        <circle cx="45" cy="45" r="4" fill="#B91C1C" />
+        <rect x="20" y="55" width="50" height="18" rx="4" fill="#FEE2E2" />
+        <text x="45" y="68" fill="#991B1B" font-size="9.5" font-weight="bold" text-anchor="middle">Tinggi</text>
+      </g>
+    </g>
+
+    <!-- BAGIAN TENGAH: GLUKOSA BERCAMPUR DENGAN INSULIN YANG DILEPASKAN -->
+    <g id="mixed-insulin">
+      <g fill="url(#insulinBallGrad)">
+        <circle cx="500" cy="55" r="5.5" /><circle cx="525" cy="75" r="6" /><circle cx="560" cy="48" r="5" />
+        <circle cx="585" cy="85" r="6" /><circle cx="615" cy="60" r="5.5" /><circle cx="650" cy="90" r="6" />
+        <circle cx="675" cy="45" r="5" /><circle cx="710" cy="70" r="6" /><circle cx="735" cy="100" r="5.5" />
+      </g>
+      <!-- Sisa Glukosa di Tengah Menurun -->
+      <polygon points="540,110 545,106 550,110 550,117 545,121 540,117" fill="url(#glucoseGrad)" />
+      <polygon points="620,115 625,111 630,115 630,122 625,126 620,122" fill="url(#glucoseGrad)" />
+      <polygon points="680,105 685,101 690,105 690,112 685,116 680,112" fill="url(#glucoseGrad)" />
+    </g>
+
+    <!-- SISI KANAN: GLUKOSA BERKURANG BANYAK (MENDEKATI NORMAL) -->
+    <g id="glucose-normal" transform="translate(780, 0)">
+      <!-- Sedikit Partikel Glukosa Normal -->
+      <polygon points="80,55 85,51 90,55 90,62 85,66 80,62" fill="url(#glucoseGrad)" />
+      <polygon points="160,85 165,81 170,85 170,92 165,96 160,92" fill="url(#glucoseGrad)" />
+      <polygon points="240,65 245,61 250,65 250,72 245,76 240,72" fill="url(#glucoseGrad)" />
+
+      <!-- Speedometer Gauge Normal -->
+      <g transform="translate(230, 60)">
+        <circle cx="45" cy="45" r="28" fill="#FFF" stroke="#E2E8F0" stroke-width="2" />
+        <!-- Arc Hijau -->
+        <path d="M 25 50 A 20 20 0 0 1 65 50" fill="none" stroke="#E2E8F0" stroke-width="7" />
+        <path d="M 35 35 A 20 20 0 0 1 55 35" fill="none" stroke="#22C55E" stroke-width="7" />
+        <line x1="45" y1="45" x2="45" y2="30" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" />
+        <circle cx="45" cy="45" r="4" fill="#15803D" />
+        <rect x="8" y="55" width="75" height="18" rx="4" fill="#DCFCE7" />
+        <text x="45" y="68" fill="#166534" font-size="8.5" font-weight="bold" text-anchor="middle">Mendekati normal</text>
+      </g>
+    </g>
+
+    <!-- Teks Keterangan Aliran Darah di Tengah Bawah -->
+    <text x="575" y="142" fill="#FFE4E4" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="0.5">
+      Pembuluh darah (aliran darah yang sama terus berlanjut secara dinamis)
+    </text>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- BANNER BAWAH: TIDAK MELALUI SUMBU HIPOTALAMUS-HIPOFISIS -->
+  <!-- ============================================================== -->
+  <g transform="translate(25, 385)">
+    <rect x="0" y="0" width="1150" height="165" rx="20" fill="#F0F7FF" stroke="#BAE6FD" stroke-width="2" />
+
+    <!-- Kiri: Ilustrasi Otak dengan Tanda Silang Merah -->
+    <g transform="translate(30, 20)">
+      <!-- Gambar Otak Skematis -->
+      <path d="M 40 55 C 25 40, 35 15, 65 15 C 80 15, 95 25, 105 40 C 115 50, 110 80, 95 90 C 85 95, 65 95, 50 85 Z" fill="#FBCFE8" stroke="#F472B6" stroke-width="1.8" />
+      <circle cx="75" cy="65" r="5" fill="#BE185D" />
+      <text x="120" y="55" fill="#475569" font-size="10" font-weight="bold">— Hipotalamus</text>
+      <circle cx="80" cy="78" r="4.5" fill="#9D174D" />
+      <text x="120" y="80" fill="#475569" font-size="10" font-weight="bold">— Hipofisis</text>
+
+      <!-- Lingkaran Larangan Merah (Prohibition Sign) -->
+      <circle cx="75" cy="65" r="46" fill="none" stroke="#DC2626" stroke-width="8" opacity="0.9" />
+      <line x1="42" y1="32" x2="108" y2="98" stroke="#DC2626" stroke-width="8" opacity="0.9" />
+    </g>
+
+    <!-- Tengah: Judul & Penjelasan Krusial -->
+    <g transform="translate(260, 45)">
+      <text x="0" y="25" fill="#DC2626" font-size="22" font-weight="900" font-family="system-ui, sans-serif">
+        Tidak melalui rangkaian hipotalamus–hipofisis
+      </text>
+      <text x="0" y="58" fill="#334155" font-size="14.5" font-weight="500">
+        Sel beta pankreas mendeteksi fluktuasi kadar glukosa darah secara langsung.
+      </text>
+      <text x="0" y="82" fill="#64748B" font-size="12.5">
+        Sehingga regulasi insulin tidak memerlukan stimulasi hormon tropik dari hipofisis anterior.
+      </text>
+    </g>
+
+    <!-- Kanan: Badge Centang Biru Feedback Negatif Tanpa Sumbu -->
+    <g transform="translate(860, 45)">
+      <rect x="0" y="0" width="255" height="75" rx="14" fill="#FFFFFF" stroke="#38BDF8" stroke-width="2" />
+      <circle cx="38" cy="37" r="18" fill="#0284C7" />
+      <!-- Centang Putih -->
+      <path d="M 28 37 L 35 44 L 48 31" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="68" y="32" fill="#0F172A" font-size="12" font-weight="bold">Feedback negatif</text>
+      <text x="68" y="50" fill="#0284C7" font-size="11.5" font-weight="bold">tanpa sumbu hormon</text>
+    </g>
+  </g>
+</svg>
