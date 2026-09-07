@@ -287,7 +287,11 @@ export function App() {
         )}
 
       {/* Konten Utama Aplikasi */}
-      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-28">
+      <main className={`flex-1 w-full mx-auto transition-all ${
+        appView === 'STAGE_2_INSULIN_ANIMATION' && currentScreen === 'STAGE_7'
+          ? 'max-w-full px-2 sm:px-4 lg:px-6 py-2 pb-20'
+          : 'max-w-6xl px-4 sm:px-6 py-6 pb-28'
+      }`}>
         
         {/* TAMPILAN 1: OTENTIKASI / INPUT MAHASISWA TANPA PASSWORD */}
         {(!activeProfile || appView === 'STUDENT_AUTH') && (

@@ -4,7 +4,8 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, CheckCircle2, Info, X } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Info, X, Box } from 'lucide-react';
+import { Insulin3DMode } from '../components/insulin3d/Insulin3DMode';
 
 interface Stage7ViewProps {
   isPlaying: boolean;
@@ -18,6 +19,7 @@ interface Stage7ViewProps {
 type Stage7Step = 'PHOSPHORYLATION' | 'ACTIVE_RECEPTOR' | 'GLUT4_TRANSLOCATION' | 'GLUCOSE_ENTRY';
 
 export const Stage7View: React.FC<Stage7ViewProps> = ({ isPlaying, speed }) => {
+  const [displayMode, setDisplayMode] = useState<'2D' | '3D'>('3D');
   const [currentStep, setCurrentStep] = useState<Stage7Step>('PHOSPHORYLATION');
   const [isGlut4InfoOpen, setIsGlut4InfoOpen] = useState<boolean>(false);
 
@@ -45,8 +47,47 @@ export const Stage7View: React.FC<Stage7ViewProps> = ({ isPlaying, speed }) => {
 
   return (
     <div className="space-y-6">
-      {/* Kanvas Bersih Fokus Tunggal */}
-      <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E5E2D9] shadow-xs flex flex-col items-center text-center space-y-6 min-h-[520px] justify-between">
+      {/* Pilihan Mode Tampilan: 2D (Default) vs 3D Eksperimental */}
+      <div className="flex flex-wrap items-center justify-between gap-3 p-2.5 sm:p-3 bg-white rounded-2xl border border-[#E5E2D9] shadow-xs">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-bold text-[#706B5C] pl-2 hidden sm:inline">Pilihan Mode:</span>
+          <div className="flex items-center gap-1 bg-[#F5F2EA] p-1 rounded-xl border border-[#E5E2D9]">
+            <button
+              onClick={() => setDisplayMode('2D')}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                displayMode === '2D'
+                  ? 'bg-[#6B705C] text-white shadow-xs'
+                  : 'text-[#706B5C] hover:text-[#3E3E3E]'
+              }`}
+            >
+              Mode Animasi 2D
+            </button>
+            <button
+              onClick={() => setDisplayMode('3D')}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                displayMode === '3D'
+                  ? 'bg-[#6B705C] text-white shadow-xs'
+                  : 'text-[#706B5C] hover:text-[#3E3E3E]'
+              }`}
+            >
+              <Box className="w-3.5 h-3.5 text-amber-500" />
+              <span>Mode Interaktif 3D – Eksperimental</span>
+            </button>
+          </div>
+        </div>
+
+        {displayMode === '3D' && (
+          <span className="text-[11px] font-medium text-amber-800 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200 hidden md:inline">
+            ✨ Simulasi WebGL 3D Real-time
+          </span>
+        )}
+      </div>
+
+      {displayMode === '3D' ? (
+        <Insulin3DMode initialSpeed={speed} />
+      ) : (
+        /* Kanvas Bersih Fokus Tunggal (Mode 2D Asli) */
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E5E2D9] shadow-xs flex flex-col items-center text-center space-y-6 min-h-[520px] justify-between">
         
         {/* Navigasi 4 Adegan Bersih */}
         <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 bg-[#F5F2EA] p-1.5 rounded-2xl border border-[#E5E2D9]">
@@ -372,6 +413,7 @@ export const Stage7View: React.FC<Stage7ViewProps> = ({ isPlaying, speed }) => {
         </div>
 
       </div>
+      )}
     </div>
   );
 };

@@ -19,11 +19,15 @@ export type ScreenId =
 
 export type AppView = 
   | 'PORTAL_AUTH'       // Login/pemilihan profil
+  | 'STUDENT_AUTH'      // Alias login profil
   | 'PORTAL_HOME'       // Beranda portal biokimia (7 modul)
   | 'HORMONE_MAP'       // Peta pembelajaran modul hormon (Tahap 1, 2, 3)
   | 'GENERAL_HORMONE'   // Tahap 1: Materi umum hormon (7 bagian)
+  | 'STAGE_1_GENERAL_HORMONE'
   | 'INSULIN_ANIMATION' // Tahap 2: Animasi spesifik insulin (9 tahap yang sudah ada)
+  | 'STAGE_2_INSULIN_ANIMATION'
   | 'POST_TEST'         // Tahap 3: Post-test hormon & insulin
+  | 'STAGE_3_POST_TEST'
   | 'STUDENT_PROGRESS'; // Riwayat & progres belajar
 
 export interface PostTestDetailItem {
