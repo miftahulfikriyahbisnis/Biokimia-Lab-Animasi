@@ -195,7 +195,7 @@ export const Insulin3DMode: React.FC<Insulin3DModeProps> = ({
           {/* Sisi Tengah: Petunjuk Interaksi 3D sebagai Overlay di Atas Canvas (Tidak Memotong Ukuran Canvas) */}
           <div className="pointer-events-auto hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-[#E5E2D9] text-[11px] font-medium text-[#706B5C] shadow-xs">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Klik & Seret untuk Putar | Scroll untuk Zoom | Klik Objek untuk Detail</span>
+            <span>Klik & Seret untuk Memutar Tampilan</span>
           </div>
 
           {/* Sisi Kanan: Tombol Tantangan, Toggle Panel Penjelasan, dan Layar Penuh */}
