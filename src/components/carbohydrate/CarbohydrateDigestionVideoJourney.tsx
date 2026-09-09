@@ -49,86 +49,86 @@ interface StageVideoData {
 const DIGESTION_VIDEO_STAGES: StageVideoData[] = [
   {
     step: 1,
-    slug: 'mulut',
-    title: 'Mulut dan Pencernaan Awal Pati',
-    organShort: '1. Mulut',
-    subtitle: 'Pengunyahan Mekanik & Hidrolisis Enzim Amilase Saliva (Ptialin)',
+    slug: '01-mulut.mp4',
+    title: 'Tahap 1 — Mulut',
+    organShort: 'Tahap 1: Mulut',
+    subtitle: 'Mastikasi Mekanis & Pemutusan Ikatan Alfa-1,4 Glikosidik oleh Alfa-Amilase Saliva',
     videoSrc: '/videos/carbohydrate/01-mulut.mp4',
     vttSrc: '/videos/carbohydrate/01-mulut.vtt',
     durationLabel: '00:10',
     summary:
-      'Nasi dikunyah menjadi partikel yang lebih kecil dan bercampur dengan saliva hingga membentuk bolus. Amilase saliva mulai menghidrolisis sebagian ikatan α-1,4 pada pati, menghasilkan maltosa, maltotriosa, dan dekstrin. Pada tahap ini, pati belum seluruhnya menjadi glukosa.',
+      'Proses mastikasi (pengunyahan makanan oleh gigi) memecah suapan nasi menjadi partikel yang lebih kecil dan melumasinya dengan saliva hingga membentuk bolus. Enzim alfa-amilase saliva (ptialin) mulai bekerja memutus ikatan alfa-1,4 glikosidik pada rantai pati, menghasilkan maltosa, maltotriosa, dan dekstrin (oligosakarida). Pada tahap mulut ini, pati belum terurai seluruhnya menjadi glukosa.',
     transcript:
-      'Pada tahap awal pencernaan karbohidrat, suapan nasi dimasukkan ke dalam rongga mulut. Melalui proses mastikasi (pengunyahan oleh gigi) dan pergerakan lidah, butiran nasi dipecah menjadi partikel yang jauh lebih kecil secara fisik. Kelenjar saliva (parotis, submandibularis, dan sublingualis) menyekresikan saliva yang mengandung musin untuk melumasi makanan menjadi gumpalan licin yang disebut bolus. Bersamaan dengan itu, enzim amilase saliva (ptialin) mulai bekerja menghidrolisis ikatan glikosida α-1,4 internal pada polimer amilosa dan amilopektin. Hasil hidrolisis awal ini adalah disakarida maltosa, trisakarida maltotriosa, serta fragmen oligosakarida bercabang yang disebut dekstrin. Karena makanan berada di mulut dalam waktu singkat, hanya sebagian kecil pati (~5%) yang terhidrolisis di sini, dan belum ada glukosa bebas murni yang diserap.',
+      'Pada tahap awal pencernaan karbohidrat, suapan nasi dimasukkan ke dalam rongga mulut. Melalui proses mastikasi (pengunyahan oleh gigi) dan pergerakan lidah, butiran nasi dipecah menjadi partikel yang jauh lebih kecil secara fisik. Kelenjar saliva (parotis, submandibularis, dan sublingualis) menyekresikan saliva yang mengandung musin untuk melumasi makanan menjadi gumpalan licin yang disebut bolus. Bersamaan dengan itu, enzim alfa-amilase saliva (ptialin) mulai bekerja menghidrolisis ikatan alfa-1,4 glikosidik internal pada polimer amilosa dan amilopektin. Hasil hidrolisis awal ini adalah disakarida maltosa, trisakarida maltotriosa, serta fragmen oligosakarida bercabang yang disebut dekstrin. Karena makanan berada di mulut dalam waktu singkat, hanya sebagian kecil pati yang terhidrolisis di sini, dan belum ada glukosa bebas murni yang diserap.',
     question: {
-      prompt: 'Apa hasil utama kerja amilase saliva pada pati?',
+      prompt: 'Apa peran utama enzim alfa-amilase saliva pada pemecahan pati di mulut?',
       options: [
-        'Seluruh pati langsung menjadi glukosa',
-        'Maltosa, maltotriosa, dan dekstrin',
-        'Piruvat dan ATP',
-        'Asetil-KoA dan karbon dioksida'
+        'Langsung mengubah seluruh pati menjadi glukosa murni',
+        'Mulai memutus ikatan alfa-1,4 glikosidik menghasilkan maltosa, maltotriosa, dan dekstrin',
+        'Mengubah pati menjadi piruvat dan asam laktat',
+        'Menyerap karbohidrat langsung ke dalam aliran darah'
       ],
       correctIndex: 1,
       explanationCorrect:
-        'Benar. Amilase saliva memulai pemecahan pati, tetapi belum menyelesaikannya menjadi glukosa.',
+        'Benar. Enzim alfa-amilase saliva mulai memutus ikatan alfa-1,4 glikosidik menghasilkan maltosa, maltotriosa, dan dekstrin, namun belum menyelesaikannya menjadi glukosa murni.',
       explanationWrong:
-        'Kurang tepat. Amilase saliva hanya memutus sebagian ikatan α-1,4 internal menghasilkan maltosa, maltotriosa, dan dekstrin, bukan seluruhnya glukosa.'
+        'Kurang tepat. Enzim alfa-amilase saliva hanya memulai pemutusan ikatan alfa-1,4 glikosidik pada pati, belum mengubah seluruhnya menjadi glukosa.'
     }
   },
   {
     step: 2,
-    slug: 'esofagus-lambung',
-    title: 'Esofagus, Lambung, dan Duodenum',
-    organShort: '2. Esofagus–Lambung',
-    subtitle: 'Gelombang Peristaltik, Inaktivasi Asam Lambung (HCl), & Sekresi Duodenum',
-    videoSrc: '/videos/carbohydrate/02-esofagus-lambung.mp4',
-    vttSrc: '/videos/carbohydrate/02-esofagus-lambung.vtt',
+    slug: '02-lambung.mp4',
+    title: 'Tahap 2 — Esofagus dan Lambung',
+    organShort: 'Tahap 2: Esofagus & Lambung',
+    subtitle: 'Perjalanan Bolus via Peristaltik & Penghentian Aktivitas Amilase Saliva di Lambung',
+    videoSrc: '/videos/carbohydrate/02-lambung.mp4',
+    vttSrc: '/videos/carbohydrate/02-lambung.vtt',
     durationLabel: '00:10',
     summary:
-      'Bolus didorong melalui esofagus oleh gerakan peristaltik. Di lambung, bolus diaduk dan bercampur dengan cairan lambung hingga menjadi kimus. Kondisi asam menginaktivasi amilase saliva. Kimus kemudian masuk ke duodenum dan bercampur dengan amilase pankreas.',
+      'Bolus didorong melalui esofagus menuju lambung oleh gerakan gelombang peristaltik. Di lambung, bolus diaduk dengan getah lambung hingga berubah menjadi kimus (chyme). Aktivitas alfa-amilase saliva berangsur berhenti karena suasana lambung yang sangat asam akibat sekresi asam klorida (HCl). Pada lambung, pati tidak langsung menjadi glukosa.',
     transcript:
-      'Setelah terbentuk di rongga mulut, bolus didorong ke posterior oleh lidah menuju faring dan masuk ke esofagus. Refleks menelan menutup epiglotis untuk mencegah bolus masuk ke saluran napas. Melalui kontraksi sirkuler dan longitudinal terkoordinasi (gelombang peristaltik), bolus ditranspor menuruni esofagus menuju kardia lambung melewati sfingter esofagus bawah (LES). Di lambung, kontraksi otot lambung mengaduk bolus dengan getah lambung (asam klorida/HCl dan enzim pepsin) membentuk bubur semi-cair homogen yang disebut kimus (chyme). Tingkat keasaman yang sangat tinggi (pH 1.5–2.0) di lambung mendenaturasi struktur amilase saliva sehingga aktivitas pemecahan pati terhenti sementara. Selanjutnya, sfingter pilorus membuka sedikit demi sedikit untuk menyemprotkan kimus ke dalam duodenum. Di duodenum, cairan bikarbonat pankreas menetralkan keasaman hingga pH ~7.8 agar amilase pankreas dapat aktif optimal.',
+      'Setelah terbentuk di rongga mulut, bolus didorong ke posterior oleh lidah menuju faring dan masuk ke esofagus. Refleks menelan menutup epiglotis untuk mencegah bolus masuk ke saluran napas. Melalui kontraksi sirkuler dan longitudinal terkoordinasi (gelombang peristaltik), bolus ditranspor menuruni esofagus menuju kardia lambung melewati sfingter esofagus bawah (LES). Di lambung, kontraksi otot lambung mengaduk bolus dengan getah lambung (asam klorida/HCl dan enzim pepsin) membentuk bubur semi-cair homogen yang disebut kimus (chyme). Tingkat keasaman yang sangat tinggi (pH 1.5–2.0) di lambung mendenaturasi struktur amilase saliva sehingga aktivitas pemecahan pati terhenti sementara. Pati sama sekali tidak langsung diubah menjadi glukosa di lambung. Selanjutnya, sfingter pilorus membuka sedikit demi sedikit untuk menyemprotkan kimus ke dalam duodenum.',
     question: {
-      prompt: 'Mengapa aktivitas amilase saliva berhenti di lambung?',
+      prompt: 'Mengapa aktivitas alfa-amilase saliva berangsur berhenti saat bolus berada di lambung?',
       options: [
-        'Karena tidak ada pati di lambung',
-        'Karena lambung tidak melakukan gerakan',
-        'Karena lingkungan lambung bersifat asam',
-        'Karena glukosa telah masuk darah'
+        'Karena pati telah selesai diubah seluruhnya menjadi glukosa',
+        'Karena lambung tidak memiliki kontraksi otot',
+        'Karena suasana asam lambung (HCl) menginaktivasi enzim alfa-amilase saliva',
+        'Karena makanan langsung diserap oleh dinding lambung'
       ],
       correctIndex: 2,
       explanationCorrect:
-        'Benar. Kondisi asam lambung menginaktivasi amilase saliva.',
+        'Benar. Suasana sangat asam pada getah lambung (pH 1,5–2,0 karena sekresi HCl) mendenaturasi enzim alfa-amilase saliva sehingga aktivitasnya terhenti.',
       explanationWrong:
-        'Kurang tepat. Getah lambung mengandung asam klorida (HCl) ber-pH sangat rendah (1.5–2.0) yang mendenaturasi struktur tersier protein amilase saliva.'
+        'Kurang tepat. Keasaman tinggi getah lambung (HCl) mendenaturasi struktur protein enzim alfa-amilase saliva.'
     }
   },
   {
     step: 3,
-    slug: 'usus-glukosa-darah',
-    title: 'Pati Menjadi Glukosa dan Masuk ke Darah',
-    organShort: '3. Usus–Darah',
-    subtitle: 'Aksi Amilase Pankreas, Enzim Brush Border Usus, & Absorpsi Vena Porta',
-    videoSrc: '/videos/carbohydrate/03-usus-glukosa-darah.mp4',
-    vttSrc: '/videos/carbohydrate/03-usus-glukosa-darah.vtt',
+    slug: '03-usus-halus.mp4',
+    title: 'Tahap 3 — Usus Halus hingga Monosakarida',
+    organShort: 'Tahap 3: Usus Halus',
+    subtitle: 'Pemecahan Lanjutan oleh Amilase Pankreas & Disakaridase Menjadi Monosakarida Siap Serap',
+    videoSrc: '/videos/carbohydrate/03-usus-halus.mp4',
+    vttSrc: '/videos/carbohydrate/03-usus-halus.vtt',
     durationLabel: '00:10',
     summary:
-      'Amilase pankreas memutus ikatan α-1,4 pada pati sehingga terbentuk maltosa, maltotriosa, oligosakarida, dan α-limit dextrin. Enzim pada permukaan usus halus kemudian menyelesaikan hidrolisis menjadi monosakarida, terutama glukosa. Glukosa selanjutnya diserap dan masuk ke aliran darah.',
+      'Di usus halus, enzim amilase pankreas melanjutkan pemecahan pati menjadi maltosa, maltotriosa, dan oligosakarida. Selanjutnya, enzim disakaridase (seperti maltase, sukrase, isomaltase) pada mikrovili usus halus menghasilkan monosakarida (terutama glukosa) yang dapat diserap melintasi dinding usus ke dalam sirkulasi darah.',
     transcript:
-      'Di dalam lumen duodenum dan jejunum usus halus, amilase pankreas melanjutkan hidrolisis ikatan α-1,4 internal pada molekul pati. Hasilnya adalah maltosa, maltotriosa, dan α-limit dekstrin (karena amilase tidak dapat memutus titik cabang α-1,6). Selanjutnya, enzim-enzim pada permukaan membran mikrovili enterosit (brush border enzymes), terutama maltase dan sukrase-isomaltase, menyelesaikan tahap akhir hidrolisis menjadi unit monomer terkecil: monosakarida D-glukosa murni. Glukosa kemudian diserap melintasi membran enterosit melalui transpor aktif sekunder menggunakan kotransporter Na+/glukosa (SGLT1) di sisi luminal, lalu dikeluarkan melalui difusi terfasilitasi via GLUT2 di sisi basolateral menuju kapiler mesenterika darah. Glukosa diangkut oleh aliran darah vena porta hepatika ke hati dan seluruh sel tubuh untuk dioksidasi menghasilkan energi ATP.',
+      'Di dalam lumen duodenum dan jejunum usus halus, amilase pankreas melanjutkan hidrolisis ikatan alfa-1,4 internal pada molekul pati. Hasilnya adalah maltosa, maltotriosa, dan oligosakarida seperti alfa-limit dekstrin. Selanjutnya, enzim disakaridase pada permukaan brush border mikrovili usus halus (maltase, sukrase-isomaltase) menyelesaikan hidrolisis menjadi unit monosakarida tunggal, terutama glukosa murni. Monosakarida glukosa ini kemudian diserap melintasi membran enterosit melalui transpor aktif sekunder (SGLT1) dan transporter GLUT2 menuju kapiler darah vena porta hepatika untuk diedarkan ke seluruh tubuh sebagai substrat pembentukan energi ATP.',
     question: {
-      prompt: 'Di manakah pemecahan karbohidrat diselesaikan menjadi monosakarida?',
+      prompt: 'Bagaimana peran amilase pankreas dan enzim disakaridase pada pencernaan karbohidrat di usus halus?',
       options: [
-        'Mulut',
-        'Esofagus',
-        'Lambung',
-        'Usus halus'
+        'Amilase pankreas memecah pati menjadi maltosa/oligosakarida, lalu disakaridase menghasilkan monosakarida',
+        'Disakaridase mengubah amilum menjadi glikogen sebelum masuk ke lambung',
+        'Amilase pankreas mengubah langsung semua protein menjadi glukosa',
+        'Enzim amilase saliva memproduksi insulin di dalam lumen usus'
       ],
-      correctIndex: 3,
+      correctIndex: 0,
       explanationCorrect:
-        'Benar. Pencernaan pati dilanjutkan dan diselesaikan di usus halus hingga terbentuk monosakarida, terutama glukosa.',
+        'Benar. Amilase pankreas melanjutkan pemecahan pati menjadi maltosa, maltotriosa, dan oligosakarida, kemudian enzim disakaridase menghasilkan monosakarida yang dapat diserap ke aliran darah.',
       explanationWrong:
-        'Kurang tepat. Enzim brush border (seperti maltase dan sukrase-isomaltase) pada mikrovili usus halus yang menyelesaikan pemecahan akhir menjadi monosakarida glukosa.'
+        'Kurang tepat. Amilase pankreas memecah pati menjadi maltosa, maltotriosa, dan oligosakarida; disakaridase mikrovili usus kemudian menyelesaikan pembentukan monosakarida.'
     }
   }
 ];
@@ -579,14 +579,16 @@ export const CarbohydrateDigestionVideoJourney: React.FC<CarbohydrateDigestionVi
           className="relative w-full aspect-video bg-black rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-stone-800 flex items-center justify-center group"
           id="active-video-container"
         >
-          {/* HTML5 Video Element */}
+          {/* HTML5 Video Element with controls, playsInline, preload="metadata", object-fit: contain */}
           <video
             ref={videoRef}
+            key={currentStage.videoSrc}
             src={currentStage.videoSrc}
+            controls
             playsInline
             preload="metadata"
-            controlsList="nodownload"
             className="w-full h-full object-contain bg-black"
+            style={{ objectFit: 'contain' }}
             onTimeUpdate={() => {
               if (videoRef.current) {
                 setCurrentTime(videoRef.current.currentTime);
@@ -606,7 +608,7 @@ export const CarbohydrateDigestionVideoJourney: React.FC<CarbohydrateDigestionVi
             onPause={() => setIsPlaying(false)}
             onEnded={handleVideoEnded}
             onError={() => {
-              setVideoError(`Video "${currentStage.slug}.mp4" belum dapat diputar atau format tidak didukung.`);
+              setVideoError(`Berkas video tidak dapat dimuat.`);
               setIsVideoLoading(false);
               setIsPlaying(false);
             }}
@@ -619,18 +621,29 @@ export const CarbohydrateDigestionVideoJourney: React.FC<CarbohydrateDigestionVi
               label="Bahasa Indonesia"
               default
             />
-            Browser Anda tidak mendukung tag video HTML5.
+            Browser Anda tidak mendukung pemutar video HTML5.
           </video>
 
-          {/* Overlay Jika Error Video */}
+          {/* Overlay Jika Error Video: Menampilkan Nama dan Path File yang Gagal (Tanpa Konten Pengganti) */}
           {videoError && (
-            <div className="absolute inset-0 bg-stone-900/90 flex flex-col items-center justify-center p-6 text-center text-white z-20 space-y-3">
-              <AlertCircle className="w-10 h-10 text-amber-400" />
-              <div className="space-y-1 max-w-md">
-                <p className="text-sm font-bold text-amber-200">Gagal Memuat Video</p>
-                <p className="text-xs text-stone-300">{videoError}</p>
+            <div className="absolute inset-0 bg-stone-900/95 flex flex-col items-center justify-center p-6 text-center text-white z-30 space-y-4">
+              <div className="w-12 h-12 rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400">
+                <AlertCircle className="w-6 h-6" />
+              </div>
+              <div className="space-y-2 max-w-md">
+                <p className="text-base font-bold text-rose-300">Gagal Memuat Video</p>
+                <div className="bg-stone-950/80 rounded-xl p-3 border border-stone-800 text-left font-mono text-xs space-y-1">
+                  <p>
+                    <span className="text-stone-400 font-sans text-[11px]">Nama file: </span>
+                    <span className="text-amber-300 font-bold">{currentStage.slug}</span>
+                  </p>
+                  <p>
+                    <span className="text-stone-400 font-sans text-[11px]">Path file: </span>
+                    <span className="text-emerald-300 font-bold">{currentStage.videoSrc}</span>
+                  </p>
+                </div>
                 <p className="text-[11px] text-stone-400">
-                  Anda tetap dapat mempelajari materi melalui ringkasan, transkrip narasi ilmiah, dan menjawab cek pemahaman di bawah ini.
+                  File video tidak dapat diputar. Pastikan file tersedia di folder public/videos/carbohydrate/. Tidak ada konten animasi buatan atau pengganti yang ditampilkan.
                 </p>
               </div>
               <button
@@ -648,144 +661,65 @@ export const CarbohydrateDigestionVideoJourney: React.FC<CarbohydrateDigestionVi
               </button>
             </div>
           )}
+        </div>
 
-          {/* Big Center Play Overlay saat Video Sedang Pause (Nonaktif di Layar Sentuh) */}
-          {!isPlaying && !videoError && !isVideoLoading && (
+        {/* Toolbar Aksi Tambahan: Tombol Putar Ulang, Layar Penuh, Kecepatan, & Info File */}
+        <div className="flex flex-wrap items-center justify-between gap-2.5 bg-stone-900 text-white px-4 py-2.5 rounded-xl border border-stone-800 text-xs">
+          {/* Tombol Putar Ulang dan Layar Penuh */}
+          <div className="flex items-center gap-2">
             <button
-              onClick={handlePlay}
-              className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-amber-600/90 hover:bg-amber-600 text-white flex items-center justify-center shadow-lg hover:scale-105 transition-all cursor-pointer z-10"
-              aria-label="Putar Video"
+              onClick={handleReplay}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-amber-300 font-medium transition-colors cursor-pointer border border-stone-700"
+              aria-label="Putar Ulang Video dari Awal"
+              title="Putar Ulang Video dari Awal"
             >
-              <Play className="w-8 h-8 fill-current ml-1" />
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Putar Ulang</span>
             </button>
-          )}
 
-          {/* Custom Control Bar Bawah */}
-          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 pt-6 flex flex-col gap-2 z-10 transition-opacity">
-            
-            {/* Scrubber Waktu Slider */}
-            <div className="w-full flex items-center gap-2">
-              <input
-                type="range"
-                min={0}
-                max={duration || 10}
-                step={0.1}
-                value={currentTime}
-                onChange={(e) => {
-                  const val = parseFloat(e.target.value);
-                  setCurrentTime(val);
-                  if (videoRef.current) {
-                    videoRef.current.currentTime = val;
-                  }
-                }}
-                className="w-full h-1.5 bg-stone-700 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:h-2 transition-all"
-                aria-label="Waktu Pemutaran Video"
-              />
+            <button
+              onClick={handleToggleFullscreen}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 font-medium transition-colors cursor-pointer border border-stone-700"
+              aria-label="Mode Layar Penuh"
+              title="Layar Penuh"
+            >
+              {isFullscreen ? (
+                <>
+                  <Minimize2 className="w-3.5 h-3.5" />
+                  <span>Keluar Layar Penuh</span>
+                </>
+              ) : (
+                <>
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>Layar Penuh</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* Kecepatan Putar dan Info Berkas Video Aktif */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
+              <span className="text-stone-400 text-[11px]">Kecepatan:</span>
+              {[0.5, 1, 1.5, 2].map((spd) => (
+                <button
+                  key={spd}
+                  onClick={() => handleSpeedChange(spd)}
+                  className={`px-2 py-0.5 rounded text-[11px] font-mono transition-colors cursor-pointer ${
+                    playbackRate === spd
+                      ? 'bg-amber-600 text-white font-bold'
+                      : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                  }`}
+                  aria-label={`Kecepatan ${spd}x`}
+                >
+                  {spd}x
+                </button>
+              ))}
             </div>
 
-            {/* Tombol-tombol Kontrol: Putar, Jeda, Ulangi, +/-10s, Volume, Kecepatan, Fullscreen */}
-            <div className="flex flex-wrap items-center justify-between text-white text-xs gap-2">
-              
-              {/* Kiri: Play/Pause, Rewind, Forward, Replay, Time Indicator */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handleTogglePlay}
-                  className="p-1.5 rounded-lg hover:bg-white/20 transition-colors cursor-pointer"
-                  aria-label={isPlaying ? 'Jeda Video' : 'Putar Video'}
-                  title={isPlaying ? 'Jeda (Spasi)' : 'Putar (Spasi)'}
-                >
-                  {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
-                </button>
-
-                <button
-                  onClick={handleReplay}
-                  className="p-1.5 rounded-lg hover:bg-white/20 transition-colors cursor-pointer"
-                  aria-label="Ulangi Video dari Awal"
-                  title="Ulangi dari Awal"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                </button>
-
-                <button
-                  onClick={() => handleSeekRelative(-10)}
-                  className="p-1.5 rounded-lg hover:bg-white/20 transition-colors cursor-pointer flex items-center gap-0.5 text-[11px]"
-                  aria-label="Mundur 10 detik"
-                  title="Mundur 10 Detik"
-                >
-                  <Rewind10 className="w-3.5 h-3.5" />
-                  <span>-10s</span>
-                </button>
-
-                <button
-                  onClick={() => handleSeekRelative(10)}
-                  className="p-1.5 rounded-lg hover:bg-white/20 transition-colors cursor-pointer flex items-center gap-0.5 text-[11px]"
-                  aria-label="Maju 10 detik"
-                  title="Maju 10 Detik"
-                >
-                  <span>+10s</span>
-                </button>
-
-                <span className="text-[11px] font-mono text-stone-300 ml-1">
-                  {Math.floor(currentTime)}s / {Math.floor(duration || 10)}s
-                </span>
-              </div>
-
-              {/* Kanan: Mute/Volume, Pilihan Kecepatan (0.5x, 1x, 1.5x, 2x), Fullscreen */}
-              <div className="flex items-center gap-3">
-                
-                {/* Volume & Mute */}
-                <div className="flex items-center gap-1.5">
-                  <button
-                    onClick={handleToggleMute}
-                    className="p-1 rounded-lg hover:bg-white/20 transition-colors cursor-pointer"
-                    aria-label={isMuted ? 'Nyalakan Suara (M)' : 'Bisukan Suara (M)'}
-                  >
-                    {isMuted || volume === 0 ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4" />}
-                  </button>
-                  <input
-                    type="range"
-                    min={0}
-                    max={1}
-                    step={0.05}
-                    value={isMuted ? 0 : volume}
-                    onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
-                    className="w-14 sm:w-20 h-1 bg-stone-700 rounded-lg appearance-none cursor-pointer accent-amber-500"
-                    aria-label="Pengaturan Volume Suara"
-                  />
-                </div>
-
-                <div className="w-px h-3.5 bg-stone-700" />
-
-                {/* Kecepatan Putar (0.5x, 1x, 1.5x, 2x) */}
-                <div className="flex items-center gap-1">
-                  {[0.5, 1, 1.5, 2].map((spd) => (
-                    <button
-                      key={spd}
-                      onClick={() => handleSpeedChange(spd)}
-                      className={`px-1.5 py-0.5 rounded text-[10px] font-mono transition-colors cursor-pointer ${
-                        playbackRate === spd
-                          ? 'bg-amber-600 text-white font-bold'
-                          : 'bg-white/10 text-stone-300 hover:bg-white/20'
-                      }`}
-                      aria-label={`Kecepatan ${spd} kali`}
-                    >
-                      {spd}x
-                    </button>
-                  ))}
-                </div>
-
-                <div className="w-px h-3.5 bg-stone-700" />
-
-                {/* Layar Penuh */}
-                <button
-                  onClick={handleToggleFullscreen}
-                  className="p-1 rounded-lg hover:bg-white/20 transition-colors cursor-pointer"
-                  aria-label={isFullscreen ? 'Keluar dari Layar Penuh (F)' : 'Layar Penuh (F)'}
-                  title="Layar Penuh (F)"
-                >
-                  {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-                </button>
-              </div>
+            <div className="hidden sm:flex items-center gap-1.5 pl-2 border-l border-stone-700 text-[11px] font-mono text-stone-400">
+              <span className="text-stone-500">Berkas:</span>
+              <span className="text-emerald-400">{currentStage.slug}</span>
             </div>
           </div>
         </div>
