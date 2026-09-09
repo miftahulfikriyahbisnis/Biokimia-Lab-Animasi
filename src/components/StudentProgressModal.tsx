@@ -101,6 +101,61 @@ export const StudentProgressModal: React.FC<StudentProgressModalProps> = ({
           </div>
         </div>
 
+        {/* Ringkasan Modul Karbohidrat */}
+        <div className="space-y-3 pt-2">
+          <span className="text-xs font-bold text-[#706B5C] uppercase tracking-wider block">
+            Status Modul Karbohidrat
+          </span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="p-3 rounded-2xl bg-[#FAF8F2] border border-[#E5E2D9] space-y-1">
+              <span className="text-[11px] text-[#706B5C]">Materi Glukosa</span>
+              <div className="flex items-center gap-1 text-xs font-bold">
+                {profile.carbohydrateProgress?.theoryCompleted ? (
+                  <span className="text-[#6B705C] flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Selesai
+                  </span>
+                ) : (
+                  <span className="text-[#A5A58D]">Belum Selesai</span>
+                )}
+              </div>
+            </div>
+
+            <div className="p-3 rounded-2xl bg-[#FAF8F2] border border-[#E5E2D9] space-y-1">
+              <span className="text-[11px] text-[#706B5C]">Pencernaan Nasi</span>
+              <div className="flex items-center gap-1 text-xs font-bold">
+                {profile.carbohydrateProgress?.riceJourneyCompleted ? (
+                  <span className="text-[#6B705C] flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Selesai
+                  </span>
+                ) : (
+                  <span className="text-[#A5A58D]">Belum Selesai</span>
+                )}
+              </div>
+            </div>
+
+            <div className="p-3 rounded-2xl bg-[#FAF8F2] border border-[#E5E2D9] space-y-1">
+              <span className="text-[11px] text-[#706B5C]">Katabolisme & Anabolisme</span>
+              <div className="flex items-center gap-1 text-xs font-bold">
+                {profile.carbohydrateProgress?.catabolismCompleted && profile.carbohydrateProgress?.anabolismCompleted ? (
+                  <span className="text-[#6B705C] flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Selesai
+                  </span>
+                ) : (
+                  <span className="text-[#A5A58D]">Belum Selesai</span>
+                )}
+              </div>
+            </div>
+
+            <div className="p-3 rounded-2xl bg-[#FAF8F2] border border-[#E5E2D9] space-y-1">
+              <span className="text-[11px] text-[#706B5C]">Skor Post-Test Karbo</span>
+              <div className="text-sm font-bold text-[#CB997E] flex items-center gap-1">
+                <Award className="w-3.5 h-3.5" />
+                <span>{profile.carbohydrateProgress?.highestScore || 0} / 100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Riwayat Maksimal 5 Post-Test Terakhir */}
         <div className="space-y-3 pt-2">
           <span className="text-xs font-bold text-[#706B5C] uppercase tracking-wider block">

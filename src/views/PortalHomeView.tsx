@@ -24,6 +24,7 @@ interface PortalHomeViewProps {
   profile: StudentProfile;
   onOpenHormoneModule?: () => void;
   onSelectHormoneModule?: () => void;
+  onOpenCarbohydrateModule?: () => void;
   onOpenProgressModal: () => void;
   onLogout?: () => void;
   onSwitchProfile?: () => void;
@@ -44,6 +45,7 @@ export const PortalHomeView: React.FC<PortalHomeViewProps> = ({
   profile,
   onOpenHormoneModule,
   onSelectHormoneModule,
+  onOpenCarbohydrateModule,
   onOpenProgressModal,
   onLogout,
   onSwitchProfile
@@ -85,15 +87,17 @@ export const PortalHomeView: React.FC<PortalHomeViewProps> = ({
       id: 'karbohidrat',
       title: 'Karbohidrat',
       category: 'Makromolekul & Metabolisme Energi',
-      isAvailable: false,
-      description: 'Kajian struktur monosakarida, polisakarida, serta regulasi katabolisme dan anabolisme glukosa.',
+      isAvailable: true,
+      description: 'Struktur 3D glukosa, perjalanan nasi menjadi glukosa, katabolisme pemecahan energi (glikolisis hingga ATP), anabolisme, dan integrasi tubuh.',
       subtopics: [
-        'Struktur dan fungsi karbohidrat',
-        'Katabolisme karbohidrat',
-        'Anabolisme karbohidrat'
+        'Materi Dasar & Molekul Glukosa (3D)',
+        'Perjalanan Nasi Menjadi Glukosa (7 Tahap)',
+        'Peta Katabolisme Karbohidrat (6 Animasi 3D)',
+        'Peta Anabolisme Karbohidrat (5 Animasi 3D)',
+        'Integrasi Fisiologis & Post-Test (20 Soal)'
       ],
-      iconBg: 'bg-[#F5F2EA]',
-      iconColor: 'text-[#6B705C]'
+      iconBg: 'bg-amber-600',
+      iconColor: 'text-white'
     },
     {
       id: 'protein',
@@ -161,6 +165,18 @@ export const PortalHomeView: React.FC<PortalHomeViewProps> = ({
     ? (postTestHistoryCount > 0 ? 100 : 75)
     : (profile?.hormoneGeneralCompleted ? 40 : 10);
 
+  // Hitung progres modul karbohidrat
+  const carbProg = profile?.carbohydrateProgress;
+  const carbDoneCount = [
+    carbProg?.theoryCompleted,
+    carbProg?.riceJourneyCompleted,
+    carbProg?.catabolismCompleted,
+    carbProg?.anabolismCompleted,
+    carbProg?.integrationCompleted,
+    carbProg?.postTestCompleted,
+  ].filter(Boolean).length;
+  const carbProgressPercent = Math.round((carbDoneCount / 6) * 100);
+
   return (
     <div className="space-y-8 pb-12">
       
@@ -211,94 +227,99 @@ export const PortalHomeView: React.FC<PortalHomeViewProps> = ({
             </p>
           </div>
           <span className="text-xs font-medium text-[#6B705C] bg-[#F5F2EA] px-3 py-1 rounded-full border border-[#E5E2D9]">
-            1 Modul Aktif • 6 Segera Hadir
+            2 Modul Aktif • 5 Segera Hadir
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {modules.map(mod => (
-            <div
-              key={mod.id}
-              onClick={() => {
-                if (mod.isAvailable) {
-                  handleOpenHormone();
-                } else {
-                  setComingSoonModal(mod.title);
-                }
-              }}
-              className={`rounded-3xl p-6 border transition-all cursor-pointer flex flex-col justify-between text-left relative overflow-hidden group ${
-                mod.isAvailable
-                  ? 'bg-white border-[#6B705C]/40 shadow-xs hover:shadow-md hover:border-[#6B705C] hover:-translate-y-0.5'
-                  : 'bg-[#FDFCF9] border-[#E5E2D9] hover:bg-white hover:border-[#D5D2C9]'
-              }`}
-            >
-              {/* Badge Status */}
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-[11px] font-semibold text-[#706B5C] uppercase tracking-wider">
-                  {mod.category}
-                </span>
-                {mod.isAvailable ? (
-                  <span className="inline-flex items-center gap-1 text-xs font-bold bg-[#E8EDE0] text-[#585D4B] px-2.5 py-0.5 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6B705C] animate-pulse"></span>
-                    Tersedia
+          {modules.map(mod => {
+            const modProgress = mod.id === 'karbohidrat' ? carbProgressPercent : hormoneProgressPercent;
+            return (
+              <div
+                key={mod.id}
+                onClick={() => {
+                  if (mod.id === 'karbohidrat') {
+                    onOpenCarbohydrateModule?.();
+                  } else if (mod.isAvailable) {
+                    handleOpenHormone();
+                  } else {
+                    setComingSoonModal(mod.title);
+                  }
+                }}
+                className={`rounded-3xl p-6 border transition-all cursor-pointer flex flex-col justify-between text-left relative overflow-hidden group ${
+                  mod.isAvailable
+                    ? 'bg-white border-[#6B705C]/40 shadow-xs hover:shadow-md hover:border-[#6B705C] hover:-translate-y-0.5'
+                    : 'bg-[#FDFCF9] border-[#E5E2D9] hover:bg-white hover:border-[#D5D2C9]'
+                }`}
+              >
+                {/* Badge Status */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] font-semibold text-[#706B5C] uppercase tracking-wider">
+                    {mod.category}
                   </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-[#F5F2EA] text-[#A5A58D] px-2 py-0.5 rounded-full border border-[#E5E2D9]">
-                    <Lock className="w-3 h-3" />
-                    Segera Hadir
-                  </span>
-                )}
-              </div>
-
-              {/* Title & Description */}
-              <div className="space-y-2 mb-4">
-                <h4 className="text-xl font-serif font-bold text-[#3E3E3E] group-hover:text-[#6B705C] transition-colors">
-                  {mod.title}
-                </h4>
-                <p className="text-xs text-[#706B5C] line-clamp-2 leading-relaxed">
-                  {mod.description}
-                </p>
-              </div>
-
-              {/* Subtopics list if available */}
-              {mod.subtopics && (
-                <div className="mb-5 space-y-1.5 pt-2 border-t border-[#F5F2EA]">
-                  <span className="text-[10px] font-bold text-[#A5A58D] uppercase tracking-wider block">
-                    Submateri:
-                  </span>
-                  {mod.subtopics.map((sub, i) => (
-                    <div key={i} className="flex items-center gap-1.5 text-xs text-[#706B5C]">
-                      <span className="w-1 h-1 rounded-full bg-[#CB997E]"></span>
-                      <span className="truncate">{sub}</span>
-                    </div>
-                  ))}
+                  {mod.isAvailable ? (
+                    <span className="inline-flex items-center gap-1 text-xs font-bold bg-[#E8EDE0] text-[#585D4B] px-2.5 py-0.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#6B705C] animate-pulse"></span>
+                      Tersedia
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-[#F5F2EA] text-[#A5A58D] px-2 py-0.5 rounded-full border border-[#E5E2D9]">
+                      <Lock className="w-3 h-3" />
+                      Segera Hadir
+                    </span>
+                  )}
                 </div>
-              )}
 
-              {/* Footer Card */}
-              <div className="pt-3 border-t border-[#E5E2D9]/70 flex items-center justify-between mt-auto">
-                {mod.isAvailable ? (
-                  <>
-                    <div className="text-xs">
-                      <span className="text-[#A5A58D]">Progres: </span>
-                      <span className="font-bold text-[#6B705C]">{hormoneProgressPercent}%</span>
-                    </div>
-                    <button
-                      className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#6B705C] group-hover:bg-[#585D4B] text-white text-xs font-semibold transition-colors shadow-xs"
-                    >
-                      <span>{hormoneProgressPercent > 0 ? 'Lanjutkan' : 'Mulai'}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </>
-                ) : (
-                  <div className="w-full flex items-center justify-between text-xs text-[#A5A58D]">
-                    <span>Tahap Pengembangan</span>
-                    <span className="text-[11px] underline">Detail</span>
+                {/* Title & Description */}
+                <div className="space-y-2 mb-4">
+                  <h4 className="text-xl font-serif font-bold text-[#3E3E3E] group-hover:text-[#6B705C] transition-colors">
+                    {mod.title}
+                  </h4>
+                  <p className="text-xs text-[#706B5C] line-clamp-2 leading-relaxed">
+                    {mod.description}
+                  </p>
+                </div>
+
+                {/* Subtopics list if available */}
+                {mod.subtopics && (
+                  <div className="mb-5 space-y-1.5 pt-2 border-t border-[#F5F2EA]">
+                    <span className="text-[10px] font-bold text-[#A5A58D] uppercase tracking-wider block">
+                      Submateri:
+                    </span>
+                    {mod.subtopics.map((sub, i) => (
+                      <div key={i} className="flex items-center gap-1.5 text-xs text-[#706B5C]">
+                        <span className="w-1 h-1 rounded-full bg-[#CB997E]"></span>
+                        <span className="truncate">{sub}</span>
+                      </div>
+                    ))}
                   </div>
                 )}
+
+                {/* Footer Card */}
+                <div className="pt-3 border-t border-[#E5E2D9]/70 flex items-center justify-between mt-auto">
+                  {mod.isAvailable ? (
+                    <>
+                      <div className="text-xs">
+                        <span className="text-[#A5A58D]">Progres: </span>
+                        <span className="font-bold text-[#6B705C]">{modProgress}%</span>
+                      </div>
+                      <button
+                        className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#6B705C] group-hover:bg-[#585D4B] text-white text-xs font-semibold transition-colors shadow-xs"
+                      >
+                        <span>{modProgress > 0 ? 'Lanjutkan' : 'Mulai'}</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </>
+                  ) : (
+                    <div className="w-full flex items-center justify-between text-xs text-[#A5A58D]">
+                      <span>Tahap Pengembangan</span>
+                      <span className="text-[11px] underline">Detail</span>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

@@ -28,7 +28,7 @@ interface InsulinScene3DProps {
 
 // Posisi dan target kamera tetap (fixed vantage point) dengan jarak yang disesuaikan
 // Kamera dimundurkan lagi ~10% dari posisi sebelumnya untuk memberikan framing visual yang lebih lega dan nyaman
-const FIXED_CAMERA_POSITION: [number, number, number] = [0, 6.16, 11.23];
+const FIXED_CAMERA_POSITION: [number, number, number] = [0, 6.80, 12.35];
 const FIXED_CAMERA_TARGET: [number, number, number] = [0, -0.2, 0];
 
 /**

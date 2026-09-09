@@ -24,6 +24,7 @@ import { PortalHomeView } from './views/PortalHomeView';
 import { HormoneMapView } from './views/HormoneMapView';
 import { GeneralHormoneView } from './views/GeneralHormoneView';
 import { PostTestView } from './views/PostTestView';
+import { CarbohydrateModuleView } from './views/CarbohydrateModuleView';
 
 // Insulin Animation Views (Tahap 2)
 import { HomeView } from './views/HomeView';
@@ -304,6 +305,7 @@ export function App() {
             profile={activeProfile}
             onOpenHormoneModule={() => setAppView('HORMONE_MAP')}
             onSelectHormoneModule={() => setAppView('HORMONE_MAP')}
+            onOpenCarbohydrateModule={() => setAppView('CARBOHYDRATE_MODULE')}
             onOpenProgressModal={() => setIsProgressModalOpen(true)}
             onLogout={handleSwitchProfile}
             onSwitchProfile={handleSwitchProfile}
@@ -462,6 +464,15 @@ export function App() {
             }}
             onBackToMap={() => setAppView('HORMONE_MAP')}
             onProfileUpdated={(updated) => setActiveProfile(updated)}
+          />
+        )}
+
+        {/* TAMPILAN 7: MODUL LENGKAP METABOLISME KARBOHIDRAT */}
+        {activeProfile && appView === 'CARBOHYDRATE_MODULE' && (
+          <CarbohydrateModuleView
+            profile={activeProfile}
+            onProfileUpdated={(updated) => setActiveProfile(updated)}
+            onBackToPortal={() => setAppView('PORTAL_HOME')}
           />
         )}
 

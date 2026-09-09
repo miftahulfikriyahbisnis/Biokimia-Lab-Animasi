@@ -28,6 +28,7 @@ export type AppView =
   | 'STAGE_2_INSULIN_ANIMATION'
   | 'POST_TEST'         // Tahap 3: Post-test hormon & insulin
   | 'STAGE_3_POST_TEST'
+  | 'CARBOHYDRATE_MODULE' // Ruang pembelajaran Metabolisme Karbohidrat
   | 'STUDENT_PROGRESS'; // Riwayat & progres belajar
 
 export interface PostTestDetailItem {
@@ -64,9 +65,21 @@ export interface StudentProfile {
   insulinAnimationCompleted: boolean;
   lastStudiedSection: 'GENERAL_HORMONE' | 'INSULIN_ANIMATION' | 'POST_TEST';
   lastStageId?: ScreenId;
-  // Riwayat Post-Test
+  // Riwayat Post-Test Hormon
   postTestHistory: PostTestRecord[];
   highestScore: number;
+  // Progres & Riwayat Modul Karbohidrat (Terisolasi dan Non-Destruktif)
+  carbohydrateProgress?: {
+    theoryCompleted?: boolean;
+    riceJourneyCompleted?: boolean;
+    catabolismCompleted?: boolean;
+    anabolismCompleted?: boolean;
+    integrationCompleted?: boolean;
+    postTestCompleted?: boolean;
+    highestScore?: number;
+    lastAttemptDate?: string;
+    postTestHistory?: PostTestRecord[];
+  };
 }
 
 export type StageNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
