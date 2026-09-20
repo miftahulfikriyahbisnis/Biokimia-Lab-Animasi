@@ -66,13 +66,13 @@ export const CarbohydrateHome: React.FC<CarbohydrateHomeProps> = ({
     },
     {
       id: 'ANABOLISM' as const,
-      title: 'Peta Anabolisme Karbohidrat',
-      subtitle: '5 Visualisasi 3D penyusunan glukosa menjadi cadangan energi dan biomolekul',
-      badge: 'Tahap 4',
+      title: 'LKM Digital Anabolisme Karbohidrat',
+      subtitle: 'LKM interaktif representasi multipel: Penabungan energi, peta organ, misi 6 tahap glikogenesis, & visual 2D/3D',
+      badge: 'Tahap 4 (LKM Digital)',
       completed: !!carbProgress?.anabolismCompleted,
       icon: Hammer,
       iconBg: 'bg-blue-100 text-blue-800',
-      highlights: ['Glikogenesis (Granula Glikogen)', 'Glukoneogenesis & 3 Reaksi Bypass', 'Siklus Cori & Lipogenesis dari Karbohidrat']
+      highlights: ['Kasus Pemantik & Peta Fisiologis Organ', 'Misi Interaktif 6 Tahap Glikogenesis', 'Analisis Representasi 2D & 3D Karbon-Ikatan']
     },
     {
       id: 'INTEGRATION' as const,

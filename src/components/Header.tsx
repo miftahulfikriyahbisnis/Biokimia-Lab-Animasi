@@ -94,7 +94,17 @@ export const Header: React.FC<HeaderProps> = ({
               Portal Biokimia
             </button>
             
-            {appView !== 'PORTAL_HOME' && (
+            {appView === 'CARBOHYDRATE_MODULE' ? (
+              <>
+                <ChevronRight className="w-3 h-3 text-[#A5A58D]" />
+                <button
+                  onClick={() => onNavigateAppView('CARBOHYDRATE_MODULE')}
+                  className="hover:text-[#6B705C] font-semibold text-[#6B705C] transition-colors cursor-pointer"
+                >
+                  Modul Karbohidrat
+                </button>
+              </>
+            ) : appView !== 'PORTAL_HOME' ? (
               <>
                 <ChevronRight className="w-3 h-3 text-[#A5A58D]" />
                 <button
@@ -104,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({
                   Modul Hormon
                 </button>
               </>
-            )}
+            ) : null}
 
             {appView === 'STAGE_1_GENERAL_HORMONE' && (
               <>
@@ -133,13 +143,17 @@ export const Header: React.FC<HeaderProps> = ({
           <h1 className="text-sm sm:text-base font-serif italic font-semibold text-[#6B705C] truncate tracking-tight">
             {appView === 'PORTAL_HOME' 
               ? 'Portal Interaktif Biokimia Kedokteran & Sains' 
+              : appView === 'CARBOHYDRATE_MODULE'
+              ? 'Modul Pembelajaran Metabolisme Karbohidrat'
               : appView === 'HORMONE_MAP'
               ? 'Peta Pembelajaran Modul Hormon'
               : appView === 'STAGE_1_GENERAL_HORMONE'
               ? 'Tahap 1: Dasar Biokimiawi Hormon'
               : appView === 'STAGE_2_INSULIN_ANIMATION'
               ? (currentStage ? `Tahap ${currentStage.number}: ${currentStage.title}` : 'Perjalanan Kimia Insulin')
-              : 'Tahap 3: Evaluasi Post-Test Mandiri'}
+              : appView === 'STAGE_3_POST_TEST'
+              ? 'Tahap 3: Evaluasi Post-Test Mandiri'
+              : 'Modul Pembelajaran Biokimia'}
           </h1>
         </div>
       </div>
