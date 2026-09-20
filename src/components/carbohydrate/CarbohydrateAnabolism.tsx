@@ -21,9 +21,9 @@ import {
 import { LKMSectionA_Prompt, GroupPredictionState } from './lkm/LKMSectionA_Prompt';
 import { LKMSectionB_GlucoseFateMap } from './lkm/LKMSectionB_GlucoseFateMap';
 import { LKMSectionC_GlycogenBuilder } from './lkm/LKMSectionC_GlycogenBuilder';
-import { LKMSectionD_Representation2D3D } from './lkm/LKMSectionD_Representation2D3D';
-import { LKMSectionE_AnalysisQuestions } from './lkm/LKMSectionE_AnalysisQuestions';
-import { LKMSectionF_Reflection } from './lkm/LKMSectionF_Reflection';
+import { LKMSectionD_GlucosylActivation } from './lkm/LKMSectionD_GlucosylActivation';
+import { LKMSectionE_GlycogenBranching } from './lkm/LKMSectionE_GlycogenBranching';
+import { LKMSectionF_BypassAndReflection } from './lkm/LKMSectionF_BypassAndReflection';
 
 interface CarbohydrateAnabolismProps {
   onBackToHome: () => void;
@@ -65,12 +65,12 @@ export const CarbohydrateAnabolism: React.FC<CarbohydrateAnabolismProps> = ({
   });
 
   const sectionsNav: { id: LKMSectionId; letter: string; title: string; subtitle: string }[] = [
-    { id: 'SECTION_A', letter: 'A', title: 'Pemantik', subtitle: 'Mengapa Menabung Energi?' },
-    { id: 'SECTION_B', letter: 'B', title: 'Peta Organ', subtitle: 'Tujuan & Nasib Glukosa' },
-    { id: 'SECTION_C', letter: 'C', title: 'Misi Glikogen', subtitle: 'Rekonstruksi 6 Tahap' },
-    { id: 'SECTION_D', letter: 'D', title: 'Representasi 2D/3D', subtitle: 'Aliran & Inspeksi Atom' },
-    { id: 'SECTION_E', letter: 'E', title: 'Analisis', subtitle: 'Diskusi & Logika Kimia' },
-    { id: 'SECTION_F', letter: 'F', title: 'Refleksi', subtitle: 'Validasi & Kesimpulan' },
+    { id: 'SECTION_A', letter: 'A', title: 'Pemantik', subtitle: 'Carbo-Loading & Prediksi' },
+    { id: 'SECTION_B', letter: 'B', title: 'Peta Organ', subtitle: 'Hati, Otot, Adiposa' },
+    { id: 'SECTION_C', letter: 'C', title: 'Fosforilasi C6', subtitle: 'Haworth & Jebakan G6P' },
+    { id: 'SECTION_D', letter: 'D', title: 'Aktivasi UDP-Glc', subtitle: 'G1P & Glikogenin' },
+    { id: 'SECTION_E', letter: 'E', title: 'Percabangan', subtitle: 'Ikatan α-1,4 & α-1,6' },
+    { id: 'SECTION_F', letter: 'F', title: 'Tiga Bypass', subtitle: 'Glukoneogenesis & Refleksi' },
   ];
 
   const handleSavePrediction = (data: GroupPredictionState) => {
@@ -218,9 +218,9 @@ export const CarbohydrateAnabolism: React.FC<CarbohydrateAnabolismProps> = ({
           />
         )}
 
-        {/* BAGIAN D: REPRESENTASI 2D & 3D (ALIRAN JALUR & INSPEKSI IKATAN) */}
+        {/* BAGIAN D: G6P, G1P, UDP-GLUKOSA, & GLIKOGENIN */}
         {activeSection === 'SECTION_D' && (
-          <LKMSectionD_Representation2D3D
+          <LKMSectionD_GlucosylActivation
             onBack={() => setActiveSection('SECTION_C')}
             onNext={() => {
               setCompletedSections(prev => ({ ...prev, SECTION_D: true }));
@@ -229,9 +229,9 @@ export const CarbohydrateAnabolism: React.FC<CarbohydrateAnabolismProps> = ({
           />
         )}
 
-        {/* BAGIAN E: PERTANYAAN ANALISIS (DISKUSI TERARAH KELOMPOK) */}
+        {/* BAGIAN E: PEMANJANGAN & PERCABANGAN GLIKOGEN */}
         {activeSection === 'SECTION_E' && (
-          <LKMSectionE_AnalysisQuestions
+          <LKMSectionE_GlycogenBranching
             onBack={() => setActiveSection('SECTION_D')}
             onNext={() => {
               setCompletedSections(prev => ({ ...prev, SECTION_E: true }));
@@ -240,9 +240,9 @@ export const CarbohydrateAnabolism: React.FC<CarbohydrateAnabolismProps> = ({
           />
         )}
 
-        {/* BAGIAN F: REFLEKSI PREDIKSI & KESIMPULAN ILMIAH */}
+        {/* BAGIAN F: TIGA BYPASS GLUKONEOGENESIS & REFLEKSI PREDIKSI */}
         {activeSection === 'SECTION_F' && (
-          <LKMSectionF_Reflection
+          <LKMSectionF_BypassAndReflection
             predictionData={predictionData}
             groupName={groupName}
             onBack={() => setActiveSection('SECTION_E')}
