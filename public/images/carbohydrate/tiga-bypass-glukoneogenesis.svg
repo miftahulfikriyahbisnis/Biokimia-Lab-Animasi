@@ -1,0 +1,388 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 920" width="920" height="920">
+  <defs>
+    <!-- Arrowhead markers -->
+    <marker id="arrowOrange" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#F97316" />
+    </marker>
+    <marker id="arrowDark" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#292524" />
+    </marker>
+    <filter id="boxShadow" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="920" height="920" fill="#FFFFFF" />
+
+  <!-- Top Title -->
+  <text x="240" y="60" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="34" font-weight="bold" fill="#7E22CE" letter-spacing="0.5">
+    Gluconeogenesis
+  </text>
+
+  <!-- ================= RIGHT / MAIN VERTICAL CASCADE ================= -->
+  <!-- 1. PYRUVATE (2) -->
+  <g transform="translate(560, 40)">
+    <!-- 3 Teal Rings -->
+    <circle cx="-32" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    <circle cx="0" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    <circle cx="32" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    
+    <text x="0" y="32" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="19" font-weight="bold" fill="#0369A1" font-style="italic">
+      Pyruvate (2)
+    </text>
+
+    <!-- Reaction Curved Arrow: 2 CO2 + 2 ATP + Biotin -> 2 ADP -->
+    <g transform="translate(0, 42)">
+      <path d="M -5 10 Q -45 35 -5 65" fill="none" stroke="#F97316" stroke-width="2.5" marker-end="url(#arrowOrange)" />
+      <text x="-55" y="25" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        2 CO<tspan baseline-shift="sub" font-size="10">2</tspan>
+      </text>
+      <text x="-55" y="42" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        Biotin
+      </text>
+      <text x="35" y="20" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        2 ATP
+      </text>
+      <text x="35" y="55" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        2 ADP
+      </text>
+    </g>
+
+    <!-- Enzyme 1 Box: Pyruvate carboxylase -->
+    <g transform="translate(130, 115)">
+      <!-- Orange numbered pill -->
+      <circle cx="0" cy="0" r="18" fill="#F97316" />
+      <text x="0" y="6" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">1.</text>
+      
+      <!-- Boxed enzyme -->
+      <rect x="25" y="-18" width="200" height="36" fill="#FFFFFF" stroke="#F97316" stroke-width="2" rx="2" />
+      <text x="125" y="6" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="15" font-weight="bold" fill="#1C1917">
+        Pyruvate carboxylase
+      </text>
+      <!-- Hollow downward arrow -->
+      <path d="M 115 22 L 135 22 L 135 32 L 145 32 L 125 46 L 105 32 L 115 32 Z" fill="#FFFFFF" stroke="#F97316" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- 2. OXALOACETATE (2) -->
+  <g transform="translate(560, 185)">
+    <!-- 4 Teal Rings -->
+    <circle cx="-48" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    <circle cx="-16" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    <circle cx="16" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    <circle cx="48" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+
+    <text x="0" y="32" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="19" font-weight="bold" fill="#0369A1" font-style="italic">
+      Oxaloacetate (2)
+    </text>
+
+    <!-- Reaction Curved Arrow: 2 GTP -> 2 GDP + 2 CO2 -->
+    <g transform="translate(0, 42)">
+      <path d="M 5 10 Q 45 35 5 65" fill="none" stroke="#F97316" stroke-width="2.5" marker-end="url(#arrowOrange)" />
+      <text x="35" y="20" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        2 GTP
+      </text>
+      <text x="35" y="55" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        2 GDP
+      </text>
+      <text x="-35" y="50" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        2 CO<tspan baseline-shift="sub" font-size="10">2</tspan>
+      </text>
+    </g>
+
+    <!-- Enzyme 2 Box: PEPCK -->
+    <g transform="translate(130, 245)">
+      <!-- Orange numbered pill -->
+      <circle cx="0" cy="0" r="18" fill="#F97316" />
+      <text x="0" y="6" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">2.</text>
+
+      <!-- Boxed enzyme -->
+      <rect x="25" y="-18" width="215" height="48" fill="#FFFFFF" stroke="#F97316" stroke-width="2" rx="2" />
+      <text x="132" y="-1" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        Phosphoenolpyruvate
+      </text>
+      <text x="132" y="19" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        carboxykinase (PEPCK)
+      </text>
+      <!-- Hollow downward arrow -->
+      <path d="M 122 34 L 142 34 L 142 44 L 152 44 L 132 58 L 112 44 L 122 44 Z" fill="#FFFFFF" stroke="#F97316" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- 3. PHOSPHOENOLPYRUVATE (2) -->
+  <g transform="translate(560, 330)">
+    <!-- Phosphate on Left -->
+    <circle cx="-54" cy="0" r="9" fill="#FEF08A" stroke="#EAB308" stroke-width="1.8" />
+    <text x="-54" y="4" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854D0E">P</text>
+    <line x1="-45" y1="0" x2="-32" y2="0" stroke="#06B6D4" stroke-width="3" />
+
+    <!-- 3 Teal Rings -->
+    <circle cx="-16" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    <circle cx="16" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+    <circle cx="48" cy="0" r="13" fill="none" stroke="#06B6D4" stroke-width="4.5" />
+
+    <text x="0" y="32" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0369A1" font-style="italic">
+      Phosphoenolpyruvate (2)
+    </text>
+
+    <!-- Downward orange arrow connecting to FBP -->
+    <line x1="0" y1="42" x2="0" y2="135" stroke="#F97316" stroke-width="3" marker-end="url(#arrowOrange)" />
+  </g>
+
+  <!-- ================= LEFT: REVERSIBLE GLYCOLYTIC INTERMEDIATES ================= -->
+  <g transform="translate(240, 320)">
+    <text x="0" y="0" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="15" font-weight="bold" fill="#1C1917" font-style="italic">
+      2-phosphoglycerate (2)
+    </text>
+
+    <!-- Reversible arrows -->
+    <g transform="translate(0, 10)">
+      <line x1="-5" y1="5" x2="-5" y2="35" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+      <line x1="5" y1="35" x2="5" y2="5" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+    </g>
+
+    <text x="0" y="65" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="15" font-weight="bold" fill="#1C1917" font-style="italic">
+      3-phosphoglycerate (2)
+    </text>
+
+    <!-- Reaction 2 ATP -> 2 ADP -->
+    <g transform="translate(0, 75)">
+      <line x1="-5" y1="5" x2="-5" y2="35" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+      <line x1="5" y1="35" x2="5" y2="5" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+
+      <!-- Curved ATP -> ADP arrow -->
+      <path d="M 12 10 Q 35 20 12 30" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+      <text x="40" y="15" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1C1917">2 ATP</text>
+      <text x="40" y="32" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1C1917">2 ADP</text>
+    </g>
+
+    <text x="0" y="130" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="15" font-weight="bold" fill="#1C1917" font-style="italic">
+      1,3-bisphosphoglycerate (2)
+    </text>
+
+    <!-- Reaction 2 NADH -> 2 NAD+ + Pi -->
+    <g transform="translate(0, 140)">
+      <line x1="-5" y1="5" x2="-5" y2="35" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+      <line x1="5" y1="35" x2="5" y2="5" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+
+      <!-- Curved NADH -> NAD+ arrow -->
+      <path d="M 12 10 Q 35 20 12 30" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+      <rect x="36" y="2" width="65" height="18" fill="#FEF08A" rx="2" opacity="0.8" />
+      <text x="38" y="15" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1C1917">2 NADH</text>
+      <text x="38" y="32" text-anchor="start" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1C1917">2 NAD<tspan baseline-shift="super" font-size="9">+</tspan></text>
+      <text x="-40" y="24" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">P<tspan baseline-shift="sub" font-size="10">i</tspan></text>
+      <path d="M -12 20 L -30 20" fill="none" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+    </g>
+
+    <text x="0" y="195" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="15" font-weight="bold" fill="#1C1917" font-style="italic">
+      Glyceraldehyde 3-phosphate (2)
+    </text>
+
+    <!-- Big Curly Bracket connecting to right pathway -->
+    <path d="M 130 -10 Q 155 90 170 90 Q 155 90 170 200" fill="none" stroke="#1C1917" stroke-width="2" />
+  </g>
+
+  <!-- ================= 4. FRUCTOSE-1,6-BISPHOSPHATE ================= -->
+  <g transform="translate(560, 520)">
+    <!-- Phosphate Left -->
+    <circle cx="-100" cy="0" r="9" fill="#FEF08A" stroke="#EAB308" stroke-width="1.8" />
+    <text x="-100" y="4" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854D0E">P</text>
+    <line x1="-91" y1="0" x2="-80" y2="0" stroke="#06B6D4" stroke-width="3" />
+
+    <!-- 6 Teal Rings -->
+    <circle cx="-65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+
+    <!-- Phosphate Right -->
+    <line x1="77" y1="0" x2="88" y2="0" stroke="#06B6D4" stroke-width="3" />
+    <circle cx="97" cy="0" r="9" fill="#FEF08A" stroke="#EAB308" stroke-width="1.8" />
+    <text x="97" y="4" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854D0E">P</text>
+
+    <text x="0" y="30" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0369A1" font-style="italic">
+      Fructose-1,6-bisphosphate
+    </text>
+
+    <!-- Reaction H2O -> Pi (Bypass 2) -->
+    <g transform="translate(-10, 42)">
+      <path d="M 0 5 Q -30 25 0 48" fill="none" stroke="#F97316" stroke-width="2.5" marker-end="url(#arrowOrange)" />
+      <text x="-15" y="10" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        H<tspan baseline-shift="sub" font-size="10">2</tspan>O
+      </text>
+      <text x="-15" y="48" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        P<tspan baseline-shift="sub" font-size="10">i</tspan>
+      </text>
+    </g>
+
+    <!-- Enzyme 3 Box: Fructose-1,6 bisphosphatase -->
+    <g transform="translate(150, 75)">
+      <!-- Orange numbered pill -->
+      <circle cx="0" cy="0" r="18" fill="#F97316" />
+      <text x="0" y="6" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">3.</text>
+
+      <!-- Boxed enzyme -->
+      <rect x="25" y="-18" width="180" height="46" fill="#FFFFFF" stroke="#F97316" stroke-width="2" rx="2" />
+      <text x="115" y="-1" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        Fructose-1,6
+      </text>
+      <text x="115" y="18" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        bisphosphatase
+      </text>
+      <!-- Hollow downward arrow -->
+      <path d="M 105 32 L 125 32 L 125 42 L 135 42 L 115 56 L 95 42 L 105 42 Z" fill="#FFFFFF" stroke="#F97316" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- ================= 5. FRUCTOSE-6-PHOSPHATE ================= -->
+  <g transform="translate(560, 640)">
+    <!-- 6 Teal Rings -->
+    <circle cx="-65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+
+    <!-- Phosphate Right -->
+    <line x1="77" y1="0" x2="88" y2="0" stroke="#06B6D4" stroke-width="3" />
+    <circle cx="97" cy="0" r="9" fill="#FEF08A" stroke="#EAB308" stroke-width="1.8" />
+    <text x="97" y="4" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854D0E">P</text>
+
+    <text x="0" y="30" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0369A1" font-style="italic">
+      Fructose-6-phosphate
+    </text>
+
+    <!-- Reversible arrow to G6P -->
+    <g transform="translate(0, 38)">
+      <line x1="-5" y1="5" x2="-5" y2="28" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+      <line x1="5" y1="28" x2="5" y2="5" stroke="#F97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+    </g>
+  </g>
+
+  <!-- ================= 6. GLUCOSE-6-PHOSPHATE ================= -->
+  <g transform="translate(560, 740)">
+    <!-- 6 Teal Rings -->
+    <circle cx="-65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+
+    <!-- Phosphate Right -->
+    <line x1="77" y1="0" x2="88" y2="0" stroke="#06B6D4" stroke-width="3" />
+    <circle cx="97" cy="0" r="9" fill="#FEF08A" stroke="#EAB308" stroke-width="1.8" />
+    <text x="97" y="4" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854D0E">P</text>
+
+    <text x="0" y="30" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0369A1" font-style="italic">
+      Glucose-6-phosphate
+    </text>
+
+    <!-- Reaction H2O -> Pi (Bypass 3) -->
+    <g transform="translate(0, 42)">
+      <path d="M 0 5 Q 30 25 0 48" fill="none" stroke="#F97316" stroke-width="2.5" marker-end="url(#arrowOrange)" />
+      <text x="-15" y="10" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        H<tspan baseline-shift="sub" font-size="10">2</tspan>O
+      </text>
+      <text x="-15" y="48" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+        P<tspan baseline-shift="sub" font-size="10">i</tspan>
+      </text>
+    </g>
+
+    <!-- Enzyme 4 Box: Glucose-6-phosphatase -->
+    <g transform="translate(130, 85)">
+      <!-- Orange numbered pill -->
+      <circle cx="0" cy="0" r="18" fill="#F97316" />
+      <text x="0" y="6" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">4.</text>
+
+      <!-- Boxed enzyme -->
+      <rect x="25" y="-18" width="225" height="36" fill="#FFFFFF" stroke="#F97316" stroke-width="2" rx="2" />
+      <text x="137" y="6" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#1C1917">
+        Glucose-6-phosphatase
+      </text>
+      <!-- Hollow downward arrow -->
+      <path d="M 127 22 L 147 22 L 147 32 L 157 32 L 137 46 L 117 32 L 127 32 Z" fill="#FFFFFF" stroke="#F97316" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- ================= 7. GLUCOSE ================= -->
+  <g transform="translate(560, 870)">
+    <!-- 6 Teal Rings -->
+    <circle cx="-65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="-13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="13" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="39" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+    <circle cx="65" cy="0" r="12" fill="none" stroke="#06B6D4" stroke-width="4" />
+
+    <text x="0" y="32" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="20" font-weight="bold" fill="#0369A1">
+      Glucose
+    </text>
+  </g>
+
+  <!-- ================= BOTTOM-LEFT: ER TRANSPORT PROTEIN CALLOUT ================= -->
+  <g transform="translate(180, 770)">
+    <!-- Dashed orange connecting lines to G-6-P and Glucose -->
+    <path d="M 110 -30 Q 260 -40 370 -30" fill="none" stroke="#F97316" stroke-width="2" stroke-dasharray="6 4" />
+    <path d="M 90 60 Q 240 75 370 100" fill="none" stroke="#F97316" stroke-width="2" stroke-dasharray="6 4" />
+
+    <!-- ER Membrane pink blob -->
+    <path d="M 30 -60 Q 110 -70 125 10 Q 135 80 40 90 Q 20 80 20 -50 Z" fill="#FCE7F3" stroke="#F472B6" stroke-width="1.5" opacity="0.8" />
+    <text x="75" y="70" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="16" font-weight="bold" fill="#9D174D">
+      ER
+    </text>
+
+    <!-- 3 Teal Oval Transport Proteins across membrane -->
+    <!-- Top: T1 (G6P transporter) -->
+    <rect x="0" y="-45" width="48" height="22" rx="11" fill="#A5F3FC" stroke="#0891B2" stroke-width="2" />
+    <!-- Middle: T2 (Glucose transporter) -->
+    <rect x="0" y="-10" width="48" height="22" rx="11" fill="#A5F3FC" stroke="#0891B2" stroke-width="2" />
+    <!-- Bottom: T3 (Pi transporter) -->
+    <rect x="0" y="25" width="48" height="22" rx="11" fill="#A5F3FC" stroke="#0891B2" stroke-width="2" />
+
+    <!-- Transport Protein label and pointer -->
+    <text x="-15" y="-70" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" font-style="italic" fill="#0E7490" text-decoration="underline">
+      Transport protein
+    </text>
+    <path d="M 15 -62 Q 24 -55 24 -46" fill="none" stroke="#0E7490" stroke-width="1.5" marker-end="url(#arrowDark)" />
+
+    <!-- Flow 1: G-6-P enters -->
+    <text x="-45" y="-30" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1C1917">
+      G-6-P
+    </text>
+    <path d="M -10 -34 L 10 -34" fill="none" stroke="#1C1917" stroke-width="1.5" marker-end="url(#arrowDark)" />
+    <text x="65" y="-30" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1C1917">
+      G-6-P
+    </text>
+
+    <!-- Inside ER Lumen: Phosphatase -->
+    <circle cx="-12" cy="5" r="9" fill="#F43F5E" stroke="#BE123C" stroke-width="2" />
+    <text x="-30" y="2" text-anchor="end" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" font-style="italic" text-decoration="underline" fill="#9F1239">
+      Phosphatase
+    </text>
+    <!-- Curved reaction in ER -->
+    <path d="M 68 -22 Q 85 -5 68 10" fill="none" stroke="#EC4899" stroke-width="2" marker-end="url(#arrowDark)" />
+    <text x="75" y="0" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="12" font-weight="bold" fill="#9F1239">
+      Glucose
+    </text>
+    <text x="75" y="15" text-anchor="middle" font-family="'Comic Sans MS', Arial, sans-serif" font-size="12" font-weight="bold" fill="#9F1239">
+      + P<tspan baseline-shift="sub" font-size="9">i</tspan>
+    </text>
+
+    <!-- Flow 2: Glucose exits -->
+    <path d="M 50 2 L 0 2" fill="none" stroke="#1C1917" stroke-width="1.5" marker-end="url(#arrowDark)" />
+    <text x="-45" y="6" font-family="'Comic Sans MS', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1C1917">
+      Glucose
+    </text>
+
+    <!-- Flow 3: Pi exits -->
+    <path d="M 50 36 Q 20 36 -10 48" fill="none" stroke="#1C1917" stroke-width="1.5" marker-end="url(#arrowDark)" />
+    <text x="-25" y="55" font-family="'Comic Sans MS', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1C1917">
+      P<tspan baseline-shift="sub" font-size="10">i</tspan>
+    </text>
+  </g>
+</svg>

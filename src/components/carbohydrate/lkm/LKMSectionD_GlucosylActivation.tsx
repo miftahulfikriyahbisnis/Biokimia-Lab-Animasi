@@ -16,6 +16,7 @@ import {
   BookOpen
 } from 'lucide-react';
 import { LKMProgressiveActivityLayout, InteractionPhase } from './interactive/LKMProgressiveActivityLayout';
+import { ReferenceAssetViewer } from './ReferenceAssetViewer';
 
 export const LKMSectionD_GlucosylActivation: React.FC<{
   onBack: () => void;
@@ -499,62 +500,185 @@ export const LKMSectionD_GlucosylActivation: React.FC<{
   // ==========================================
   const renderVisualStage3 = () => (
     <div className="w-full space-y-3">
+      {/* 1. Gambar Aset Referensi Pengguna untuk Glikogenin */}
+      {/* USER-PROVIDED REFERENCE ASSET — DO NOT REPLACE */}
+      <ReferenceAssetViewer
+        src="/images/carbohydrate/glikogenin-mekanisme.png"
+        alt="Mekanisme Inisiasi Primer Glikogenin - Aset Referensi Pengguna"
+        minHeight="140px"
+        aspectRatio="21/9"
+      />
+
       <div className="flex items-center justify-between pb-1">
         <span className="font-bold text-stone-900 text-xs">
-          Protein Inisiator: <strong className="text-amber-900">Glikogenin (Dimer 37 kDa)</strong>
+          Protein Inisiator: <strong className="text-amber-900">Glikogenin (Homodimer 37 kDa)</strong>
         </span>
         <span className="text-[10px] font-mono bg-amber-100 text-amber-950 px-2 py-0.5 rounded font-bold">
-          Residu Tyr-194 (-OH)
+          Residu Tyr-194 (-OH Fenolat)
         </span>
       </div>
 
-      <div className="bg-white rounded-2xl border border-stone-200 p-4 shadow-xs space-y-3">
-        {/* Rantai Primer Glikogenin Dinamis */}
-        <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 flex flex-col items-center justify-center min-h-[160px]">
-          <div className="flex items-center gap-1 overflow-x-auto max-w-full py-2">
-            {/* Protein Glikogenin Inti */}
-            <div className="px-3 py-4 rounded-xl bg-purple-100 border-2 border-purple-500 text-purple-950 text-center font-bold text-xs shrink-0 shadow-xs">
-              <span className="block text-[10px] text-purple-700">Protein Inti</span>
-              Glikogenin
-              <span className="block text-[9px] text-purple-600 font-mono mt-0.5">Tyr-194</span>
-            </div>
-
-            <span className="text-stone-400 font-bold">—</span>
-
-            {/* Rantai Glukosa 1 sampai 8 */}
-            {Array.from({ length: 8 }).map((_, i) => {
-              const isAdded = i < primerCount;
-              return (
-                <div
-                  key={i}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold border transition-all shrink-0 ${
-                    isAdded
-                      ? 'bg-amber-400 text-stone-950 border-amber-600 shadow-2xs scale-105'
-                      : 'bg-stone-100 text-stone-300 border-dashed border-stone-300'
-                  }`}
-                >
-                  {isAdded ? `G${i + 1}` : `${i + 1}`}
-                </div>
-              );
-            })}
+      <div className="bg-white rounded-2xl border border-stone-200 p-3 sm:p-4 shadow-xs space-y-3">
+        
+        {/* Persamaan Reaksi Kimia Presisi Sesuai Panduan */}
+        <div className="p-2.5 bg-amber-50/80 rounded-xl border border-amber-200 text-[11px] text-amber-950 space-y-1">
+          <div className="font-mono font-bold text-xs text-amber-900">
+            Reaksi 1: G1P + UTP ⎯⎯(UDP-Glc Pirofosforilase)⎯⎯→ UDP-Glukosa + PPi
           </div>
-
-          <div className="flex items-center justify-between w-full text-xs pt-2 border-t border-stone-200/80">
-            <span className="text-stone-600 font-semibold">Panjang Primer:</span>
-            <span className="font-mono font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded">
-              {primerCount}/8 Residu Glukosil
-            </span>
+          <div className="font-mono font-bold text-xs text-emerald-900">
+            Reaksi 2: UDP-Glukosa + Glikogenin-Tyr-OH → Glikogenin-Tyr-O-Glukosa + UDP
           </div>
+        </div>
+
+        {/* 2. Diagram Kimia SVG Presisi: Glikogenin, Tirosin, Gugus -OH, C1 Glukosa, dan Pelepasan UDP */}
+        <div className="p-2 bg-[#FAF8F5] rounded-xl border border-stone-200 overflow-x-auto">
+          <svg viewBox="0 0 540 210" className="w-full min-w-[500px] h-auto">
+            <defs>
+              <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M 0 0 L 8 4 L 0 8 Z" fill="#D97706" />
+              </marker>
+            </defs>
+
+            {/* Protein Glikogenin (Homodimer A & B) */}
+            <g transform="translate(15, 30)">
+              {/* Monomer A */}
+              <rect x="0" y="10" width="70" height="120" rx="16" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+              <text x="35" y="40" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#5B21B6">Subunit A</text>
+              <text x="35" y="55" textAnchor="middle" fontSize="8" fill="#6D28D9">37 kDa</text>
+
+              {/* Monomer B */}
+              <rect x="25" y="40" width="70" height="110" rx="16" fill="#DDD6FE" stroke="#6D28D9" strokeWidth="1.5" opacity="0.9" />
+              <text x="60" y="80" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#4C1D95">Subunit B</text>
+              <text x="60" y="95" textAnchor="middle" fontSize="8" fill="#5B21B6">Active Site</text>
+
+              <text x="45" y="165" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="#4C1D95">
+                Glikogenin Inti
+              </text>
+            </g>
+
+            {/* Residu Tirosin-194 (Tyr-194) dengan Cincin Fenil Asetat & Gugus Hidroksil */}
+            <g transform="translate(115, 75)">
+              {/* Rantai Peptida Utama */}
+              <line x1="0" y1="20" x2="25" y2="20" stroke="#7C3AED" strokeWidth="2.5" />
+              <text x="12" y="12" textAnchor="middle" fontSize="7" fill="#6D28D9">Ikatan Peptida</text>
+
+              {/* Methylene spacer -CH2- */}
+              <line x1="25" y1="20" x2="45" y2="20" stroke="#44403C" strokeWidth="2" />
+              <text x="35" y="32" textAnchor="middle" fontSize="7.5" fontStyle="italic" fill="#57534E">-CH₂-</text>
+
+              {/* Cincin Fenil Tirosin (Benzena) */}
+              <polygon
+                points="45,20 58,5 82,5 95,20 82,35 58,35"
+                fill="#FEF3C7"
+                stroke="#D97706"
+                strokeWidth="2"
+              />
+              <circle cx="70" cy="20" r="8" fill="none" stroke="#F59E0B" strokeWidth="1" strokeDasharray="2 2" />
+              <text x="70" y="23" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#92400E">Tyr-194</text>
+
+              {/* Ikatan ke Oksigen Fenolat / Hidroksil (-O-) */}
+              <line x1="95" y1="20" x2="115" y2="20" stroke="#B91C1C" strokeWidth="2.5" />
+              
+              {/* Atom Oksigen Fenolat Tirosin */}
+              <circle cx="120" cy="20" r="10" fill="#EF4444" stroke="#991B1B" strokeWidth="1.5" />
+              <text x="120" y="24" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#FFFFFF">
+                {primerCount > 0 ? '—O—' : '—OH'}
+              </text>
+              <text x="120" y="42" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill="#B91C1C">
+                {primerCount > 0 ? 'Ikatan O-Glikosidik' : 'Gugus Hidroksil Fenolat'}
+              </text>
+            </g>
+
+            {/* Rantai Primer Glukosa 1 sampai 8 (Tumbuh Dinamis dari C1 ke O Tirosin) */}
+            <g transform="translate(245, 75)">
+              {Array.from({ length: 8 }).map((_, i) => {
+                const isAdded = i < primerCount;
+                const xPos = i * 35;
+                return (
+                  <g key={i} transform={`translate(${xPos}, 0)`}>
+                    {/* Ikatan antar residu (α1-4) */}
+                    {i > 0 && (
+                      <line 
+                        x1="-10" 
+                        y1="20" 
+                        x2="5" 
+                        y2="20" 
+                        stroke={isAdded ? '#D97706' : '#E7E5E4'} 
+                        strokeWidth={isAdded ? 2.5 : 1.5} 
+                      />
+                    )}
+                    
+                    {/* Residu Glukosil Haworth Mini / Bulat Berlabel C1 & C4 */}
+                    <circle
+                      cx="18"
+                      cy="20"
+                      r="14"
+                      fill={isAdded ? '#FBBF24' : '#F5F5F4'}
+                      stroke={isAdded ? '#B45309' : '#D6D3D1'}
+                      strokeWidth={isAdded ? 2 : 1.5}
+                      strokeDasharray={isAdded ? undefined : '3 2'}
+                    />
+                    <text
+                      x="18"
+                      y="23"
+                      textAnchor="middle"
+                      fontSize="9"
+                      fontWeight="bold"
+                      fill={isAdded ? '#78350F' : '#A8A29E'}
+                    >
+                      G{i + 1}
+                    </text>
+                    
+                    {/* Label Atom C1 dan C4 untuk Glukosil Aktif */}
+                    {isAdded && (
+                      <>
+                        <text x="7" y="10" fontSize="6.5" fontWeight="bold" fill="#92400E">C1</text>
+                        <text x="26" y="10" fontSize="6.5" fontWeight="bold" fill="#92400E">C4</text>
+                      </>
+                    )}
+                  </g>
+                );
+              })}
+            </g>
+
+            {/* Molekul UDP-Glukosa Masuk & Pelepasan Molekul UDP Bebas */}
+            <g transform="translate(270, 145)">
+              <rect x="0" y="0" width="130" height="42" rx="8" fill="#DBEAFE" stroke="#2563EB" strokeWidth="1.5" />
+              <text x="65" y="16" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#1E40AF">
+                Donor: UDP-Glukosa
+              </text>
+              <text x="65" y="28" textAnchor="middle" fontSize="7.5" fill="#1D4ED8">
+                Glukosil-℗-℗-Uridin
+              </text>
+
+              {/* Panah Pelepasan UDP */}
+              <path d="M 130 20 Q 160 20 180 35" fill="none" stroke="#D97706" strokeWidth="2" markerEnd="url(#arrowHead)" />
+              
+              {/* Produk Lepas: UDP */}
+              <g transform="translate(185, 10)">
+                <rect x="0" y="0" width="70" height="35" rx="6" fill="#FEE2E2" stroke="#DC2626" strokeWidth="1" />
+                <text x="35" y="16" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="#991B1B">UDP Bebas</text>
+                <text x="35" y="28" textAnchor="middle" fontSize="7" fill="#B91C1C">Dilepaskan</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div className="flex items-center justify-between w-full text-xs pt-1 px-1">
+          <span className="text-stone-600 font-semibold">Status Primer Autokatalitik:</span>
+          <span className="font-mono font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded">
+            {primerCount}/8 Residu Glukosil Terpasang
+          </span>
         </div>
 
         {/* Notifikasi Siap Diambil Alih oleh Glikogen Sintase */}
         {primerCount === 8 ? (
           <div className="p-2.5 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-950 font-bold text-center text-xs shadow-2xs">
-            “Primer siap diperpanjang oleh glikogen sintase.”
+            “Primer 8 residu lengkap! Glikogenin melepaskan kendali katalitik; elongasi rantai panjang diambil alih oleh enzim Glikogen Sintase.”
           </div>
         ) : (
           <p className="text-[11px] text-stone-500 text-center">
-            Glikogenin mengkatalisis penambahan autokatalitik hingga terbentuk rantai oligomer 8 residu.
+            Glikogenin mengkatalisis penambahan autokatalitik secara bertahap hingga terbentuk rantai primer oligoglukosil 8 residu.
           </p>
         )}
       </div>

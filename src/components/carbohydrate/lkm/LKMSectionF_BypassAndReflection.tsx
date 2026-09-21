@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { GroupPredictionState } from './LKMSectionA_Prompt';
 import { LKMProgressiveActivityLayout, InteractionPhase } from './interactive/LKMProgressiveActivityLayout';
+import { ReferenceAssetViewer } from './ReferenceAssetViewer';
 
 interface LKMSectionFBypassProps {
   predictionData: GroupPredictionState;
@@ -87,12 +88,21 @@ export const LKMSectionF_BypassAndReflection: React.FC<LKMSectionFBypassProps> =
   const renderVisualContent = () => {
     return (
       <div className="w-full space-y-3">
+        {/* 1. Gambar Aset Referensi Pengguna untuk Tiga Bypass Glukoneogenesis */}
+        {/* USER-PROVIDED REFERENCE ASSET — DO NOT REPLACE */}
+        <ReferenceAssetViewer
+          src="/images/carbohydrate/tiga-bypass-glukoneogenesis.png"
+          alt="Tiga Bypass Glukoneogenesis - Aset Referensi Pengguna"
+          minHeight="140px"
+          aspectRatio="21/9"
+        />
+
         {/* Selector 3 Bypass Buttons */}
         <div className="grid grid-cols-3 gap-2">
           {[
-            { id: 1 as BypassId, title: 'Bypass 1', desc: 'Piruvat → PEP' },
-            { id: 2 as BypassId, title: 'Bypass 2', desc: 'FBP → F6P' },
-            { id: 3 as BypassId, title: 'Bypass 3', desc: 'G6P → Glukosa' }
+            { id: 1 as BypassId, title: 'Bypass 1', desc: 'Piruvat → PEP', comp: 'Mitokondria & Sitosol' },
+            { id: 2 as BypassId, title: 'Bypass 2', desc: 'FBP → F6P', comp: 'Sitosol' },
+            { id: 3 as BypassId, title: 'Bypass 3', desc: 'G6P → Glukosa', comp: 'Lumen Retikulum Endoplasma' }
           ].map(b => (
             <button
               key={b.id}
@@ -100,18 +110,19 @@ export const LKMSectionF_BypassAndReflection: React.FC<LKMSectionFBypassProps> =
               onClick={() => handleSelectBypass(b.id)}
               className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                 activeBypass === b.id
-                  ? 'bg-stone-900 text-amber-300 border-stone-800 shadow-2xs font-bold ring-1 ring-amber-400'
+                  ? 'bg-stone-900 text-amber-300 border-stone-800 shadow-2xs font-bold ring-2 ring-amber-400'
                   : 'bg-white text-stone-700 hover:bg-stone-50 border-stone-200'
               }`}
             >
               <div className="text-xs font-bold">{b.title}</div>
-              <div className="text-[10px] opacity-80">{b.desc}</div>
+              <div className="text-[10px] opacity-90 font-medium">{b.desc}</div>
+              <div className="text-[8.5px] text-amber-500 font-mono mt-0.5">{b.comp}</div>
             </button>
           ))}
         </div>
 
         {/* Perbandingan Kolom Berdampingan: Glikolisis (Merah Ke Bawah) vs Glukoneogenesis (Biru/Hijau Ke Atas) */}
-        <div className="bg-white rounded-2xl border border-stone-200 p-4 shadow-xs">
+        <div className="bg-white rounded-2xl border border-stone-200 p-3 sm:p-4 shadow-xs">
           <div className="grid grid-cols-2 gap-3 text-xs mb-3 pb-2 border-b border-stone-200">
             {/* Header Glikolisis */}
             <div className="text-center font-bold text-red-700 flex items-center justify-center gap-1">
@@ -125,15 +136,55 @@ export const LKMSectionF_BypassAndReflection: React.FC<LKMSectionFBypassProps> =
             </div>
           </div>
 
-          {/* DETAIL BYPASS 1: Piruvat -> Oksaloasetat -> PEP */}
+          {/* DETAIL BYPASS 1: Piruvat -> Oksaloasetat -> PEP (ZOOM KOMPARTEMEN MITOKONDRIA & SITOSOL) */}
           {activeBypass === 1 && (
             <div className="space-y-3 animate-fadeIn">
-              <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 text-xs">
-                <div className="font-bold text-stone-900 mb-1 flex items-center justify-between">
-                  <span>Bypass 1: Pembalikan Reaksi Piruvat Kinase</span>
-                  <span className="font-mono text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">
-                    Investasi: 1 ATP + 1 GTP
+              <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 text-xs space-y-3">
+                <div className="font-bold text-stone-900 flex items-center justify-between">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping inline-block" />
+                    <strong>Zoom Kompartemen: Matriks Mitokondria & Sitosol</strong>
                   </span>
+                  <span className="font-mono text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">
+                    Stoikiometri: 1 ATP + 1 GTP (per Piruvat)
+                  </span>
+                </div>
+
+                {/* Diagram Kompartemen Seluler Bypass 1 */}
+                <div className="p-2.5 bg-white rounded-xl border border-stone-200 text-[11px] space-y-2">
+                  {/* Matriks Mitokondria */}
+                  <div className="p-2 rounded-lg bg-purple-50 border border-purple-200">
+                    <span className="text-[10px] font-bold text-purple-900 block font-mono">
+                      [1] Matriks Mitokondria:
+                    </span>
+                    <div className="font-mono text-[10.5px] text-purple-950 font-bold mt-0.5">
+                      Piruvat + CO₂ + ATP ⎯⎯(Piruvat Karboksilase + Biotin)⎯⎯→ Oksaloasetat + ADP + Pi
+                    </div>
+                    <div className="text-[10px] text-purple-700 mt-1">
+                      <em>Catatan:</em> Oksaloasetat tidak dapat menembus membran mitokondria dalam, sehingga direduksi menjadi <strong>Malat</strong> (oleh Malat Dehidrogenase mitokondria + NADH).
+                    </div>
+                  </div>
+
+                  {/* Shuttle Malat Melintasi Membran */}
+                  <div className="flex items-center justify-center gap-2 text-stone-500 text-[10px] font-mono py-1">
+                    <span>Membran Mitokondria Dalam</span>
+                    <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-900 font-bold">
+                      ⇄ Transporter Malat-α-Ketoglutarat
+                    </span>
+                  </div>
+
+                  {/* Sitosol */}
+                  <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-200">
+                    <span className="text-[10px] font-bold text-emerald-900 block font-mono">
+                      [2] Sitosol:
+                    </span>
+                    <div className="font-mono text-[10.5px] text-emerald-950 font-bold mt-0.5">
+                      Malat + NAD⁺ ⎯⎯(MDH Sitosol)⎯⎯→ Oksaloasetat + NADH + H⁺
+                    </div>
+                    <div className="font-mono text-[10.5px] text-emerald-950 font-bold mt-1">
+                      Oksaloasetat + GTP ⎯⎯(PEPCK Sitosol)⎯⎯→ Fosfoenolpiruvat (PEP) + GDP + CO₂
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-3 mt-2">
@@ -143,43 +194,48 @@ export const LKMSectionF_BypassAndReflection: React.FC<LKMSectionFBypassProps> =
                     <div className="font-mono text-[10px] mt-1 text-red-900">PEP + ADP → Piruvat + ATP</div>
                     <div className="text-[10px] text-red-800 mt-1">
                       Enzim: Piruvat Kinase<br />
-                      ΔG°′ = -31.4 kJ/mol (Sangat ireversibel)
+                      ΔG°′ = -31.4 kJ/mol (Ireversibel)
                     </div>
                   </div>
 
                   {/* Sisi Glukoneogenesis */}
                   <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-[11px] text-emerald-950">
-                    <strong>Glukoneogenesis (2 Langkah Pintas):</strong>
+                    <strong>Glukoneogenesis (Bypass 1 Pengganti):</strong>
                     <div className="font-mono text-[10px] mt-1 text-emerald-900">
-                      1. Piruvat + CO₂ + ATP → Oksaloasetat + ADP + Pi<br />
-                      2. Oksaloasetat + GTP → PEP + GDP + CO₂
+                      Piruvat + ATP + GTP → PEP + ADP + GDP + Pi
                     </div>
                     <div className="text-[10px] text-emerald-800 mt-1">
-                      Enzim: <strong>Piruvat Karboksilase</strong> (Matriks Mitokondria) & <strong>PEPCK</strong> (Sitosol)
+                      Enzim: Piruvat Karboksilase & PEPCK<br />
+                      Memerlukan investasi 2 ikatan fosfat berenergi tinggi!
                     </div>
                   </div>
-                </div>
-
-                {/* Shuttle Malat Detail */}
-                <div className="mt-2.5 p-2 bg-blue-50/80 rounded-lg border border-blue-200 text-[11px] text-blue-950 space-y-1">
-                  <strong>Kompartemen & Shuttle Malat:</strong>
-                  <p className="text-[10px] leading-relaxed">
-                    Membran mitokondria bagian dalam tidak memiliki transporter untuk Oksaloasetat. Maka, Oksaloasetat direduksi menjadi <strong>Malat</strong> oleh Malat Dehidrogenase mitokondria, keluar melintasi transporter malat ke sitosol, lalu dioksidasi kembali menjadi Oksaloasetat sebelum diubah menjadi PEP oleh PEPCK sitosol.
-                  </p>
                 </div>
               </div>
             </div>
           )}
 
-          {/* DETAIL BYPASS 2: F1,6BP -> F6P */}
+          {/* DETAIL BYPASS 2: F1,6BP -> F6P (ZOOM KOMPARTEMEN SITOSOL) */}
           {activeBypass === 2 && (
             <div className="space-y-3 animate-fadeIn">
-              <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 text-xs">
-                <div className="font-bold text-stone-900 mb-1 flex items-center justify-between">
-                  <span>Bypass 2: Pembalikan Reaksi Fosfofruktokinase-1 (PFK-1)</span>
-                  <span className="font-mono text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">
-                    Pelepasan Pi (Hidrolisis)
+              <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 text-xs space-y-3">
+                <div className="font-bold text-stone-900 flex items-center justify-between">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block" />
+                    <strong>Zoom Kompartemen: Sitosol (Hidrolisis F1,6BP)</strong>
                   </span>
+                  <span className="font-mono text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">
+                    Pelepasan Pi Bebas (Tanpa Sintesis ATP)
+                  </span>
+                </div>
+
+                {/* Persamaan Reaksi Lengkap */}
+                <div className="p-2.5 bg-white rounded-xl border border-stone-200 text-[11px] space-y-1.5">
+                  <div className="font-mono font-bold text-xs text-emerald-950">
+                    Reaksi Bypass 2: Fruktosa-1,6-bisfosfat + H₂O ⎯⎯(FBPase-1)⎯⎯→ Fruktosa-6-fosfat + Pi
+                  </div>
+                  <p className="text-[10px] text-stone-600 leading-relaxed">
+                    Reaksi ini adalah hidrolisis fosfat ester pada atom C1 secara sederhana yang melepaskan fosfat anorganik bebas (Pi), <strong>BUKAN transfer fosfat ke ADP menjadi ATP</strong>. Reaksi ini sangat eksergonik (ΔG°′ = -16.3 kJ/mol) dan diregulasi secara allosterik oleh F-2,6-BP dan AMP.
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 mt-2">
@@ -188,18 +244,18 @@ export const LKMSectionF_BypassAndReflection: React.FC<LKMSectionFBypassProps> =
                     <div className="font-mono text-[10px] mt-1 text-red-900">F6P + ATP → F-1,6-BP + ADP</div>
                     <div className="text-[10px] text-red-800 mt-1">
                       Enzim: PFK-1 (ΔG°′ = -14.2 kJ/mol)<br />
-                      Dihambat oleh ATP & sitrat, dipacu oleh F-2,6-BP.
+                      Mengonsumsi 1 molekul ATP.
                     </div>
                   </div>
 
                   <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-[11px] text-emerald-950">
-                    <strong>Glukoneogenesis (Bypass 2):</strong>
+                    <strong>Glukoneogenesis (Bypass 2 Pengganti):</strong>
                     <div className="font-mono text-[10px] mt-1 text-emerald-900">
                       F-1,6-BP + H₂O → F6P + Pi
                     </div>
                     <div className="text-[10px] text-emerald-800 mt-1">
                       Enzim: <strong>Fruktosa-1,6-bisfosfatase-1 (FBPase-1)</strong><br />
-                      Reaksi hidrolisis sederhana tanpa menghasilkan ATP.
+                      Hidrolisis murni yang melepaskan Pi anorganik.
                     </div>
                   </div>
                 </div>
@@ -207,15 +263,40 @@ export const LKMSectionF_BypassAndReflection: React.FC<LKMSectionFBypassProps> =
             </div>
           )}
 
-          {/* DETAIL BYPASS 3: G6P -> Glukosa */}
+          {/* DETAIL BYPASS 3: G6P -> Glukosa (ZOOM KOMPARTEMEN LUMEN RETIKULUM ENDOPLASMA) */}
           {activeBypass === 3 && (
             <div className="space-y-3 animate-fadeIn">
-              <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 text-xs">
-                <div className="font-bold text-stone-900 mb-1 flex items-center justify-between">
-                  <span>Bypass 3: Pembalikan Reaksi Heksokinase / Glukokinase</span>
-                  <span className="font-mono text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">
-                    Lumen Retikulum Endoplasma
+              <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 text-xs space-y-3">
+                <div className="font-bold text-stone-900 flex items-center justify-between">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping inline-block" />
+                    <strong>Zoom Kompartemen: Lumen Retikulum Endoplasma Hepatosit</strong>
                   </span>
+                  <span className="font-mono text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">
+                    Enzim Glukosa-6-Fosfatase
+                  </span>
+                </div>
+
+                {/* Alur Kompartemen RE */}
+                <div className="p-2.5 bg-white rounded-xl border border-stone-200 text-[11px] space-y-2">
+                  <div className="grid grid-cols-3 gap-2 text-center text-[10px]">
+                    <div className="p-1.5 bg-blue-50 rounded-lg border border-blue-200">
+                      <span className="font-bold text-blue-900 block">1. Transporter T1</span>
+                      <span className="text-blue-700">G6P masuk ke Lumen RE</span>
+                    </div>
+                    <div className="p-1.5 bg-emerald-50 rounded-lg border border-emerald-200">
+                      <span className="font-bold text-emerald-900 block">2. G6Pase Lumen RE</span>
+                      <span className="text-emerald-700">G6P + H₂O → Glukosa + Pi</span>
+                    </div>
+                    <div className="p-1.5 bg-amber-50 rounded-lg border border-amber-200">
+                      <span className="font-bold text-amber-900 block">3. Transporter T2/T3</span>
+                      <span className="text-amber-700">Ekspor Glukosa & Pi ke Sitosol</span>
+                    </div>
+                  </div>
+
+                  <div className="text-[10px] text-stone-600 bg-stone-50 p-2 rounded-lg border border-stone-200">
+                    <strong>Penting untuk Homeostasis:</strong> Enzim Glukosa-6-Fosfatase hanya diekspresikan di hepar dan korteks ginjal (tidak ada di otot rangka!). Glukosa bebas yang terbentuk ditranslokasikan ke sitosol lalu diekspor ke pembuluh darah melalui transporter <strong>GLUT2</strong> untuk mempertahankan glukosa darah saat puasa.
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 mt-2">
@@ -224,18 +305,18 @@ export const LKMSectionF_BypassAndReflection: React.FC<LKMSectionFBypassProps> =
                     <div className="font-mono text-[10px] mt-1 text-red-900">Glukosa + ATP → G6P + ADP</div>
                     <div className="text-[10px] text-red-800 mt-1">
                       Enzim: Heksokinase/Glukokinase<br />
-                      ΔG°′ = -16.7 kJ/mol
+                      Fosforilasi yang menjebak glukosa di dalam sel.
                     </div>
                   </div>
 
                   <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-[11px] text-emerald-950">
-                    <strong>Glukoneogenesis (Bypass 3):</strong>
+                    <strong>Glukoneogenesis (Bypass 3 Pengganti):</strong>
                     <div className="font-mono text-[10px] mt-1 text-emerald-900">
                       G6P + H₂O → D-Glukosa Bebas + Pi
                     </div>
                     <div className="text-[10px] text-emerald-800 mt-1">
                       Enzim: <strong>Glukosa-6-fosfatase</strong><br />
-                      Tertanam di lumen membran retikulum endoplasma hepar.
+                      Defosforilasi hidrolitik di lumen retikulum endoplasma.
                     </div>
                   </div>
                 </div>

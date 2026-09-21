@@ -18,6 +18,7 @@ import {
   Info
 } from 'lucide-react';
 import { LKMProgressiveActivityLayout, InteractionPhase } from './interactive/LKMProgressiveActivityLayout';
+import { ReferenceAssetViewer } from './ReferenceAssetViewer';
 
 export const LKMSectionE_GlycogenBranching: React.FC<{
   onBack: () => void;
@@ -35,6 +36,8 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
   // --- SUB-TAB 2: PERCABANGAN ALFA-1,6 ---
   const [phase16, setPhase16] = useState<InteractionPhase>('PREDICTION');
   const [isSegmentCut, setIsSegmentCut] = useState<boolean>(false);
+  const [selectedBranchC1, setSelectedBranchC1] = useState<boolean>(false);
+  const [selectedTargetC6, setSelectedTargetC6] = useState<boolean>(false);
   const [isBranchAttached, setIsBranchAttached] = useState<boolean>(false);
   
   // Analisis Pertanyaan Bagian E (2 Pertanyaan Wajib)
@@ -80,6 +83,8 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
     setIsAlpha14Formed(false);
     setIsUDPReleased(false);
     setIsSegmentCut(false);
+    setSelectedBranchC1(false);
+    setSelectedTargetC6(false);
     setIsBranchAttached(false);
     setAnalysisQ1(null);
     setAnalysisQ2(null);
@@ -91,62 +96,77 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
   // VISUAL CONTENT TAHAP 1 (ALFA-1,4)
   const renderVisualAlpha14 = () => (
     <div className="w-full space-y-3">
+      {/* 1. Gambar Aset Referensi Pengguna untuk Percabangan Glikogen */}
+      {/* USER-PROVIDED REFERENCE ASSET — DO NOT REPLACE */}
+      <ReferenceAssetViewer
+        src="/images/carbohydrate/percabangan-glikogen.png"
+        alt="Percabangan Glikogen Alfa-1,4 dan Alfa-1,6 - Aset Referensi Pengguna"
+        minHeight="140px"
+        aspectRatio="21/9"
+      />
+
       <div className="flex items-center justify-between pb-1">
         <span className="font-bold text-stone-900 text-xs">
           Enzim: <strong className="text-emerald-800">Glikogen Sintase</strong>
         </span>
         <span className="text-[10px] font-mono bg-amber-100 text-amber-950 px-2 py-0.5 rounded font-bold">
-          Ikatan α(1→4) Glikosidik
+          Ikatan α(1→4) Glikosidik Linear
         </span>
       </div>
 
-      <div className="bg-white rounded-2xl border border-stone-200 p-4 shadow-xs space-y-3">
+      <div className="bg-white rounded-2xl border border-stone-200 p-3 sm:p-4 shadow-xs space-y-3">
         {/* Diagram Pemanjangan Rantai */}
         <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 flex flex-col items-center justify-center min-h-[200px]">
-          <svg viewBox="0 0 380 180" className="w-full max-w-md h-auto">
+          <svg viewBox="0 0 400 180" className="w-full max-w-md h-auto">
             {/* Ujung Non-Pereduksi Rantai Glikogen (Kiri) */}
-            <g transform="translate(40, 50)">
-              <rect x="0" y="0" width="130" height="70" rx="14" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
-              <text x="65" y="25" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#78350F">
+            <g transform="translate(30, 45)">
+              <rect x="0" y="0" width="140" height="75" rx="14" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
+              <text x="70" y="22" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#78350F">
                 Rantai Glikogen
               </text>
-              <text x="65" y="42" textAnchor="middle" fontSize="8" fill="#92400E">
+              <text x="70" y="37" textAnchor="middle" fontSize="8" fill="#92400E">
                 Ujung Non-Pereduksi
+              </text>
+              <text x="70" y="66" textAnchor="middle" fontSize="7" fill="#B45309">
+                (Gugus C4-OH Bebas)
               </text>
 
               {/* Atom C4 Akseptor */}
               <g 
-                onClick={() => setSelectedAcceptorC4(true)} 
+                onClick={() => setSelectedAcceptorC4(!selectedAcceptorC4)} 
                 className="cursor-pointer"
               >
                 <circle 
-                  cx="120" 
+                  cx="130" 
                   cy="45" 
                   r="14" 
                   fill={selectedAcceptorC4 ? '#F59E0B' : '#FFFFFF'} 
                   stroke="#B45309" 
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   className={selectedAcceptorC4 ? 'animate-pulse' : ''}
                 />
-                <text x="120" y="48" textAnchor="middle" fontSize="8" fontWeight="bold" fill={selectedAcceptorC4 ? '#FFFFFF' : '#78350F'}>
-                  C4-OH
+                <text x="130" y="48" textAnchor="middle" fontSize="8" fontWeight="bold" fill={selectedAcceptorC4 ? '#FFFFFF' : '#78350F'}>
+                  C4
                 </text>
               </g>
             </g>
 
             {/* Donor Glukosil: UDP-Glukosa (Kanan) */}
-            <g transform="translate(220, 50)">
-              <rect x="0" y="0" width="120" height="70" rx="14" fill="#EFF6FF" stroke="#3B82F6" strokeWidth="2" />
-              <text x="60" y="25" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#1E3A8A">
+            <g transform="translate(230, 45)">
+              <rect x="0" y="0" width="140" height="75" rx="14" fill="#EFF6FF" stroke="#3B82F6" strokeWidth="2" />
+              <text x="70" y="22" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#1E3A8A">
                 UDP-Glukosa
               </text>
-              <text x="60" y="42" textAnchor="middle" fontSize="8" fill="#1D4ED8">
-                {isUDPReleased ? 'UDP Terlepas' : 'Donor Glukosil Aktif'}
+              <text x="70" y="37" textAnchor="middle" fontSize="8" fill="#1D4ED8">
+                {isUDPReleased ? 'UDP Tereliminasi' : 'Donor Glukosil Teraktivasi'}
+              </text>
+              <text x="70" y="66" textAnchor="middle" fontSize="7" fill="#2563EB">
+                (Gugus C1 Anomerik Aktif)
               </text>
 
               {/* Atom C1 Donor */}
               <g 
-                onClick={() => setSelectedDonorC1(true)} 
+                onClick={() => setSelectedDonorC1(!selectedDonorC1)} 
                 className="cursor-pointer"
               >
                 <circle 
@@ -155,7 +175,7 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
                   r="14" 
                   fill={selectedDonorC1 ? '#F59E0B' : '#FFFFFF'} 
                   stroke="#B45309" 
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   className={selectedDonorC1 ? 'animate-pulse' : ''}
                 />
                 <text x="10" y="48" textAnchor="middle" fontSize="8" fontWeight="bold" fill={selectedDonorC1 ? '#FFFFFF' : '#78350F'}>
@@ -167,24 +187,24 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
             {/* Ikatan Glikosidik Alfa-1,4 yang Terbentuk */}
             {isAlpha14Formed ? (
               <g>
-                <path d="M 160 95 Q 190 70 230 95" fill="none" stroke="#D97706" strokeWidth="4" />
-                <circle cx="195" cy="80" r="10" fill="#EF4444" />
-                <text x="195" y="83" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#FFFFFF">O</text>
-                <text x="195" y="115" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#B45309">
-                  Ikatan α(1→4)
+                <path d="M 170 90 Q 200 65 230 90" fill="none" stroke="#D97706" strokeWidth="4" />
+                <circle cx="200" cy="75" r="10" fill="#EF4444" stroke="#B91C1C" strokeWidth="1.5" />
+                <text x="200" y="78" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill="#FFFFFF">O</text>
+                <text x="200" y="115" textAnchor="middle" fontSize="9.5" fontWeight="bold" fill="#B45309">
+                  Ikatan α(1→4) Terbentuk!
                 </text>
               </g>
             ) : (
-              <text x="195" y="95" textAnchor="middle" fontSize="9" fill="#9CA3AF" stroke="none">
-                {selectedDonorC1 && selectedAcceptorC4 ? 'Klik Sambungkan' : 'Pilih C1 & C4'}
+              <text x="200" y="92" textAnchor="middle" fontSize="9" fill="#78716C" stroke="none">
+                {selectedDonorC1 && selectedAcceptorC4 ? 'Siap Kondensasi' : 'Pilih Atom C1 & C4'}
               </text>
             )}
 
             {/* Pelepasan Molekul UDP */}
             {isUDPReleased && (
-              <g transform="translate(290, 130)" className="animate-bounce">
-                <rect x="0" y="0" width="70" height="24" rx="8" fill="#DBEAFE" stroke="#2563EB" />
-                <text x="35" y="16" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#1E40AF">
+              <g transform="translate(300, 130)" className="animate-bounce">
+                <rect x="0" y="0" width="80" height="26" rx="8" fill="#DBEAFE" stroke="#2563EB" strokeWidth="1.5" />
+                <text x="40" y="17" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#1E40AF">
                   + UDP Bebas
                 </text>
               </g>
@@ -192,7 +212,7 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
           </svg>
 
           <div className="text-[11px] text-stone-600 text-center mt-1">
-            Ujung Non-Pereduksi (C4-OH bebas) menerima residu C1 glukosil baru dengan eliminasi molekul UDP.
+            Ujung Non-Pereduksi (C4-OH) bertindak sebagai nukleofil yang menyerang karbon C1 dari donor UDP-glukosa.
           </div>
         </div>
 
@@ -210,7 +230,7 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
 
         {isAlpha14Formed && (
           <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-950 font-bold text-center">
-            ✓ Rantai linear berhasil diperpanjang oleh Glikogen Sintase!
+            ✓ Rantai linear berhasil diperpanjang oleh Glikogen Sintase melalui ikatan α(1→4)!
           </div>
         )}
       </div>
@@ -220,68 +240,206 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
   // VISUAL CONTENT TAHAP 2 (ALFA-1,6 PERCABANGAN)
   const renderVisualAlpha16 = () => (
     <div className="w-full space-y-3">
+      {/* 1. Gambar Aset Referensi Pengguna untuk Percabangan Glikogen */}
+      {/* USER-PROVIDED REFERENCE ASSET — DO NOT REPLACE */}
+      <ReferenceAssetViewer
+        src="/images/carbohydrate/percabangan-glikogen.png"
+        alt="Percabangan Glikogen Alfa-1,4 dan Alfa-1,6 - Aset Referensi Pengguna"
+        minHeight="140px"
+        aspectRatio="21/9"
+      />
+
       <div className="flex items-center justify-between pb-1">
         <span className="font-bold text-stone-900 text-xs">
           Enzim: <strong className="text-emerald-800">Branching Enzyme (Amilo-α(1,4)→α(1,6)-transglukosidase)</strong>
         </span>
         <span className="text-[10px] font-mono bg-blue-100 text-blue-950 px-2 py-0.5 rounded font-bold">
-          Ikatan α(1→6) Glikosidik
+          Ikatan α(1→6) Glikosidik Cabang
         </span>
       </div>
 
-      <div className="bg-white rounded-2xl border border-stone-200 p-4 shadow-xs space-y-3">
-        {/* Rantai 11 Residu Glukosa */}
-        <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 flex flex-col items-center justify-center min-h-[220px]">
-          <div className="text-[11px] font-bold text-stone-800 mb-2">
-            Rantai Linear Awal: 11 Residu Glukosa (Minimal 11 Residu Diperlukan)
+      <div className="bg-white rounded-2xl border border-stone-200 p-3 sm:p-4 shadow-xs space-y-3">
+        {/* Ringkasan Arsitektur Makromolekul Glikogen Sesuai Panduan Wajib */}
+        <div className="p-2.5 bg-stone-50 rounded-xl border border-stone-200 grid grid-cols-3 gap-2 text-center text-[10px]">
+          <div className="p-1.5 bg-purple-50 rounded-lg border border-purple-200">
+            <span className="block font-bold text-purple-950">Pusat Partikel</span>
+            <span className="text-purple-700">Protein Glikogenin</span>
+          </div>
+          <div className="p-1.5 bg-amber-50 rounded-lg border border-amber-200">
+            <span className="block font-bold text-amber-950">1 Ujung Pereduksi</span>
+            <span className="text-amber-700">Terikat di Glikogenin</span>
+          </div>
+          <div className="p-1.5 bg-emerald-50 rounded-lg border border-emerald-200">
+            <span className="block font-bold text-emerald-950">Banyak Ujung</span>
+            <span className="text-emerald-700">Nonreduksi (Perifer)</span>
+          </div>
+        </div>
+
+        {/* Rantai 15 Residu Glukosa (a s.d. o) dan Glikogenin Sesuai Diagram Referensi Pengguna */}
+        <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200 flex flex-col items-center justify-center min-h-[240px]">
+          <div className="text-xs font-bold text-stone-900 mb-1 flex items-center justify-between w-full">
+            <span>Model Rantai Biosintesis: 15 Residu Glukosa (a s.d. o) &amp; Glikogenin</span>
+            <span className="text-[10px] font-mono bg-red-100 text-red-900 px-2 py-0.5 rounded font-bold">
+              Ikatan Linear α(1→4) &amp; Cabang α(1→6)
+            </span>
           </div>
 
-          <div className="flex flex-col items-center gap-4 w-full">
-            {/* Rantai Utama Internal (Residu 1 - 4) */}
-            <div className="flex items-center gap-1">
-              <span className="text-[10px] font-bold text-stone-500 mr-1">Rantai Inti:</span>
-              {[1, 2, 3, 4].map(n => (
-                <div
-                  key={n}
-                  onClick={n === 4 && isSegmentCut ? handleAttachBranch : undefined}
-                  className={`w-9 h-9 rounded-full flex flex-col items-center justify-center text-[10px] font-bold border transition-all ${
-                    n === 4 && isSegmentCut && !isBranchAttached
-                      ? 'bg-orange-100 border-orange-500 text-orange-950 ring-2 ring-orange-400 cursor-pointer animate-pulse'
-                      : 'bg-amber-300 border-amber-600 text-stone-900'
-                  }`}
-                  title={n === 4 ? 'Residu Internal Target C6' : undefined}
-                >
-                  <span>G{n}</span>
-                  {n === 4 && <span className="text-[7px] text-stone-700">C6-OH</span>}
-                </div>
-              ))}
-              <span className="text-stone-400 font-bold px-1">—</span>
-
-              {/* Blok Terminal 7 Residu (Residu 5 - 11) */}
-              <div className={`p-1.5 rounded-xl border-2 transition-all flex items-center gap-1 ${
-                isSegmentCut ? 'border-dashed border-red-500 bg-red-50/50' : 'border-amber-400 bg-amber-50/60'
-              }`}>
-                {[5, 6, 7, 8, 9, 10, 11].map(n => (
-                  <div
-                    key={n}
-                    className="w-7 h-7 rounded-full bg-amber-400 text-stone-900 flex items-center justify-center text-[9px] font-bold border border-amber-600"
-                  >
-                    G{n}
+          <div className="flex flex-col items-center gap-3 w-full mt-2">
+            {!isBranchAttached ? (
+              /* TAMPILAN 1: SEBELUM / SAAT PEMOTONGAN SEGMEN CABANG */
+              <div className="w-full flex flex-col items-center gap-2 overflow-x-auto py-2">
+                <div className="flex items-center gap-1.5 flex-wrap justify-center">
+                  {/* Blok Segmen Cabang: o, n, m, l, k (dipotong dari ujung nonreduksi) */}
+                  <div className={`p-1.5 rounded-xl border-2 transition-all flex items-center gap-1 ${
+                    isSegmentCut ? 'border-dashed border-red-500 bg-red-50/70 animate-pulse' : 'border-amber-300 bg-amber-50/50'
+                  }`}>
+                    <div className="text-[9px] font-mono text-red-700 font-bold px-1">
+                      {isSegmentCut ? 'Segmen Terpotong:' : 'Ujung Nonreduksi:'}
+                    </div>
+                    {['o', 'n', 'm', 'l', 'k'].map(letter => (
+                      <div
+                        key={letter}
+                        onClick={letter === 'k' && isSegmentCut ? () => setSelectedBranchC1(!selectedBranchC1) : undefined}
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex flex-col items-center justify-center text-[10px] font-bold border transition-all ${
+                          letter === 'k' && isSegmentCut
+                            ? selectedBranchC1
+                              ? 'bg-blue-300 border-blue-600 text-blue-950 ring-2 ring-blue-500 scale-110 cursor-pointer animate-pulse'
+                              : 'bg-blue-100 border-blue-500 text-blue-900 cursor-pointer hover:scale-105'
+                            : 'bg-red-500 border-red-700 text-white shadow-2xs'
+                        }`}
+                        title={letter === 'k' ? 'Residu k: Karbon C1 donor cabang' : `Residu ${letter}`}
+                      >
+                        <span>{letter}</span>
+                        {letter === 'k' && isSegmentCut && (
+                          <span className="text-[6.5px] font-mono font-bold text-blue-950">C1</span>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Cabang Alfa-1,6 Baru yang Ditranslokasikan */}
-            {isBranchAttached && (
-              <div className="p-3 bg-blue-50 rounded-xl border border-blue-300 w-full animate-fadeIn flex flex-col items-center">
-                <div className="flex items-center gap-1 text-xs font-bold text-blue-950 mb-1">
-                  <GitBranch className="w-4 h-4 text-blue-700" />
-                  <span>Titik Cabang α(1→6) Berhasil Dibuat pada Residu G4!</span>
+                  <span className={`font-bold px-1 ${isSegmentCut ? 'text-red-500 text-xs' : 'text-stone-400'}`}>
+                    {isSegmentCut ? '✂ [Terputus]' : '—'}
+                  </span>
+
+                  {/* Rantai Inti yang Tertinggal: j, i, h, g, f, e, d, c, b, a */}
+                  <div className="p-1.5 rounded-xl border border-stone-200 bg-white flex items-center gap-1">
+                    {['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'].map(letter => (
+                      <div
+                        key={letter}
+                        onClick={letter === 'h' && isSegmentCut ? () => setSelectedTargetC6(!selectedTargetC6) : undefined}
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex flex-col items-center justify-center text-[10px] font-bold border transition-all ${
+                          letter === 'h' && isSegmentCut
+                            ? selectedTargetC6
+                              ? 'bg-orange-200 border-orange-600 text-orange-950 ring-2 ring-orange-500 scale-110 cursor-pointer animate-pulse'
+                              : 'bg-orange-100 border-orange-500 text-orange-950 cursor-pointer hover:scale-105'
+                            : letter === 'h'
+                              ? 'bg-red-500 border-red-700 text-white'
+                              : 'bg-red-500 border-red-700 text-white'
+                        }`}
+                        title={letter === 'h' ? 'Residu h: Karbon C6 akseptor titik cabang' : `Residu ${letter}`}
+                      >
+                        <span>{letter}</span>
+                        {letter === 'h' && isSegmentCut && (
+                          <span className="text-[6px] font-mono font-bold text-orange-950">C6</span>
+                        )}
+                      </div>
+                    ))}
+
+                    {/* Residu Glikogenin (Pita Hijau) */}
+                    <div className="flex items-center gap-1 pl-1 border-l border-stone-200 ml-1">
+                      <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[8px] font-bold" title="Ikatan O-glikosidik Tyr-194">
+                        O
+                      </div>
+                      <div className="px-2 py-1 bg-emerald-100 border border-emerald-400 rounded-lg text-[9px] font-bold text-emerald-900 flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        <span>Glikogenin</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-[11px] text-blue-900">
-                  Residu 5–11 sekarang membentuk rantai cabang baru. Jumlah ujung non-pereduksi berlipat ganda dari 1 menjadi 2!
+              </div>
+            ) : (
+              /* TAMPILAN 2: SETELAH CABANG ALFA-1,6 BERHASIL TERSAMBUNG KE RESIDU h */
+              <div className="w-full p-3 bg-white rounded-xl border border-stone-200 flex flex-col items-center gap-3">
+                <div className="flex items-start gap-4">
+                  {/* Diagram Cabang Sprouting */}
+                  <div className="relative pl-6 py-4">
+                    {/* Cabang Diagonal ke Atas: k -> l -> m -> n -> o */}
+                    <div className="flex items-center gap-1 -rotate-25 origin-bottom-left mb-3 ml-20">
+                      <span className="text-[8px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded mr-1">
+                        Cabang α(1→6):
+                      </span>
+                      {['k', 'l', 'm', 'n', 'o'].map(letter => (
+                        <div
+                          key={letter}
+                          className={`w-7 h-7 rounded-full flex flex-col items-center justify-center text-[10px] font-bold border ${
+                            letter === 'o'
+                              ? 'bg-amber-400 border-amber-600 text-amber-950 ring-2 ring-amber-400'
+                              : 'bg-red-500 border-red-700 text-white'
+                          }`}
+                        >
+                          <span>{letter}</span>
+                          {letter === 'o' && <span className="text-[5.5px] font-bold text-amber-950">UJUNG</span>}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Rantai Utama: j -> i -> h -> g -> f -> e -> d -> c -> b -> a -> Glikogenin */}
+                    <div className="flex items-center gap-1">
+                      <span className="text-[8px] font-bold text-stone-500 mr-1">Rantai Utama:</span>
+                      {['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'].map(letter => (
+                        <div
+                          key={letter}
+                          className={`w-7 h-7 rounded-full flex flex-col items-center justify-center text-[10px] font-bold border ${
+                            letter === 'j'
+                              ? 'bg-amber-400 border-amber-600 text-amber-950 ring-2 ring-amber-400'
+                              : letter === 'h'
+                                ? 'bg-red-600 border-red-800 text-white ring-2 ring-blue-500'
+                                : 'bg-red-500 border-red-700 text-white'
+                          }`}
+                        >
+                          <span>{letter}</span>
+                          {letter === 'j' && <span className="text-[5.5px] font-bold text-amber-950">UJUNG</span>}
+                          {letter === 'h' && <span className="text-[5.5px] font-bold text-blue-200">α(1→6)</span>}
+                        </div>
+                      ))}
+
+                      {/* Glikogenin */}
+                      <div className="flex items-center gap-1 pl-1 ml-1 border-l border-stone-200">
+                        <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[8px] font-bold">
+                          O
+                        </div>
+                        <div className="px-2 py-1 bg-emerald-100 border border-emerald-400 rounded-lg text-[9px] font-bold text-emerald-900">
+                          Glikogenin
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {/* 2 UJUNG NONREDUKSI (NONREDUCING ENDS) */}
+                <div className="p-2 bg-amber-50 rounded-lg border border-amber-200 text-center w-full">
+                  <div className="text-xs font-bold text-amber-950 flex items-center justify-center gap-1.5">
+                    <span>★ Terbentuk 2 Ujung Non-Pereduksi (Nonreducing Ends): Residu &apos;j&apos; &amp; Residu &apos;o&apos;</span>
+                  </div>
+                  <div className="text-[10px] text-amber-900 mt-0.5">
+                    Memungkinkan pemanjangan paralel oleh glikogen sintase [α(1→4)] dan percabangan berulang [α(1→6)] hingga membentuk partikel bola glikogen utuh.
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Indikator Pemilihan Atom untuk Percabangan */}
+            {isSegmentCut && !isBranchAttached && (
+              <div className="p-2 bg-stone-100 rounded-lg text-xs text-center border border-stone-200 w-full">
+                <span className="text-stone-700">Pasangkan atom: </span>
+                <span className={`px-1.5 py-0.5 rounded font-bold mr-1 ${selectedBranchC1 ? 'bg-blue-200 text-blue-950' : 'bg-stone-200 text-stone-600'}`}>
+                  C1 Segmen Cabang (Residu k)
+                </span>
+                <span className="text-stone-500">&amp;</span>
+                <span className={`px-1.5 py-0.5 rounded font-bold ml-1 ${selectedTargetC6 ? 'bg-orange-200 text-orange-950' : 'bg-stone-200 text-stone-600'}`}>
+                  C6 Rantai Utama (Residu h)
+                </span>
               </div>
             )}
           </div>
@@ -303,14 +461,20 @@ export const LKMSectionE_GlycogenBranching: React.FC<{
 
           <button
             type="button"
-            onClick={handleAttachBranch}
-            disabled={!isSegmentCut || isBranchAttached}
+            onClick={() => {
+              if (isSegmentCut && selectedBranchC1 && selectedTargetC6) {
+                setIsBranchAttached(true);
+              }
+            }}
+            disabled={!isSegmentCut || isBranchAttached || !selectedBranchC1 || !selectedTargetC6}
             className={`py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer ${
-              !isSegmentCut || isBranchAttached ? 'bg-stone-100 text-stone-400 border border-stone-200' : 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs'
+              !isSegmentCut || isBranchAttached || !selectedBranchC1 || !selectedTargetC6
+                ? 'bg-stone-100 text-stone-400 border border-stone-200' 
+                : 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs'
             }`}
           >
             <GitBranch className="w-3.5 h-3.5" />
-            <span>2. Sambung ke C6 Residu G4</span>
+            <span>2. Bentuk Ikatan α(1→6) (C1 - C6)</span>
           </button>
         </div>
       </div>

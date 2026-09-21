@@ -211,87 +211,130 @@ export const InteractiveGlucosePhosphorylation: React.FC = () => {
                   </filter>
                 </defs>
 
-                {/* Garis Cincin Piranosa Haworth */}
-                {/* Vertices: C1=(240,110), C2=(200,165), C3=(140,165), C4=(100,110), C5=(140,65), O=(200,65) */}
+                {/* Garis Cincin Piranosa Haworth Presisi */}
+                {/* Vertices: O=(195,65), C1=(245,115), C2=(195,165), C3=(135,165), C4=(85,115), C5=(135,65) */}
                 <polygon
-                  points="240,110 200,165 140,165 100,110 140,65 200,65"
+                  points="245,115 195,165 135,165 85,115 135,65 195,65"
                   fill="#FFFFFF"
                   stroke="#78716C"
                   strokeWidth="3.5"
                   strokeLinejoin="round"
                 />
 
-                {/* Sisi Bawah Cincin Lebih Tebal (Perspektif Haworth) */}
-                <line x1="100" y1="110" x2="140" y2="165" stroke="#44403C" strokeWidth="5" />
-                <line x1="140" y1="165" x2="200" y2="165" stroke="#44403C" strokeWidth="6" />
-                <line x1="200" y1="165" x2="240" y2="110" stroke="#44403C" strokeWidth="5" />
+                {/* Sisi Depan Bawah Cincin Lebih Tebal (Perspektif Bidang Haworth) */}
+                <line x1="85" y1="115" x2="135" y2="165" stroke="#292524" strokeWidth="5.5" />
+                <line x1="135" y1="165" x2="195" y2="165" stroke="#1C1917" strokeWidth="6.5" />
+                <line x1="195" y1="165" x2="245" y2="115" stroke="#292524" strokeWidth="5.5" />
 
-                {/* Oksigen Cincin */}
-                <circle cx="200" cy="65" r="14" fill="#EF4444" stroke="#B91C1C" strokeWidth="1.5" />
-                <text x="200" y="70" textAnchor="middle" fill="#FFFFFF" fontSize="12" fontWeight="bold">O</text>
+                {/* Oksigen Cincin (Oksigen Heterosiklik) */}
+                <circle cx="195" cy="65" r="13" fill="#EF4444" stroke="#991B1B" strokeWidth="2" />
+                <text x="195" y="70" textAnchor="middle" fill="#FFFFFF" fontSize="12" fontWeight="bold">O</text>
 
-                {/* Ikatan C5 ke C6 Ekstrasiklik (-CH2OH) */}
-                <line x1="140" y1="65" x2="100" y2="25" stroke="#78716C" strokeWidth="3.5" />
+                {/* ================= C5 & C6 (-CH2OH Ekstrasiklik) ================= */}
+                {/* Ikatan C5-H (ke bawah) */}
+                <line x1="135" y1="65" x2="135" y2="90" stroke="#78716C" strokeWidth="2" />
+                <text x="135" y="99" textAnchor="middle" fontSize="8" fill="#57534E">H</text>
 
-                {/* GUGUS C6 & GUGUS FOSFAT */}
+                {/* Ikatan C5 ke C6 (ke atas) */}
+                <line x1="135" y1="65" x2="135" y2="35" stroke="#44403C" strokeWidth="3.5" />
+
+                {/* GUGUS C6 & GUGUS FOSFAT DENGAN DROP TARGET */}
                 <g 
                   onClick={() => handleSelectCarbon(6)}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    setIsTransferred(true);
+                    setSelectedPhosphateSource(false);
+                    setErrorMessage(null);
+                  }}
                   className="cursor-pointer transition-all hover:scale-110"
                 >
                   <circle
-                    cx="100"
+                    cx="135"
                     cy="25"
                     r={isTransferred ? 24 : 18}
-                    fill={isTransferred ? '#F97316' : selectedPhosphateSource ? '#FEF08A' : '#F5F5F4'}
+                    fill={isTransferred ? '#F97316' : selectedPhosphateSource ? '#FEF08A' : '#FFFBEB'}
                     stroke={isTransferred ? '#C2410C' : '#D97706'}
                     strokeWidth={isTransferred ? 3 : 2}
                     filter={isTransferred ? 'url(#glowFosfat)' : undefined}
                     className={selectedPhosphateSource && !isTransferred ? 'animate-pulse' : ''}
                   />
-                  <text x="100" y="21" textAnchor="middle" fontSize="9" fontWeight="bold" fill={isTransferred ? '#FFFFFF' : '#78350F'}>
+                  <text x="135" y="21" textAnchor="middle" fontSize="9" fontWeight="bold" fill={isTransferred ? '#FFFFFF' : '#78350F'}>
                     C6
                   </text>
-                  <text x="100" y="32" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill={isTransferred ? '#FFFFFF' : '#92400E'}>
+                  <text x="135" y="32" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill={isTransferred ? '#FFFFFF' : '#92400E'}>
                     {isTransferred ? '-CH₂-O-PO₃²⁻' : '-CH₂OH'}
+                  </text>
+                  <text x="135" y="4" textAnchor="middle" fontSize="7" fill="#78716C">
+                    (Gugus Hidroksil Primer)
                   </text>
                 </g>
 
-                {/* C1 (Anomerik) */}
-                <g onClick={() => handleSelectCarbon(1)} className="cursor-pointer">
-                  <circle cx="240" cy="110" r="13" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1.5" />
-                  <text x="240" y="114" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#292524">C1</text>
-                  <line x1="240" y1="110" x2="270" y2="135" stroke="#78716C" strokeWidth="2" />
-                  <text x="275" y="140" fontSize="8" fill="#57534E">OH (α/β)</text>
-                </g>
-
-                {/* C2 */}
-                <g onClick={() => handleSelectCarbon(2)} className="cursor-pointer">
-                  <circle cx="200" cy="165" r="13" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1.5" />
-                  <text x="200" y="169" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#292524">C2</text>
-                  <line x1="200" y1="165" x2="200" y2="195" stroke="#78716C" strokeWidth="2" />
-                  <text x="200" y="206" textAnchor="middle" fontSize="8" fill="#57534E">OH</text>
-                </g>
-
-                {/* C3 */}
-                <g onClick={() => handleSelectCarbon(3)} className="cursor-pointer">
-                  <circle cx="140" cy="165" r="13" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1.5" />
-                  <text x="140" y="169" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#292524">C3</text>
-                  <line x1="140" y1="165" x2="140" y2="135" stroke="#78716C" strokeWidth="2" />
-                  <text x="140" y="130" textAnchor="middle" fontSize="8" fill="#57534E">OH</text>
-                </g>
-
-                {/* C4 */}
-                <g onClick={() => handleSelectCarbon(4)} className="cursor-pointer">
-                  <circle cx="100" cy="110" r="13" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1.5" />
-                  <text x="100" y="114" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#292524">C4</text>
-                  <line x1="100" y1="110" x2="70" y2="135" stroke="#78716C" strokeWidth="2" />
-                  <text x="55" y="140" fontSize="8" fill="#57534E">OH</text>
-                </g>
-
-                {/* C5 */}
+                {/* Label Karbon C5 */}
                 <g onClick={() => handleSelectCarbon(5)} className="cursor-pointer">
-                  <circle cx="140" cy="65" r="13" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1.5" />
-                  <text x="140" y="69" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#292524">C5</text>
+                  <circle cx="120" cy="58" r="8" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1" />
+                  <text x="120" y="61" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#292524">C5</text>
+                </g>
+
+                {/* ================= C1 (Karbon Anomerik - Konformasi α) ================= */}
+                <g onClick={() => handleSelectCarbon(1)} className="cursor-pointer">
+                  {/* Ikatan C1-H ke atas */}
+                  <line x1="245" y1="115" x2="245" y2="90" stroke="#78716C" strokeWidth="2" />
+                  <text x="245" y="85" textAnchor="middle" fontSize="8" fill="#57534E">H</text>
+
+                  {/* Ikatan C1-OH ke bawah (Konfigurasi Alfa Trans) */}
+                  <line x1="245" y1="115" x2="245" y2="140" stroke="#78716C" strokeWidth="2.5" />
+                  <text x="245" y="152" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="#B91C1C">OH (α)</text>
+
+                  {/* Label C1 di sebelah kanan */}
+                  <circle cx="265" cy="115" r="9" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1" />
+                  <text x="265" y="118" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill="#292524">C1</text>
+                </g>
+
+                {/* ================= C2 (OH ke bawah, H ke atas) ================= */}
+                <g onClick={() => handleSelectCarbon(2)} className="cursor-pointer">
+                  {/* C2-H ke atas */}
+                  <line x1="195" y1="165" x2="195" y2="140" stroke="#78716C" strokeWidth="1.5" />
+                  <text x="195" y="135" textAnchor="middle" fontSize="7.5" fill="#57534E">H</text>
+
+                  {/* C2-OH ke bawah */}
+                  <line x1="195" y1="165" x2="195" y2="192" stroke="#78716C" strokeWidth="2" />
+                  <text x="195" y="202" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#57534E">OH</text>
+
+                  {/* Label C2 */}
+                  <circle cx="215" cy="175" r="8" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1" />
+                  <text x="215" y="178" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#292524">C2</text>
+                </g>
+
+                {/* ================= C3 (OH ke atas, H ke bawah) ================= */}
+                <g onClick={() => handleSelectCarbon(3)} className="cursor-pointer">
+                  {/* C3-OH ke atas */}
+                  <line x1="135" y1="165" x2="135" y2="138" stroke="#78716C" strokeWidth="2" />
+                  <text x="135" y="132" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#57534E">OH</text>
+
+                  {/* C3-H ke bawah */}
+                  <line x1="135" y1="165" x2="135" y2="190" stroke="#78716C" strokeWidth="1.5" />
+                  <text x="135" y="200" textAnchor="middle" fontSize="7.5" fill="#57534E">H</text>
+
+                  {/* Label C3 */}
+                  <circle cx="115" cy="175" r="8" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1" />
+                  <text x="115" y="178" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#292524">C3</text>
+                </g>
+
+                {/* ================= C4 (OH ke bawah, H ke atas) ================= */}
+                <g onClick={() => handleSelectCarbon(4)} className="cursor-pointer">
+                  {/* C4-H ke atas */}
+                  <line x1="85" y1="115" x2="85" y2="90" stroke="#78716C" strokeWidth="1.5" />
+                  <text x="85" y="85" textAnchor="middle" fontSize="7.5" fill="#57534E">H</text>
+
+                  {/* C4-OH ke bawah */}
+                  <line x1="85" y1="115" x2="85" y2="140" stroke="#78716C" strokeWidth="2" />
+                  <text x="85" y="152" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#57534E">OH</text>
+
+                  {/* Label C4 */}
+                  <circle cx="65" cy="115" r="8" fill="#F5F5F4" stroke="#A8A29E" strokeWidth="1" />
+                  <text x="65" y="118" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#292524">C4</text>
                 </g>
               </svg>
             ) : (
